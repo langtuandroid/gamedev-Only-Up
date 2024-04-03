@@ -1,6 +1,7 @@
 using Invector.vCharacterController;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 namespace UnityStandardAssets.CrossPlatformInput
 {
     public class MoveCamera : MonoBehaviour, IPointerDownHandler, IPointerUpHandler

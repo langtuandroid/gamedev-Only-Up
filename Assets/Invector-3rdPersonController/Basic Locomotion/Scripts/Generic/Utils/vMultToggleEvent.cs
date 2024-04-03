@@ -1,12 +1,13 @@
-﻿using Invector;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using Invector;
 using UnityEngine;
+using UnityEngine.Events;
 
 [vClassHeader("Mult-Toggle Event", helpBoxText = "Use the method SetToggleOn/Off via Events", openClose = false)]
 public class vMultToggleEvent : vMonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public class Toggle
     {
         public string name;
@@ -26,12 +27,12 @@ public class vMultToggleEvent : vMonoBehaviour
             onTurnOff.Invoke();
         }
         public bool isValid => value.Equals(validation);
-        public UnityEngine.Events.UnityEvent onTurnOn, onTurnOff;
+        public UnityEvent onTurnOn, onTurnOff;
     }
     public List<Toggle> toggles;
     public bool isValid;
 
-    public UnityEngine.Events.UnityEvent onValidate, onInvalidate;
+    public UnityEvent onValidate, onInvalidate;
 
     public void Start()
     {

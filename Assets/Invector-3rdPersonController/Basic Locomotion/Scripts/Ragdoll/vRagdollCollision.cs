@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace Invector.vCharacterController
 {
     public class vRagdollCollision
@@ -31,7 +32,7 @@ namespace Invector.vCharacterController
         {
             this.sender = sender;
             this.collision = collision;
-            this.impactForce = collision.relativeVelocity.magnitude;
+            impactForce = collision.relativeVelocity.magnitude;
         }
     }
 }

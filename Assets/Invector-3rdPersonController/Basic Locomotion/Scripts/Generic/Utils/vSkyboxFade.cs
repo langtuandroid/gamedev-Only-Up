@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -88,7 +89,7 @@ namespace Invector
             }
         }
 
-        [System.Serializable]
+        [Serializable]
         public class SkyboxFadeSettings
         {
             public string name = "My SkySettings";
@@ -98,7 +99,7 @@ namespace Invector
             [Range(0f, 8f)]
             public float exposure = 1f;
             [Range(0f, 360f)]
-            public float rotation = 0f;
+            public float rotation;
 
             public SkyboxFadeSettings()
             {

@@ -1,7 +1,6 @@
-﻿using Invector;
+﻿using System;
+using Invector;
 using Invector.vCharacterController;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +17,7 @@ public class vSimpleTriggerWithInput : vSimpleTrigger
         GetButtonDown,
         GetDoubleButton,
         GetButtonTimer
-    };
+    }
 
     [vHelpBox("Time you have to hold the button *Only for GetButtonTimer*")]
     public float buttonTimer = 3f;
@@ -106,7 +105,7 @@ public class vSimpleTriggerWithInput : vSimpleTrigger
         UpdateButtonTimer(0);
     }
 
-    [System.Serializable]
+    [Serializable]
     public class OnUpdateValue : UnityEvent<float>
     {
 

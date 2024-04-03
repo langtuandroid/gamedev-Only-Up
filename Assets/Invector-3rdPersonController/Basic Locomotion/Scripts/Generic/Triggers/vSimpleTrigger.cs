@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,13 +11,13 @@ namespace Invector
     public class vSimpleTrigger : vMonoBehaviour
     {
         public static bool drawGizmos = true;
-        [System.Serializable]
+        [Serializable]
         public class vTriggerEvent : UnityEvent<Collider> { }
         [vButton("ToggleGizmos", "ToggleGizmos", typeof(vSimpleTrigger), false)]
         public bool useFilter = true;
         public bool ignoreIsTriggerColliders;
         public bool debugMode;
-        public vTagMask tagsToDetect = new List<string>() { "Player" };
+        public vTagMask tagsToDetect = new List<string> { "Player" };
         public LayerMask layersToDetect = 0;
         public vTriggerEvent onTriggerEnter;
         public vTriggerEvent onTriggerExit;
@@ -81,7 +82,7 @@ namespace Invector
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            if (this.enabled && this.other == null && CanTrigger(other) && IsInTagMask(other.gameObject.tag) && IsInLayerMask(other.gameObject.layer))
+            if (enabled && this.other == null && CanTrigger(other) && IsInTagMask(other.gameObject.tag) && IsInLayerMask(other.gameObject.layer))
             {
                 inCollision = true;
                 this.other = other;
@@ -91,7 +92,7 @@ namespace Invector
                     Debug.Log(other.gameObject.name + "TriggerEnter");
                 }
 
-                if (this.enabled && gameObject.activeInHierarchy)
+                if (enabled && gameObject.activeInHierarchy)
                 {
                     StartCoroutine(TriggerStayRoutine());
                 }
@@ -105,7 +106,7 @@ namespace Invector
 
         protected virtual void OnTriggerExit(Collider other)
         {
-            if (this.enabled && this.other != null && CanTrigger(other) && this.other.gameObject == other.gameObject)
+            if (enabled && this.other != null && CanTrigger(other) && this.other.gameObject == other.gameObject)
             {
                 inCollision = false;
                 onTriggerExit.Invoke(other);
@@ -124,10 +125,8 @@ namespace Invector
             {
                 return true;
             }
-            else
-            {
-                return tagsToDetect.Contains(tag);
-            }
+
+            return tagsToDetect.Contains(tag);
         }
 
         protected virtual bool IsInLayerMask(int layer)
@@ -144,13 +143,11 @@ namespace Invector
                     OnTriggerExit(other);
                     break;
                 }
-                else
+
+                onTriggerStay.Invoke(other);
+                if (debugMode)
                 {
-                    onTriggerStay.Invoke(other);
-                    if (debugMode)
-                    {
-                        Debug.Log(other.gameObject.name + "TriggerStay");
-                    }
+                    Debug.Log(other.gameObject.name + "TriggerStay");
                 }
 
                 yield return null;

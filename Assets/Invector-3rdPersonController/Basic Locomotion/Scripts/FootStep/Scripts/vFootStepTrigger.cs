@@ -104,12 +104,12 @@ namespace Invector
         public float volume;
         public FootStepObject(Transform sender, Collider ground)
         {            
-            this.name = "";
+            name = "";
             this.sender = sender;
             this.ground = ground;
-            this.terrain = ground.GetComponent<Terrain>();
-            this.stepHandle = ground.GetComponent<vFootStepHandler>();
-            this.renderer = ground.GetComponent<Renderer>();
+            terrain = ground.GetComponent<Terrain>();
+            stepHandle = ground.GetComponent<vFootStepHandler>();
+            renderer = ground.GetComponent<Renderer>();
             spawnSoundEffect = true;
             spawnStepMarkEffect = true;
             spawnParticleEffect = true;
@@ -117,7 +117,7 @@ namespace Invector
             if (renderer != null && renderer.material != null)
             {
                 var index = 0;
-                this.name = string.Empty;
+                name = string.Empty;
                 if (stepHandle != null && stepHandle.material_ID > 0)// if trigger contains a StepHandler to pass material ID. Default is (0)
                     index = stepHandle.material_ID;
                 if (stepHandle)
@@ -126,15 +126,15 @@ namespace Invector
                     switch (stepHandle.stepHandleType)
                     {
                         case vFootStepHandler.StepHandleType.materialName:
-                            this.name = renderer.materials[index].name;
+                            name = renderer.materials[index].name;
                             break;
                         case vFootStepHandler.StepHandleType.textureName:
-                            this.name = renderer.materials[index].mainTexture.name;
+                            name = renderer.materials[index].mainTexture.name;
                             break;
                     }
                 }
                 else
-                    this.name = renderer.materials[index].name;
+                    name = renderer.materials[index].name;
             }
         }
     }

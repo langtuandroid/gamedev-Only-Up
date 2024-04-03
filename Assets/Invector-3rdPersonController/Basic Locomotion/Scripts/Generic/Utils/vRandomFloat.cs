@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+
 namespace Invector.Utils
 {
     public class vRandomFloat : MonoBehaviour
@@ -11,7 +11,7 @@ namespace Invector.Utils
         public float max;
         public bool setOnStart;
 
-        public UnityEngine.UI.Slider.SliderEvent onSet;
+        public Slider.SliderEvent onSet;
         private void Start()
         {
             if (setOnStart) Set();

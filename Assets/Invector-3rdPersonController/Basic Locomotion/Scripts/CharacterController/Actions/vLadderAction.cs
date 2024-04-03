@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 namespace Invector.vCharacterController.vActions
 {
     [vClassHeader("Ladder Action", iconName = "ladderIcon")]
@@ -372,7 +373,7 @@ namespace Invector.vCharacterController.vActions
 
             if (_inEnterLadderAnimation)
             {
-                this.inEnterLadderAnimation = true;
+                inEnterLadderAnimation = true;
 
                 tpInput.cc.DisableGravityAndCollision();              // disable gravity & turn collision trigger
                 // disable ingame hud

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using UnityEditor;
-using System;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(vToggleOptionAttribute),true)]
 public class vToggleOptionAttributeDrawer : PropertyDrawer
@@ -14,7 +12,7 @@ public class vToggleOptionAttributeDrawer : PropertyDrawer
             
             var toogle = attribute as vToggleOptionAttribute;
             if (toogle.label != "") label.text = toogle.label;
-            var options = new GUIContent[] { new GUIContent( toogle.falseValue), new GUIContent(toogle.trueValue) };
+            var options = new[] { new GUIContent( toogle.falseValue), new GUIContent(toogle.trueValue) };
             property.boolValue = Convert.ToBoolean(EditorGUI.Popup(position,label, Convert.ToInt32(property.boolValue), options));
         }
        else

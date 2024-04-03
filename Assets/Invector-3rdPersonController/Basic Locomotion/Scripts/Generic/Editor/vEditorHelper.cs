@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {
@@ -35,8 +35,8 @@ namespace Invector
         /// <returns></returns>
         public static bool IsUnityEventyType(Type type)
         {
-            if (type.Equals(typeof(UnityEngine.Events.UnityEvent))) return true;
-            if (type.BaseType.Equals(typeof(UnityEngine.Events.UnityEvent))) return true;
+            if (type.Equals(typeof(UnityEvent))) return true;
+            if (type.BaseType.Equals(typeof(UnityEvent))) return true;
             if (type.Name.Contains("UnityEvent") || type.BaseType.Name.Contains("UnityEvent")) return true;
             return false;
         }
@@ -49,7 +49,7 @@ namespace Invector
         #region Variables   
         public string[] ignoreEvents;
         public string[] notEventProperties;
-        public virtual string[] ignore_vMono => new string[] { "openCloseWindow", "openCloseEvents", "selectedToolbar" };
+        public virtual string[] ignore_vMono => new[] { "openCloseWindow", "openCloseEvents", "selectedToolbar" };
         public vClassHeaderAttribute headerAttribute;
         public GUISkin skin;
         public Texture2D m_Logo;

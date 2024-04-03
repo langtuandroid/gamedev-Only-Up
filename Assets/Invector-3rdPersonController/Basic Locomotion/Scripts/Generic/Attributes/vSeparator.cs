@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-[System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = true)]
+
+[AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
 public class vSeparator : PropertyAttribute
 {     
     public string label;
@@ -18,7 +18,7 @@ public class vSeparator : PropertyAttribute
     {        
         this.label = label;
         this.tooltip = tooltip;
-        this.fontSize = 15;
+        fontSize = 15;
     }
 
     public vSeparator(string label, int fontSize, string tooltip = "")

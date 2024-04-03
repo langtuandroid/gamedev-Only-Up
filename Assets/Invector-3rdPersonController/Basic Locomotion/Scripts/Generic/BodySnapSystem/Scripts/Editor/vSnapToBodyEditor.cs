@@ -1,11 +1,12 @@
 ﻿using Invector;
 using UnityEditor;
 using UnityEngine;
+
 [CustomEditor(typeof(vSnapToBody))]
 public class vSnapToBodyEditor : Editor
 {
     vSnapToBody snapToBody;
-    int index = 0;
+    int index;
     GUIStyle fontLabelStyle = new GUIStyle();
     public GUISkin skin;
 
@@ -70,7 +71,6 @@ public class vSnapToBodyEditor : Editor
                                             fontLabelStyle.alignment = TextAnchor.MiddleCenter;
                                             GUI.color = Color.white;
                                             Handles.Label(bodyPart.bone.position, bodyPart.name, fontLabelStyle);
-                                            break;
                                         }
                                     }
                                     break;
@@ -98,7 +98,6 @@ public class vSnapToBodyEditor : Editor
                                 fontLabelStyle.alignment = TextAnchor.MiddleCenter;
                                 GUI.color = Color.white;
                                 Handles.Label(snapToBody.boneToSnap.position, snapToBody.boneToSnap.name, fontLabelStyle);
-                                break;
                             }
                         }
                         break;
@@ -141,7 +140,7 @@ public class vSnapToBodyEditor : Editor
                 GUI.enabled = false;
                 EditorGUI.BeginChangeCheck();
                 GUI.color = Color.red;
-                EditorGUILayout.Popup(0, new string[] { snapToBody.boneName });
+                EditorGUILayout.Popup(0, new[] { snapToBody.boneName });
                 GUI.color = Color.white;
                 GUI.enabled = true;
                 GUILayout.EndHorizontal();

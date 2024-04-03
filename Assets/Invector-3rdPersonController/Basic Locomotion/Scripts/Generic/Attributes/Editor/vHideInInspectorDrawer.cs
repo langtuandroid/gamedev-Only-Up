@@ -1,8 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
-using System.Reflection;
-using System;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Invector
 {
@@ -23,7 +20,7 @@ namespace Invector
                     var booleanProperty = property.serializedObject.FindProperty(propertyName + booleamProperties[i]);                  
                     if (booleanProperty != null)
                     {
-                        _attribute.hideProperty = (bool)_attribute.invertValue ? booleanProperty.boolValue : !booleanProperty.boolValue;
+                        _attribute.hideProperty = _attribute.invertValue ? booleanProperty.boolValue : !booleanProperty.boolValue;
                         if (_attribute.hideProperty)
                         {
                             break;
@@ -63,7 +60,7 @@ namespace Invector
                     }
                 }
                 if (valid) return base.GetPropertyHeight(property, label);
-                else return 0;
+                return 0;
             }
             return base.GetPropertyHeight(property, label);
         }

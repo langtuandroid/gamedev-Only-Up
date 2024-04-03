@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace Invector
@@ -27,9 +26,9 @@ namespace Invector
         [Range(0.0f, 180.0f)]
         public float angleToReachTarget = 45f;
 
-        public UnityEngine.Events.UnityEvent onEnterAngle;
-        public UnityEngine.Events.UnityEvent onStayAngle;
-        public UnityEngine.Events.UnityEvent onExitAngle;
+        public UnityEvent onEnterAngle;
+        public UnityEvent onStayAngle;
+        public UnityEvent onExitAngle;
         public bool targetIsInAngleRange { protected set; get; }
         protected float angleH;
         protected float angleV;

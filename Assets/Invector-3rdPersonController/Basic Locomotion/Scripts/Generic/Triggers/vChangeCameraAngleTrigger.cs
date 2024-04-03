@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+
 namespace Invector.vCamera
 {
     public class vChangeCameraAngleTrigger : MonoBehaviour

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Invector
 {
@@ -9,7 +9,7 @@ namespace Invector
     {
         GUISkin skin;
         bool openWindow;
-        private Texture2D m_Logo = null;
+        private Texture2D m_Logo;
 
         void OnEnable()
         {

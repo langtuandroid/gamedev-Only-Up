@@ -2,7 +2,7 @@
 
 namespace Invector
 {
-    public partial interface vIEffect
+    public interface vIEffect
     {
         string EffectName { get; }
         float EffectDuration { get; }

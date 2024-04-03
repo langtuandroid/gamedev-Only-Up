@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.Events;
+
 namespace Invector.vCharacterController.vActions
 {
     [vClassHeader("Trigger Ladder Action", false)]

@@ -4,7 +4,7 @@ namespace Invector.vEventSystems
 {
     public class vAnimatorTag : vAnimatorTagBase
     {
-        public string[] tags = new string[] { "CustomAction" };
+        public string[] tags = { "CustomAction" };
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 #if UNITY_5_3_OR_NEWER
 using UnityEngine.SceneManagement;
 #endif

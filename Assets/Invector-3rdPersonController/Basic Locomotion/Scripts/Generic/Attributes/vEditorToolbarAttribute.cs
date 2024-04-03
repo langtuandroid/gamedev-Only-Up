@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 namespace Invector
 {
     public class vEditorToolbarAttribute : PropertyAttribute
@@ -12,7 +12,7 @@ namespace Invector
         public vEditorToolbarAttribute(string title,bool useIcon = false,string iconName="",bool overrideIcon = false, bool overrideChildOrder = false)
         {
             this.title = title;
-            this.icon = iconName;
+            icon = iconName;
             this.useIcon = useIcon;
             this.overrideChildOrder = overrideChildOrder;
             this.overrideIcon = overrideIcon;

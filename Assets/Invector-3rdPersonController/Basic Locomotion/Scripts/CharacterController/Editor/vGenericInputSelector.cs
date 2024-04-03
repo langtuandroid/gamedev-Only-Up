@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using UnityEditor;
-using System;
+using UnityEngine;
+using UnityEngine.Events;
+using Object = UnityEngine.Object;
 
 public class vGenericInputSelector : PopupWindowContent
 {
-    public vGenericInputSelector (string label,string lastInput, bool drawKeys,bool isUnityInput, UnityEngine.Events.UnityAction<string, bool> onSelectInput)
+    public vGenericInputSelector (string label,string lastInput, bool drawKeys,bool isUnityInput, UnityAction<string, bool> onSelectInput)
     {
         this.label = label;
         this.drawKeys = drawKeys;
@@ -15,16 +15,16 @@ public class vGenericInputSelector : PopupWindowContent
         this.lastInput = lastInput;
         if(drawKeys)
         {
-            toolBar = new GUIContent[] { new GUIContent("Unity Inputs", unityInputToolip), new GUIContent("KeyCodes", keyCodeTooltip) };
+            toolBar = new[] { new GUIContent("Unity Inputs", unityInputToolip), new GUIContent("KeyCodes", keyCodeTooltip) };
             selectedToolBar = isUnityInput?0:1;
         }          
-        else toolBar = new GUIContent[] { new GUIContent("Unity Inputs", unityInputToolip)};
+        else toolBar = new[] { new GUIContent("Unity Inputs", unityInputToolip)};
        
 
     }
     const string keyCodeTooltip = "KeyCode use a  Enum (GetKey, GetKeyDown,GetKeyUp)";
     const string unityInputToolip = "Unity input use input names created in InputManager (GetButton, GetButtonDown, GetButtonUp";
-    public static UnityEngine.Object inputManager;
+    public static Object inputManager;
     public  static string[] _unityInputs = new string[0];
     public static string[] _unityKeys = new string[0];
     public static float minHeight = EditorGUIUtility.singleLineHeight*10;
@@ -35,7 +35,7 @@ public class vGenericInputSelector : PopupWindowContent
    
     protected Vector2 scrollView;
     protected Vector2 scrollView2;
-    protected int selectedToolBar = 0;
+    protected int selectedToolBar;
     protected bool drawKeys =true;
     protected bool isUnityInput;
     protected string lastInput;
@@ -43,7 +43,7 @@ public class vGenericInputSelector : PopupWindowContent
     /// <summary>
     /// Event to return the select input and if the input is an  keycode
     /// </summary>
-    public UnityEngine.Events.UnityAction<string, bool> onSelectInput;
+    public UnityAction<string, bool> onSelectInput;
 
     public override Vector2 GetWindowSize()
     {

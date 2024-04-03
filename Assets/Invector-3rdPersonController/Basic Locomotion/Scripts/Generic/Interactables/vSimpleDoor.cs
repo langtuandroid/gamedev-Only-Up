@@ -32,7 +32,7 @@ namespace Invector
         [vHideInInspector("autoClose"), Tooltip("Time to auto close door after Opened")]
         public float timeToClose = 1f;
         [Tooltip("Used when autoOpen or autoClose is checked")]
-        public vTagMask tagsToOpen = new List<string>() { "Player" };
+        public vTagMask tagsToOpen = new List<string> { "Player" };
 
         private Vector3 currentAngle;
         private float angle;

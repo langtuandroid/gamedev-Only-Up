@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System;
+﻿using System.Linq;
 using System.Reflection;
-using System.Linq;
+using UnityEditor;
+using UnityEngine;
+
 namespace Invector
 {
     [CustomPropertyDrawer(typeof(vButtonAttribute))]
@@ -34,7 +34,7 @@ namespace Invector
         void ExecuteFunction(vButtonAttribute target)
         {
             if (target.type == null) return;
-            UnityEngine.Object theObject = Selection.activeGameObject.GetComponent(target.type) as UnityEngine.Object;
+            Object theObject = Selection.activeGameObject.GetComponent(target.type);
 
             MethodInfo tMethod = theObject.GetType().GetMethods().FirstOrDefault(method => method.Name == target.function
                      && method.GetParameters().Count() == 0);

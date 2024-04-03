@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Invector.vCharacterController;
 using UnityEngine;
-using Invector.vCharacterController;
+
 public class vEnableDisableByInputDevice : MonoBehaviour
 {
     public InputDevice inputDevice;

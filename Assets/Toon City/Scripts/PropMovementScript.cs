@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PropMovementScript : MonoBehaviour {
 
     public float TrahsHold;
 
-    public bool isMoving = false;
+    public bool isMoving;
     public Vector3 targetPosition;
     public float speed;
    
 
-    public bool isRotating = false;
+    public bool isRotating;
     public Vector3 targetRotation;
     public float speedRotation;
 

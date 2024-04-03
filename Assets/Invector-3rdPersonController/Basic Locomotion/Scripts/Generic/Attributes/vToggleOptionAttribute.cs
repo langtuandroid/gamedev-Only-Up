@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[AttributeUsage(AttributeTargets.Field,AllowMultiple = true,Inherited = true)]
+[AttributeUsage(AttributeTargets.Field,AllowMultiple = true)]
 public class vToggleOptionAttribute : PropertyAttribute
 {
    public string label,falseValue, trueValue;

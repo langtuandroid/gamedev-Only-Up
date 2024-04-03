@@ -10,7 +10,7 @@ namespace Invector.vCharacterController
         #region public variables
 
         [vEditorToolbar("Debug")]
-        public bool startRagdolled = false;
+        public bool startRagdolled;
         [vButton("Active Ragdoll And Keep Ragdolled", "ActivateRagdollWithDelayToGetUp", typeof(vRagdoll))]
         [vButton("Active Ragdoll", "ActivateRagdoll", typeof(vRagdoll))]
         [SerializeField] protected float debugTimeToStayRagdolled;
@@ -23,12 +23,12 @@ namespace Invector.vCharacterController
         public bool removePhysicsAfterDie;
 
         [Tooltip("SHOOTER: Keep false to use detection hit on each children collider, don't forget to change the layer to BodyPart from hips to all children. MELEE: Keep true to only hit the main Capsule Collider.")]
-        public bool disableColliders = false;
+        public bool disableColliders;
         public AudioSource collisionSource;
         public AudioClip collisionClip;
 
         [Header("Add Tags for Weapons or Itens here:")]
-        public List<string> ignoreTags = new List<string>() { "Weapon", "Ignore Ragdoll" };
+        public List<string> ignoreTags = new List<string> { "Weapon", "Ignore Ragdoll" };
         public AnimatorStateInfo stateInfo;
         [Range(0, 2f)]
         [Tooltip("The velocity of the parent rigidbody will be applied to the Ragdoll when enabled, creating a more realistic physics")]
@@ -65,7 +65,7 @@ namespace Invector.vCharacterController
             }
             set
             {
-                if (value == true)
+                if (value)
                 {
                     if (state == RagdollState.animated)
                     {
@@ -162,9 +162,9 @@ namespace Invector.vCharacterController
             public Quaternion storedRotation;
             public BodyPart(Transform t)
             {
-                this.transform = t;
-                this.rigidbody = t.GetComponent<Rigidbody>();
-                this.collider = t.GetComponent<Collider>();
+                transform = t;
+                rigidbody = t.GetComponent<Rigidbody>();
+                collider = t.GetComponent<Collider>();
             }
         }
         #endregion
@@ -259,7 +259,7 @@ namespace Invector.vCharacterController
                     if (!ignoreTags.Contains(c.tag) && c)
                     {
                         var t = c as Transform;
-                        if (t != transform && t.TryGetComponent<Rigidbody>(out Rigidbody r))
+                        if (t != transform && t.TryGetComponent(out Rigidbody r))
                         {
                             BodyPart bodyPart = new BodyPart(t);
 
@@ -582,7 +582,6 @@ namespace Invector.vCharacterController
                 if (ragdollBlendAmount == 0)
                 {
                     state = RagdollState.animated;
-                    return;
                 }
             }
         }

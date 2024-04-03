@@ -1,13 +1,11 @@
-﻿using Invector;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class vSendScore : MonoBehaviour
 {
     public int displayID;
     public vShooterScore shooterScore;
-    public UnityEngine.Events.UnityEvent onAdd;
+    public UnityEvent onAdd;
     public void SendScore(float value)
     {
         if(shooterScore==null)

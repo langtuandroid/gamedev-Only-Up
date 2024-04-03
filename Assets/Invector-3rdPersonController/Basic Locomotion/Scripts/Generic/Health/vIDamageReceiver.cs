@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {
-    [System.Serializable]
-    public class OnReceiveDamage : UnityEngine.Events.UnityEvent<vDamage> { }
+    [Serializable]
+    public class OnReceiveDamage : UnityEvent<vDamage> { }
     public interface vIDamageReceiver
     {
         OnReceiveDamage onStartReceiveDamage { get; }

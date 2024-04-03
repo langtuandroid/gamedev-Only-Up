@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using UnityEditor;
+using UnityEngine;
 
 namespace Invector.vEventSystems
 {
@@ -101,7 +100,7 @@ namespace Invector.vEventSystems
                         normalizedTime.floatValue = GUI.HorizontalSlider(rect, normalizedTime.floatValue, 0f, 1f, GUIStyle.none, skin.GetStyle("AnimatorEventThumb"));
                         rect.x = rect.x + rect.width - 3;
                         rect.width = width - 2;
-                        normalizedTime.floatValue = EditorGUI.FloatField(rect, (float)System.Math.Round(normalizedTime.floatValue, 2));
+                        normalizedTime.floatValue = EditorGUI.FloatField(rect, (float)Math.Round(normalizedTime.floatValue, 2));
                         break;
                 }
                

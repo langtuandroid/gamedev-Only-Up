@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector.vCharacterController
 {
-    [System.Serializable]
-    public class OnActiveRagdoll : UnityEngine.Events.UnityEvent<vDamage> { }
+    [Serializable]
+    public class OnActiveRagdoll : UnityEvent<vDamage> { }
     public interface vICharacter : vIHealthController
     {
         OnActiveRagdoll onActiveRagdoll { get; }

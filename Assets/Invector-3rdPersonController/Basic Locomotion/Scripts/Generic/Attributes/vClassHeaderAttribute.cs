@@ -2,7 +2,7 @@
 
 namespace Invector
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class vClassHeaderAttribute : Attribute
     {
         public string header;
@@ -23,9 +23,9 @@ namespace Invector
         public vClassHeaderAttribute(string header, string helpBoxText)
         {
             this.header = header.ToUpper();
-            this.openClose = true;
-            this.iconName = "icon_v2";
-            this.useHelpBox = true;
+            openClose = true;
+            iconName = "icon_v2";
+            useHelpBox = true;
             this.helpBoxText = helpBoxText;
         }
     }

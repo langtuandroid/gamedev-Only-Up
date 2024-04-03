@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Invector.DefineSymbolsManager
 {
     public class vBasicControllerDefineSymbols : InvectorDefineSymbols
@@ -7,7 +8,7 @@ namespace Invector.DefineSymbolsManager
         {
             get
             {
-                return new List<string>() { "INVECTOR_BASIC" };
+                return new List<string> { "INVECTOR_BASIC" };
             }
         }
     }

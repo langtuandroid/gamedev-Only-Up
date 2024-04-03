@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ using UnityEngine;
 public class vBodyStruct : ScriptableObject
 {
     public List<Bone> bones = new List<Bone>();
-    [System.Serializable]
+    [Serializable]
     public class Bone
     {
         public string name;
@@ -24,7 +25,7 @@ public class vBodyStruct : ScriptableObject
     public static List<Bone> GetHumanBones()
     {
         List<Bone> bones = new List<Bone>();
-        string[] humanBoneName = System.Enum.GetNames(typeof(HumanBodyBones));
+        string[] humanBoneName = Enum.GetNames(typeof(HumanBodyBones));
         for (int i = 0; i < humanBoneName.Length; i++)
         {
             if (IsIgnoredBone(humanBoneName[i])) continue;
@@ -41,7 +42,7 @@ public class vBodyStruct : ScriptableObject
         }
         return bones.OrderBy(x => x.name.ToUpper().Contains("LEFT")).ThenBy(x => x.name.ToUpper().Contains("RIGHT")).ToList();
     }
-    static string[] ignoreBones { get { return new string[] { "Thumb", "Distal", "Little", "Middle", "Index", "Ring", "Eye", "Toes", "Jaw", "LastBone" }; } }
+    static string[] ignoreBones { get { return new[] { "Thumb", "Distal", "Little", "Middle", "Index", "Ring", "Eye", "Toes", "Jaw", "LastBone" }; } }
 
     static bool IsIgnoredBone(string bone)
     {
@@ -63,7 +64,7 @@ public static class vBodyStructHelper
 {
     public static bool ToEnum<T>(this string value, ref T enumTarget)
     {
-        var enumValue = System.Enum.Parse(typeof(T), value);
+        var enumValue = Enum.Parse(typeof(T), value);
         if (enumValue != null) enumTarget = (T)enumValue;
         return enumValue != null;
     }

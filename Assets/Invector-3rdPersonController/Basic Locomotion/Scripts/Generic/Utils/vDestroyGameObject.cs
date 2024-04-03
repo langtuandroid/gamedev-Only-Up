@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {    
@@ -7,7 +8,7 @@ namespace Invector
     public class vDestroyGameObject : vMonoBehaviour
     {
         public float delay;
-        public UnityEngine.Events.UnityEvent onDestroy;
+        public UnityEvent onDestroy;
         IEnumerator Start()
         {
             yield return new WaitForSeconds(delay);

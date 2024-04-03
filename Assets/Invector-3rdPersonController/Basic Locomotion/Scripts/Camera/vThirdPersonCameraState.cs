@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Invector
 {
-    [System.Serializable]
+    [Serializable]
     public class vThirdPersonCameraState
     {
         public string Name;
@@ -14,7 +15,7 @@ namespace Invector
         public float minDistance;
         public float height;
         public float smooth = 10f;
-        public float smoothDamp = 0f;
+        public float smoothDamp;
         public float xMouseSensitivity;
         public float yMouseSensitivity;
         public float yMinLimit;
@@ -58,7 +59,7 @@ namespace Invector
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class LookPoint
     {
         public string pointName;

@@ -1,6 +1,8 @@
-using UnityEngine;
 using System.Linq;
 using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+
 [InitializeOnLoad]
 static class vInspectorSearchTool
 {
@@ -38,7 +40,7 @@ static class vInspectorSearchTool
                 {
                     for (int i = 0; i < components.Count; i++)
                     {
-                        UnityEditorInternal.InternalEditorUtility.SetIsInspectorExpanded(components[i], false);
+                        InternalEditorUtility.SetIsInspectorExpanded(components[i], false);
                     }
                     ActiveEditorTracker.sharedTracker.ForceRebuild();
                 }

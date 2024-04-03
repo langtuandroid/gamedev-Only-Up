@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-[System.AttributeUsage(System.AttributeTargets.Field,AllowMultiple =true)]
+
+[AttributeUsage(AttributeTargets.Field,AllowMultiple =true)]
 public class vSelectableStringAttribute : PropertyAttribute
 {
     public string tittle;

@@ -1,8 +1,7 @@
-﻿using Invector;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector.vEventSystems
 {
@@ -14,11 +13,11 @@ namespace Invector.vEventSystems
         [vHelpBox("Use <b>vAnimatorEvent</b> on a AnimatorState to trigger a Event below", vHelpBoxAttribute.MessageType.Info)]
         public List<vAnimatorEvent> animatorEvents;
 
-        [System.Serializable]
+        [Serializable]
         public class vAnimatorEvent
         {
-            [System.Serializable]
-            public class StateEvent : UnityEngine.Events.UnityEvent<string> { }
+            [Serializable]
+            public class StateEvent : UnityEvent<string> { }
             public string eventName;
             public bool debug;
             public StateEvent onTriggerEvent;
@@ -73,7 +72,7 @@ namespace Invector.vEventSystems
                 if (animator)
                 {
                     hasAnimator = true;
-                    var behaviours = animator.GetBehaviours<Invector.vEventSystems.vAnimatorEvent>();
+                    var behaviours = animator.GetBehaviours<vEventSystems.vAnimatorEvent>();
                     for (int a = 0; a < animatorEvents.Count; a++)
                     {
                         var hasEvent = false;
@@ -116,7 +115,7 @@ namespace Invector.vEventSystems
                 var animator = getAnimatorInParent ? GetComponentInParent<Animator>() : GetComponent<Animator>();
                 if (animator)
                 {
-                    var behaviours = animator.GetBehaviours<Invector.vEventSystems.vAnimatorEvent>();
+                    var behaviours = animator.GetBehaviours<vEventSystems.vAnimatorEvent>();
                     for (int a = 0; a < animatorEvents.Count; a++)
                     {
                         for (int i = 0; i < behaviours.Length; i++)

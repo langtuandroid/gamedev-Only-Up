@@ -1,5 +1,5 @@
-﻿using Invector.vEventSystems;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Invector.vEventSystems;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,18 +29,18 @@ namespace Invector.vCharacterController
         [SerializeField] protected Vector2 defaultOffsetSpine;
         [SerializeField] protected Vector2 defaultOffsetHead;
 
-        [vReadOnly(true)]
+        [vReadOnly()]
         public Vector2 offsetSpine;
-        [vReadOnly(true)]
+        [vReadOnly()]
         public Vector2 offsetHead;
 
         [Header("Tracking")]
         [Tooltip("Follow the Camera Forward")]
         public bool followCamera = true;
-        public bool _freezeLookPoint = false;
+        public bool _freezeLookPoint;
         [vHideInInspector("followCamera")]
         [Tooltip("Force to follow camera")]
-        [SerializeField] protected bool _alwaysFollowCamera = false;
+        [SerializeField] protected bool _alwaysFollowCamera;
         public virtual bool alwaysFollowCamera { get { return _alwaysFollowCamera; } set { _alwaysFollowCamera = value; } }
         [Tooltip("Ignore the Limits and continue to follow the camera")]
         public bool cancelTrackOutOfAngle = true;
@@ -53,7 +53,7 @@ namespace Invector.vCharacterController
 
         [vHelpBox("Animations with vAnimatorTag Behavior will ignore the HeadTrack while is being played")]
         [Header("Ignore AnimatorTags")]
-        public List<string> animatorIgnoreTags = new List<string>() { "Attack", "LockMovement", "CustomAction", "IsEquipping", "IgnoreHeadtrack" };
+        public List<string> animatorIgnoreTags = new List<string> { "Attack", "LockMovement", "CustomAction", "IsEquipping", "IgnoreHeadtrack" };
 
         [vEditorToolbar("Bones")]
         [vHelpBox("Auto Find Bones using Humanoid")]
@@ -66,7 +66,7 @@ namespace Invector.vCharacterController
         public float distanceToDetect = 10f;
         public LayerMask obstacleLayer = 1 << 0;
         [vHelpBox("Gameobjects Tags to detect")]
-        public List<string> tagsToDetect = new List<string>() { "LookAt" };
+        public List<string> tagsToDetect = new List<string> { "LookAt" };
      
         [vEditorToolbar("HeadTrack Angles")]
       
@@ -654,8 +654,8 @@ namespace Invector.vCharacterController
                 }
                 targetsInArea.Sort(delegate (vLookTarget c1, vLookTarget c2)
                 {
-                    return Vector3.Distance(this.transform.position, c1 != null ? c1.transform.position : Vector3.one * Mathf.Infinity).CompareTo
-                        ((Vector3.Distance(this.transform.position, c2 != null ? c2.transform.position : Vector3.one * Mathf.Infinity)));
+                    return Vector3.Distance(transform.position, c1 != null ? c1.transform.position : Vector3.one * Mathf.Infinity).CompareTo
+                        ((Vector3.Distance(transform.position, c2 != null ? c2.transform.position : Vector3.one * Mathf.Infinity)));
                 });
                 if (targetsInArea.Count > 0)
                 {

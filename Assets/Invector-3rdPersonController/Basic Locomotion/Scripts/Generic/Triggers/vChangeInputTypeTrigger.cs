@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using Invector.vCharacterController;
+﻿using Invector.vCharacterController;
+using UnityEngine;
 using UnityEngine.Events;
+
 namespace Invector.vItemManager
 {
     public class vChangeInputTypeTrigger : MonoBehaviour

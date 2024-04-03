@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-
+﻿using System;
 using Invector.vCharacterController;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {
@@ -17,8 +18,8 @@ namespace Invector
         public VisibleCheckType visibleCheckType;
         [Tooltip("use this to turn the object undetectable")]
         public bool HideObject;
-        [System.Serializable]
-        public class OnLookEvent : UnityEngine.Events.UnityEvent<vHeadTrack> { }
+        [Serializable]
+        public class OnLookEvent : UnityEvent<vHeadTrack> { }
         public OnLookEvent onEnterLook, onExitLook;
        
 
@@ -49,8 +50,8 @@ namespace Invector
                 {
                     return lookPointTarget.position;
                 }
-                else
-                    return transform.TransformPoint(centerArea);
+
+                return transform.TransformPoint(centerArea);
             }
         }
 
@@ -153,12 +154,15 @@ namespace Invector
 
                 return true;
             }
-            else if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.SingleCast)
+
+            if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.SingleCast)
             {
                 if (lookTarget.useLimitToDetect && Vector3.Distance(from, lookTarget.centerArea) > lookTarget.minDistanceToDetect) return false;
-                if (CastPoint(from, lookTarget.transform.TransformPoint(lookTarget.centerArea), lookTarget.transform, layerMask, debug)) return true; else return false;
+                if (CastPoint(from, lookTarget.transform.TransformPoint(lookTarget.centerArea), lookTarget.transform, layerMask, debug)) return true;
+                return false;
             }
-            else if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.BoxCast)
+
+            if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.BoxCast)
             {
                 if (lookTarget.useLimitToDetect && Vector3.Distance(from, lookTarget.transform.position) > lookTarget.minDistanceToDetect) return false;
                 LookPoints points = GetLookPoints(lookTarget);
@@ -197,11 +201,14 @@ namespace Invector
             {
                 return true;
             }
-            else if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.SingleCast)
+
+            if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.SingleCast)
             {
-                if (CastPoint(from, lookTarget.transform.TransformPoint(lookTarget.centerArea), lookTarget.transform, debug)) return true; else return false;
+                if (CastPoint(from, lookTarget.transform.TransformPoint(lookTarget.centerArea), lookTarget.transform, debug)) return true;
+                return false;
             }
-            else if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.BoxCast)
+
+            if (lookTarget.visibleCheckType == vLookTarget.VisibleCheckType.BoxCast)
             {
                 if (CastPoint(from, points.frontTopLeft, lookTarget.transform, debug)) return true;
 
@@ -235,11 +242,8 @@ namespace Invector
                     return false;
                 }
 
-                else
-                {
-                    if (debug) Debug.DrawLine(from, hit.point, Color.green);
-                    return true;
-                }
+                if (debug) Debug.DrawLine(from, hit.point, Color.green);
+                return true;
             }
             if (debug) Debug.DrawLine(from, point, Color.green);
             return true;
@@ -257,11 +261,8 @@ namespace Invector
                     return false;
                 }
 
-                else
-                {
-                    if (debug) Debug.DrawLine(from, hit.point, Color.green);
-                    return true;
-                }
+                if (debug) Debug.DrawLine(from, hit.point, Color.green);
+                return true;
             }
             if (debug) Debug.DrawLine(from, point, Color.green);
             return true;

@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+
 namespace Invector.Utils
 {
     [vClassHeader("Set Animator Value",useHelpBox =true,helpBoxText ="Use this component to set animator value using events")]
@@ -63,14 +63,14 @@ namespace Invector.Utils
             }
             string parameterName = splited[0];
             
-            if (System.Enum.TryParse<ValueType>(splited[1],out ValueType valueType))
+            if (Enum.TryParse(splited[1],out ValueType valueType))
             {              
                 var value = splited[2];
                 bool setFail = false;
                 switch(valueType)
                 {
                     case ValueType.Bool:
-                        if(System.Boolean.TryParse(value, out bool boolValue))
+                        if(Boolean.TryParse(value, out bool boolValue))
                         {
                             targetAnimator.SetBool(parameterName, boolValue);
                         }else
@@ -79,7 +79,7 @@ namespace Invector.Utils
                         }
                         break;
                     case ValueType.Int:
-                        if(System.Int32.TryParse(value, out int intValue))
+                        if(Int32.TryParse(value, out int intValue))
                         {
                             targetAnimator.SetInteger(targetParamenter, intValue);
                         }
@@ -89,7 +89,7 @@ namespace Invector.Utils
                         }
                         break;
                     case ValueType.Float:
-                        if(System.Double.TryParse(value,out double doubleValue))
+                        if(Double.TryParse(value,out double doubleValue))
                         {
                             targetAnimator.SetFloat(parameterName, (float)doubleValue);
                         }

@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Invector
 {
@@ -35,7 +34,7 @@ namespace Invector
             isTrigger = true;
             GameObject audioObject = null;
             if (audioSource != null)
-                audioObject = Instantiate(audioSource.gameObject, animator.transform.position, Quaternion.identity) as GameObject;
+                audioObject = Instantiate(audioSource.gameObject, animator.transform.position, Quaternion.identity);
             else
             {
                 audioObject = new GameObject("audioObject");

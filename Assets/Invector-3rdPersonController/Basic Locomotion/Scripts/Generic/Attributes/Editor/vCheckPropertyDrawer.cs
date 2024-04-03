@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 using UnityEditor;
-using System.Reflection;
-using System;
+using UnityEngine;
 
 namespace Invector
 {

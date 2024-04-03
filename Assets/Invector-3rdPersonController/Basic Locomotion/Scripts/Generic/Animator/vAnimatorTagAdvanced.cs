@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Invector.vEventSystems
@@ -9,7 +10,7 @@ namespace Invector.vEventSystems
         {
             AllByNormalizedTime, EnterStateExitByNormalized, EnterByNormalizedExitState, EnterStateExitState
         }
-        [System.Serializable]
+        [Serializable]
 
         public class vAdvancedTags
         {
@@ -20,8 +21,8 @@ namespace Invector.vEventSystems
             private int loopCount;
             public vAdvancedTags(string tag)
             {
-                this.tagName = tag;
-                this.tagType = vAnimatorEventTriggerType.AllByNormalizedTime;
+                tagName = tag;
+                tagType = vAnimatorEventTriggerType.AllByNormalizedTime;
             }
 
             bool isEnter;
@@ -80,7 +81,7 @@ namespace Invector.vEventSystems
             }
         }
         public bool debug;
-        public List<vAdvancedTags> tags = new List<vAdvancedTags>() { new vAdvancedTags("CustomAction") };
+        public List<vAdvancedTags> tags = new List<vAdvancedTags> { new vAdvancedTags("CustomAction") };
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

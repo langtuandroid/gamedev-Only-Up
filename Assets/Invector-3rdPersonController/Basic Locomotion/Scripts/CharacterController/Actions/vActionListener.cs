@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
+
 namespace Invector.vCharacterController.vActions
 {
     /// <summary>
@@ -10,7 +13,7 @@ namespace Invector.vCharacterController.vActions
         GameObject gameObject { get; }
         Transform transform { get; }
         string name { get; }
-        System.Type GetType();
+        Type GetType();
     }
     /// <summary>
     /// Used to receive Event when do action.
@@ -103,8 +106,8 @@ namespace Invector.vCharacterController.vActions
 
     }
     
-    [System.Serializable]
-    public class vOnActionHandle : UnityEngine.Events.UnityEvent<vTriggerGenericAction>
+    [Serializable]
+    public class vOnActionHandle : UnityEvent<vTriggerGenericAction>
     {
 
     }   

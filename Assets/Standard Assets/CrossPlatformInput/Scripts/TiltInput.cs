@@ -26,7 +26,7 @@ namespace UnityStandardAssets.CrossPlatformInput
                 MousePositionX,
                 MousePositionY,
                 MousePositionZ
-            };
+            }
 
 
             public MappingType type;
@@ -37,7 +37,7 @@ namespace UnityStandardAssets.CrossPlatformInput
         public AxisMapping mapping;
         public AxisOptions tiltAroundAxis = AxisOptions.ForwardAxis;
         public float fullTiltAngle = 25;
-        public float centreAngleOffset = 0;
+        public float centreAngleOffset;
 
 
         private CrossPlatformInputManager.VirtualAxis m_SteerAxis;

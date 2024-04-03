@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Invector
 {
@@ -8,7 +9,7 @@ namespace Invector
         [vHelpBox("Make sure you check where the vEffectReceiver is on your player, root object, parented or inside as children. By default is located inside the Invector Components > vEffects")]
 
         public vEffectStruct[] effects;
-        [System.Serializable]
+        [Serializable]
         public class vEffectStruct : vIEffect
         {
             public enum GetReceiverMethod

@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
-using System.Text;
+﻿using UnityEditor;
+using UnityEngine;
+
 namespace Invector
 {
     [CanEditMultipleObjects]

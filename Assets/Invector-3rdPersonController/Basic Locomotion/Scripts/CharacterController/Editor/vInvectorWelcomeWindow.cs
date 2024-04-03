@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector.vCharacterController
 {
@@ -14,16 +15,16 @@ namespace Invector.vCharacterController
         public class ToolBar
         {
             public string title;
-            public UnityEngine.Events.UnityAction Draw;
+            public UnityAction Draw;
             /// <summary>
             /// Create New Toolbar
             /// </summary>
             /// <param name="title">Title</param>
             /// <param name="onDraw">Method to draw when toolbar is selected</param>
-            public ToolBar(string title, UnityEngine.Events.UnityAction onDraw)
+            public ToolBar(string title, UnityAction onDraw)
             {
                 this.title = title;
-                this.Draw = onDraw;
+                Draw = onDraw;
             }
             public static implicit operator string(ToolBar tool)
             {
@@ -34,13 +35,12 @@ namespace Invector.vCharacterController
         /// <summary>
         /// Index of selected <seealso cref="toolBars"/>
         /// </summary>
-        public int toolBarIndex = 0;
+        public int toolBarIndex;
 
         /// <summary>
         /// List of Toolbars
         /// </summary>
-        public ToolBar[] toolBars = new ToolBar[]
-        {
+        public ToolBar[] toolBars = {
             new ToolBar("First Run",FirstRunPageContent),
             new ToolBar("Getting Started",GettingStartedPageContent),
             #if INVECTOR_BASIC
@@ -60,21 +60,21 @@ namespace Invector.vCharacterController
         public const string _platformPackagePath = "Assets/Invector-3rdPersonController/Basic Locomotion/Editor/Resources/v2DPlatformAddon.unitypackage";
         public const string _vMansionPath = "Assets/Invector-3rdPersonController/Basic Locomotion/Editor/Resources/vMansionAddon.unitypackage";
 
-        public static Texture2D invectorBanner = null;
-        public static Texture2D mobileIcon = null;
-        public static Texture2D topdownIcon = null;
-        public static Texture2D pointAndClickIcon = null;
-        public static Texture2D platformIcon = null;
-        public static Texture2D vMansionIcon = null;
-        public static Texture2D assetStoreIcon = null;
-        public static Texture2D climbAddon = null;
-        public static Texture2D swimmingAddon = null;
-        public static Texture2D stealthKillAddon = null;
-        public static Texture2D builderAddon = null;
-        public static Texture2D ziplineAddon = null;
-        public static Texture2D craftingAddon = null;
-        public static Texture2D pushAddon = null;
-        public static Texture2D coverAddon = null;
+        public static Texture2D invectorBanner;
+        public static Texture2D mobileIcon;
+        public static Texture2D topdownIcon;
+        public static Texture2D pointAndClickIcon;
+        public static Texture2D platformIcon;
+        public static Texture2D vMansionIcon;
+        public static Texture2D assetStoreIcon;
+        public static Texture2D climbAddon;
+        public static Texture2D swimmingAddon;
+        public static Texture2D stealthKillAddon;
+        public static Texture2D builderAddon;
+        public static Texture2D ziplineAddon;
+        public static Texture2D craftingAddon;
+        public static Texture2D pushAddon;
+        public static Texture2D coverAddon;
 
         public static Vector2 scrollPosition;
 

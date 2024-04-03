@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
-using UnityEngine;
 
 namespace Invector.DefineSymbolsManager
 {
@@ -75,7 +74,7 @@ namespace Invector.DefineSymbolsManager
                     string.Join(";", currentDefineSymbols.ToArray()));
         }
 
-        static List<System.Type> GetAllDefinitions()
+        static List<Type> GetAllDefinitions()
         {
             return AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
                  .Where(x => typeof(InvectorDefineSymbols).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract).ToList();

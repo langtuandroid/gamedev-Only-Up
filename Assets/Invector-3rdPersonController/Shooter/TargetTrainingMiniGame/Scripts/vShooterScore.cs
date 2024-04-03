@@ -1,9 +1,10 @@
-﻿using Invector;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Invector;
 using UnityEngine;
+
 public class vShooterScore : MonoBehaviour
 {
     [vButton("ShowData", "ShowData", typeof(vShooterScore), false)]
@@ -13,10 +14,10 @@ public class vShooterScore : MonoBehaviour
     public vScoreDataDisplay[] dataDisplays;
 
     ScoreDATAList scoreDATAList;
-    [System.Serializable]
+    [Serializable]
     public class TargetPointCounter
     {
-        [Invector.vReadOnly(false)] public float currentScore;
+        [vReadOnly(false)] public float currentScore;
         public vScorePointDisplay display;
         public void ShowValue()
         {
@@ -73,7 +74,7 @@ public class vShooterScore : MonoBehaviour
         {
             //Debug.Log("FINISH SCORE");
             var data = new ScoreDATA();
-            data.score = this.scoreDisplay.currentScore;
+            data.score = scoreDisplay.currentScore;
             data.hits = new List<float>();
             foreach (var s in hitCounters)
             {
@@ -113,7 +114,7 @@ public class vShooterScore : MonoBehaviour
 
     public void ClearData()
     {
-        this.scoreDATAList = new ScoreDATAList();
+        scoreDATAList = new ScoreDATAList();
         SaveData("ShooterScore");
     }
 
@@ -148,14 +149,14 @@ public class vShooterScore : MonoBehaviour
 
         string data = JsonUtility.ToJson(scoreDATAList);
         string path = Application.dataPath + $"/{dataName}.json";
-        System.IO.File.WriteAllText(path, data);
+        File.WriteAllText(path, data);
         //Debug.Log("SAVE SCORE FILE");
     }
 
     public ScoreDATAList LoadData(string dataName)
     {
         string path = Application.dataPath + $"/{dataName}.json";
-        if (!System.IO.File.Exists(path))
+        if (!File.Exists(path))
         {
             //Debug.Log("CREATE SCORE FILE");
             SaveData("ShooterScore");
@@ -163,19 +164,19 @@ public class vShooterScore : MonoBehaviour
         else
         {
             //Debug.Log("LOAD SCORE FILE");
-            string data = System.IO.File.ReadAllText(path);
+            string data = File.ReadAllText(path);
             scoreDATAList = JsonUtility.FromJson<ScoreDATAList>(data);
         }
         return scoreDATAList;
 
     }
 
-    [System.Serializable]
+    [Serializable]
     public class ScoreDATAList
     {
         public List<ScoreDATA> datas = new List<ScoreDATA>();
     }
-    [System.Serializable]
+    [Serializable]
     public class ScoreDATA
     {
         public float score;

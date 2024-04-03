@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Invector.vEventSystems;
 using UnityEngine;
 
 namespace Invector.vEventSystems
 {
     public class vAnimatorEvent : StateMachineBehaviour
     {
-        [System.Serializable]
+        [Serializable]
         public class vAnimatorEventTrigger
         {
             public enum vAnimatorEventTriggerType
@@ -128,11 +128,11 @@ namespace Invector
         /// <param name="animator">target animator</param>
         /// <param name="eventName">event name</param>
         /// <param name="onTriggerEventAction">action to add to <seealso cref="vEventSystems.vAnimatorEvent"/></param>
-        public static void RegisterEvent(this Animator animator, string eventName, vEventSystems.vAnimatorEvent.OnTriggerEvent onTriggerEventAction)
+        public static void RegisterEvent(this Animator animator, string eventName, vAnimatorEvent.OnTriggerEvent onTriggerEventAction)
         {
             if (animator)
             {
-                var behaviours = animator.GetBehaviours<vEventSystems.vAnimatorEvent>();
+                var behaviours = animator.GetBehaviours<vAnimatorEvent>();
                 for (int i = 0; i < behaviours.Length; i++)
                 {
                     if (behaviours[i].HasEvent(eventName))
@@ -149,11 +149,11 @@ namespace Invector
         /// <param name="animator">target animator</param>
         /// <param name="eventName">event name</param>
         /// <param name="onTriggerEventAction">action to remove of the <seealso cref="vAnimatorEvent"/></param>
-        public static void RemoveEvent(this Animator animator, string eventName, vEventSystems.vAnimatorEvent.OnTriggerEvent onTriggerEventAction)
+        public static void RemoveEvent(this Animator animator, string eventName, vAnimatorEvent.OnTriggerEvent onTriggerEventAction)
         {
             if (animator)
             {
-                var behaviours = animator.GetBehaviours<vEventSystems.vAnimatorEvent>();
+                var behaviours = animator.GetBehaviours<vAnimatorEvent>();
                 for (int i = 0; i < behaviours.Length; i++)
                 {
                     if (behaviours[i].HasEvent(eventName))

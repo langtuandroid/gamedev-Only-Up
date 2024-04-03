@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System;
+using UnityEngine;
+
 namespace Invector
 {
-    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class vHideInInspectorAttribute : PropertyAttribute
     {       
         public bool hideProperty { get; set; }

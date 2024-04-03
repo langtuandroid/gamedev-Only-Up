@@ -1,5 +1,5 @@
-﻿using Invector.vCharacterController;
-using System.Collections;
+﻿using System.Collections;
+using Invector.vCharacterController;
 using UnityEngine;
 
 namespace Invector.vCamera
@@ -15,7 +15,7 @@ namespace Invector.vCamera
             {
                 if (_instance == null)
                 {
-                    _instance = GameObject.FindObjectOfType<vThirdPersonCamera>();
+                    _instance = FindObjectOfType<vThirdPersonCamera>();
 
                     //Tell unity not to destroy this object when loading a new scene!
                     //DontDestroyOnLoad(_instance.gameObject);
@@ -48,11 +48,11 @@ namespace Invector.vCamera
         public float checkHeightRadius;
         public bool showGizmos;
         public bool startUsingTargetRotation = true;
-        public bool startSmooth = false;
+        public bool startSmooth;
         [vHideInInspector("startSmooth")]
         public float startSmoothFactor = 1f;
         [Tooltip("Returns to behind the target automatically after 'behindTargetDelay' period")]
-        public bool autoBehindTarget = false;
+        public bool autoBehindTarget;
         [vHideInInspector("autoBehindTarget")]
         public float behindTargetDelay = 2f;
         [vHideInInspector("autoBehindTarget")]
@@ -101,9 +101,9 @@ namespace Invector.vCamera
         protected Vector3 desired_cPos;
         protected Vector3 lookTargetAdjust;
 
-        internal float _mouseY = 0f;
+        internal float _mouseY;
         internal virtual float mouseY { get { return _mouseY; } set { _mouseY = value; } }
-        internal float _mouseX = 0f;
+        internal float _mouseX;
         internal virtual float mouseX { get { return _mouseX; } set { _mouseX = value; } }
 
         protected virtual float currentHeight { get; set; }
@@ -308,7 +308,7 @@ namespace Invector.vCamera
             isNewTarget = lockTarget != this.lockTarget;
             this.lockTarget = lockTarget;
             lockTargetWeight = 0;
-            this.lockTargetSpeed = 1;
+            lockTargetSpeed = 1;
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace Invector.vCamera
             this.lockTarget = lockTarget;
             this.heightOffset = heightOffset;
             lockTargetWeight = 0;
-            this.lockTargetSpeed = lockSpeed;
+            lockTargetSpeed = lockSpeed;
         }
 
         /// <summary>
@@ -413,7 +413,7 @@ namespace Invector.vCamera
         /// <returns></returns>
         public virtual Ray ScreenPointToRay(Vector3 Point)
         {
-            return this.GetComponent<Camera>().ScreenPointToRay(Point);
+            return GetComponent<Camera>().ScreenPointToRay(Point);
         }
 
         /// <summary>
@@ -643,16 +643,6 @@ namespace Invector.vCamera
                 desired_cPos = mainTarget.TransformPoint(desired_cPos);
             }
             isFreezed = false;
-        }
-
-        /// <summary>    
-        /// Zoom behavior 
-        /// </summary>
-        /// <param name="scroolValue"></param>
-        /// <param name="zoomSpeed"></param>
-        public virtual void Zoom(float scroolValue)
-        {
-            currentZoom -= scroolValue * scrollSpeed;
         }
 
         public virtual void CheckCameraIsRotating()

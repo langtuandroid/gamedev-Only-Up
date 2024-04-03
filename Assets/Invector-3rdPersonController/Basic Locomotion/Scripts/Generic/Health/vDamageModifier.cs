@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
 namespace Invector
 {
     /// <summary>
     /// Damage Modifier. You can use this with <see cref="vIDamageReceiver.onStartReceiveDamage"/> to modificate the damage result
     /// </summary>   
-    [System.Serializable]
+    [Serializable]
     public class vDamageModifier
     {
         public enum FilterMethod
@@ -15,8 +19,8 @@ namespace Invector
             ApplyToAllOutList
         }
 
-        [System.Serializable]
-        public class DamageModifierEvent : UnityEngine.Events.UnityEvent<vDamageModifier> { }
+        [Serializable]
+        public class DamageModifierEvent : UnityEvent<vDamageModifier> { }
         public string name = "MyModifier";
         public FilterMethod filterMethod;
         [Tooltip("List of Damage type that this can modify, keep empty if the filter will be applied to all types of damage")] public List<string> damageTypes = new List<string>();
@@ -25,7 +29,7 @@ namespace Invector
         [Tooltip("The Filter will receive all damage and decrease your self resistance")] public bool destructible = true;
         public float resistance = 100;
         public float maxResistance = 100;
-        public UnityEngine.UI.Slider.SliderEvent onChangeResistance;
+        public Slider.SliderEvent onChangeResistance;
         public DamageModifierEvent onBroken;
 
         public bool isBroken => destructible && resistance <= 0;
@@ -54,7 +58,7 @@ namespace Invector
                 if (destructible)
                 {
                     resistance -= damage.damageValue;
-                    onChangeResistance.Invoke(Mathf.Max((float)resistance, 0));
+                    onChangeResistance.Invoke(Mathf.Max(resistance, 0));
                     if (resistance <= 0) onBroken.Invoke(this);
                 }
                 ///apply modifier to damage value                

@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Invector.vCharacterController;
+using Invector.vCharacterController.vActions;
 using UnityEngine;
 
 namespace Invector
@@ -11,16 +11,16 @@ namespace Invector
         /// Load all <see cref="vCharacterController.vActions.IActionController"/> and derivatives  in character gameObject to register to events <see cref="vCharacterController.vCharacter.onActionEnter"/>,<see cref="vCharacterController.vCharacter.onActionStay"/> and <see cref="vCharacterController.vCharacter.onActionExit"/>.
         /// </summary>
         /// <param name="character">Target <seealso cref="vCharacterController.vCharacter>"/></param>
-        public static void LoadActionControllers(this vCharacterController.vCharacter character, bool debug = false)
+        public static void LoadActionControllers(this vCharacter character, bool debug = false)
         {
-            var actionControllers = character.GetComponentsInChildren<vCharacterController.vActions.IActionController>();
+            var actionControllers = character.GetComponentsInChildren<IActionController>();
             for (int i = 0; i < actionControllers.Length; i++)
             {
                 if (actionControllers[i].enabled)
                 {
-                    if (actionControllers[i] is vCharacterController.vActions.IActionListener)
+                    if (actionControllers[i] is IActionListener)
                     {
-                        var actionListener = actionControllers[i] as vCharacterController.vActions.IActionListener;
+                        var actionListener = actionControllers[i] as IActionListener;
 
                         {
                             if (actionListener.actionEnter)
@@ -48,24 +48,24 @@ namespace Invector
                     }
                     else
                     {
-                        if (actionControllers[i] is vCharacterController.vActions.IActionEnterListener)
+                        if (actionControllers[i] is IActionEnterListener)
                         {
-                            character.onActionEnter.RemoveListener((actionControllers[i] as vCharacterController.vActions.IActionEnterListener).OnActionEnter);
-                            character.onActionEnter.AddListener((actionControllers[i] as vCharacterController.vActions.IActionEnterListener).OnActionEnter);
+                            character.onActionEnter.RemoveListener((actionControllers[i] as IActionEnterListener).OnActionEnter);
+                            character.onActionEnter.AddListener((actionControllers[i] as IActionEnterListener).OnActionEnter);
                             if (debug) Debug.Log("Register Action Enter event to the " + actionControllers[i].GetType().Name);
                         }
 
-                        if (actionControllers[i] is vCharacterController.vActions.IActionStayListener)
+                        if (actionControllers[i] is IActionStayListener)
                         {
-                            character.onActionStay.RemoveListener((actionControllers[i] as vCharacterController.vActions.IActionStayListener).OnActionStay);
-                            character.onActionStay.AddListener((actionControllers[i] as vCharacterController.vActions.IActionStayListener).OnActionStay);
+                            character.onActionStay.RemoveListener((actionControllers[i] as IActionStayListener).OnActionStay);
+                            character.onActionStay.AddListener((actionControllers[i] as IActionStayListener).OnActionStay);
                             if (debug) Debug.Log("Register Action Stay event to the " + actionControllers[i].GetType().Name);
                         }
 
-                        if (actionControllers[i] is vCharacterController.vActions.IActionExitListener)
+                        if (actionControllers[i] is IActionExitListener)
                         {
-                            character.onActionExit.RemoveListener((actionControllers[i] as vCharacterController.vActions.IActionExitListener).OnActionExit);
-                            character.onActionExit.AddListener((actionControllers[i] as vCharacterController.vActions.IActionExitListener).OnActionExit);
+                            character.onActionExit.RemoveListener((actionControllers[i] as IActionExitListener).OnActionExit);
+                            character.onActionExit.AddListener((actionControllers[i] as IActionExitListener).OnActionExit);
                             if (debug) Debug.Log("Register Action Exit event to the " + actionControllers[i].GetType().Name);
                         }
                     }

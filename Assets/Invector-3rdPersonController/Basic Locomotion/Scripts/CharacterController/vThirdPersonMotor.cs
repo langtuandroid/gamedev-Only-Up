@@ -1,12 +1,13 @@
 ﻿
+using System;
 using System.Collections;
+using Invector.vEventSystems;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Invector.vCharacterController
 {
-    using UnityEngine.Serialization;
-    using vEventSystems;
     public class vThirdPersonMotor : vCharacter, vIAnimatorStateInfoController
     {
         #region Variables               
@@ -60,7 +61,7 @@ namespace Invector.vCharacterController
         [SerializeField] protected float _speedMultiplier = 1;
         public virtual float speedMultiplier { get { return _speedMultiplier; } set { _speedMultiplier = value; } }
         [Tooltip("Use this to rotate the character using the World axis, or false to use the camera axis - CHECK for Isometric Camera")]
-        public bool rotateByWorld = false;
+        public bool rotateByWorld;
         [Tooltip("Use this to move character only in forward direction when in free locomotion, the character will rotate to input direction normaly but the movement will be based on character forward")]
         public bool moveForwardInFree;
         public enum LocomotionType
@@ -83,7 +84,7 @@ namespace Invector.vCharacterController
         public bool disableAnimations;
         [Tooltip("Turn off if you have 'in place' animations and use this values above to move the character, or use with root motion as extra speed")]
         [vHelpBox("When 'Use RootMotion' is checked, make sure to reset all speeds to zero to use the original root motion velocity.")]
-        public bool useRootMotion = false;
+        public bool useRootMotion;
         [Tooltip("While in Free Locomotion the character will lean to left/right when steering")]
         public bool useLeanMovementAnim = true;
         [Tooltip("Smooth value for the Lean Movement animation")]
@@ -93,7 +94,7 @@ namespace Invector.vCharacterController
         public bool useTurnOnSpotAnim = true;
         public float turnOnSpotSmooth = 0.01f;
         [Tooltip("Put your Random Idle animations at the AnimatorController and select a value to randomize, 0 is disable.")]
-        public float randomIdleTime = 0f;
+        public float randomIdleTime;
 
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Invector.vCharacterController
         [Tooltip("Check this to sprint always in free movement")]
         public bool sprintOnlyFree = true;
 
-        public enum CustomFixedTimeStep { Default, FPS30, FPS60, FPS75, FPS90, FPS120, FPS144 };
+        public enum CustomFixedTimeStep { Default, FPS30, FPS60, FPS75, FPS90, FPS120, FPS144 }
 
         [vHelpBox("Set the FixedTimeStep to match the FPS of your Game, \nEx: If your game aims to run at 30fps, select FPS30 to match the FixedUpdate Physics")]
         public CustomFixedTimeStep customFixedTimeStep = CustomFixedTimeStep.FPS60;
@@ -118,7 +119,7 @@ namespace Invector.vCharacterController
 
         [vSeparator("Jump")]
         [Tooltip("Use the currently Rigidbody Velocity to influence on the Jump Distance")]
-        public bool jumpWithRigidbodyForce = false;
+        public bool jumpWithRigidbodyForce;
         [Tooltip("Rotate or not while airborne")]
         public bool jumpAndRotate = true;
         [Tooltip("How much time the character will be jumping")]
@@ -168,7 +169,7 @@ namespace Invector.vCharacterController
         [Tooltip("Can control the Roll Direction")]
         public bool rollControl = true;
         [Tooltip("Speed of the Roll Movement")]
-        [SerializeField] protected float _rollSpeed = 0f;
+        [SerializeField] protected float _rollSpeed;
         public virtual float rollSpeed { get { return _rollSpeed; } set { _rollSpeed = value; } }
 
         [Tooltip("Speed of the Roll Rotation")]
@@ -206,7 +207,7 @@ namespace Invector.vCharacterController
 
         [vSeparator("Ground")]
         [SerializeField]
-        [vReadOnly()] protected bool _isGrounded;
+        [vReadOnly] protected bool _isGrounded;
         [Tooltip("Layers that the character can walk on")]
         public LayerMask groundLayer = 1 << 0;
         [Tooltip("Ground Check Method To check ground Distance and ground angle\n*Simple: Use just a single Raycast\n*Normal: Use Raycast and SphereCast\n*Complex: Use SphereCastAll")]
@@ -244,7 +245,7 @@ namespace Invector.vCharacterController
         public virtual float stopSlopeMargin { get { return _stopSlopeMargin; } set { _stopSlopeMargin = value; } }
         [SerializeField] protected float _SlopeSidewaysSmooth = 2f;
         public virtual float slopeSidewaysSmooth { get { return _SlopeSidewaysSmooth; } set { _SlopeSidewaysSmooth = value; } }
-        [SerializeField] protected float _slopeMinDistance = 0f;
+        [SerializeField] protected float _slopeMinDistance;
         public virtual float slopeMinDistance { get { return _slopeMinDistance; } set { _slopeMinDistance = value; } }
         [SerializeField] protected float _slopeMaxDistance = 1.5f;
         public virtual float slopeMaxDistance { get { return _slopeMaxDistance; } set { _slopeMaxDistance = value; } }
@@ -296,7 +297,7 @@ namespace Invector.vCharacterController
         public virtual float stepOffsetMaxHeight { get { return _stepOffsetMaxHeight; } set { _stepOffsetMaxHeight = value; } }
         [Tooltip("Offset min height to walk on steps. Make sure to keep slight above the floor - YELLOW Raycast in front of the legs")]
         [Range(0, 1)]
-        [SerializeField] protected float _stepOffsetMinHeight = 0f;
+        [SerializeField] protected float _stepOffsetMinHeight;
         public virtual float stepOffsetMinHeight { get { return _stepOffsetMinHeight; } set { _stepOffsetMinHeight = value; } }
         [Tooltip("Offset distance to walk on steps - YELLOW Raycast in front of the legs")]
         [Range(0, 1)]
@@ -355,7 +356,7 @@ namespace Invector.vCharacterController
         /// </summary>
         public bool disableCheckGround { get; set; }
         public bool inCrouchArea { get; protected set; }
-        protected bool _isSprinting = false;
+        protected bool _isSprinting;
         public virtual bool isSprinting { get { return _isSprinting; } set { _isSprinting = value; } }
         public bool isSliding { get; protected set; }
         public bool autoCrouch { get; protected set; }
@@ -503,17 +504,11 @@ namespace Invector.vCharacterController
             SetCustomFixedTimeStep();
         }
 
-        protected override void Start()
-        {
-            base.Start();
-        }
-
         public override void Init()
         {
             base.Init();
 
             animator.updateMode = AnimatorUpdateMode.AnimatePhysics;
-            // slides the character through walls and edges
             frictionPhysics = new PhysicMaterial();
             frictionPhysics.name = "frictionPhysics";
             frictionPhysics.staticFriction = .25f;
@@ -546,7 +541,7 @@ namespace Invector.vCharacterController
             colliderHeight = colliderHeightDefault = _capsuleCollider.height;
 
             // avoid collision detection with inside colliders 
-            Collider[] AllColliders = this.GetComponentsInChildren<Collider>();
+            Collider[] AllColliders = GetComponentsInChildren<Collider>();
             for (int i = 0; i < AllColliders.Length; i++)
             {
                 Physics.IgnoreCollision(_capsuleCollider, AllColliders[i]);
@@ -567,7 +562,7 @@ namespace Invector.vCharacterController
             strafeSpeed.Init();
         }
 
-        public virtual void SetCustomFixedTimeStep()
+        protected void SetCustomFixedTimeStep()
         {
             switch (customFixedTimeStep)
             {
@@ -594,7 +589,7 @@ namespace Invector.vCharacterController
             }
         }
 
-        public virtual void UpdateMotor()
+        public void UpdateMotor()
         {
             CheckStamina();
             CheckGround();
@@ -612,7 +607,6 @@ namespace Invector.vCharacterController
 
         public override void TakeDamage(vDamage damage)
         {
-            // don't apply damage if the character is rolling, you can add more conditions here
             if (currentHealth <= 0 || (IgnoreDamageRolling()))
             {
                 if (damage.activeRagdoll && !IgnoreDamageActiveRagdollRolling())
@@ -631,15 +625,9 @@ namespace Invector.vCharacterController
             base.TakeDamage(damage);
         }
 
-        protected virtual bool IgnoreDamageRolling()
-        {
-            return noDamageWhileRolling == true && isRolling == true;
-        }
+        private bool IgnoreDamageRolling() => noDamageWhileRolling && isRolling;
 
-        protected virtual bool IgnoreDamageActiveRagdollRolling()
-        {
-            return noActiveRagdollWhileRolling == true && isRolling == true;
-        }
+        private bool IgnoreDamageActiveRagdollRolling() => noActiveRagdollWhileRolling && isRolling;
 
         protected override void TriggerDamageReaction(vDamage damage)
         {
@@ -653,7 +641,7 @@ namespace Invector.vCharacterController
             }
         }
 
-        public virtual void ReduceStamina(float value, bool accumulative)
+        public void ReduceStamina(float value, bool accumulative)
         {
             if (customAction)
             {
@@ -673,29 +661,6 @@ namespace Invector.vCharacterController
             {
                 currentStamina = 0;
                 OnStaminaEnd.Invoke();
-            }
-        }
-
-        /// <summary>
-        /// Change the currentStamina of Character
-        /// </summary>
-        /// <param name="value"></param>
-        public virtual void ChangeStamina(int value)
-        {
-            currentStamina += value;
-            currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-        }
-
-        /// <summary>
-        /// Change the MaxStamina of Character
-        /// </summary>
-        /// <param name="value"></param>
-        public virtual void ChangeMaxStamina(int value)
-        {
-            maxStamina += value;
-            if (maxStamina < 0)
-            {
-                maxStamina = 0;
             }
         }
 
@@ -721,17 +686,15 @@ namespace Invector.vCharacterController
             }
         }
 
-        protected virtual void CheckStamina()
+        private void CheckStamina()
         {
-            // check how much stamina this action will consume
-            if (isSprinting)
-            {
-                currentStaminaRecoveryDelay = 0.25f;
-                ReduceStamina(sprintStamina, true);
-            }
+            if (!isSprinting) return;
+            
+            currentStaminaRecoveryDelay = 0.25f;
+            ReduceStamina(sprintStamina, true);
         }
 
-        public virtual void StaminaRecovery()
+        private void StaminaRecovery()
         {
             if (currentStaminaRecoveryDelay > 0)
             {
@@ -757,7 +720,7 @@ namespace Invector.vCharacterController
 
         protected virtual void CalculateRotationMagnitude()
         {
-            var eulerDifference = this.transform.eulerAngles - lastCharacterAngle;
+            var eulerDifference = transform.eulerAngles - lastCharacterAngle;
             if (eulerDifference.sqrMagnitude < 0.01)
             {
                 lastCharacterAngle = transform.eulerAngles;
@@ -766,18 +729,18 @@ namespace Invector.vCharacterController
             }
 
             var magnitude = (eulerDifference.NormalizeAngle().y / (isStrafing ? strafeSpeed.rotationSpeed : freeSpeed.rotationSpeed));
-            rotationMagnitude = (float)System.Math.Round(magnitude, 2);
+            rotationMagnitude = (float)Math.Round(magnitude, 2);
             lastCharacterAngle = transform.eulerAngles;
         }
 
         public virtual void SetControllerSpeedMultiplier(float speed)
         {
-            this.speedMultiplier = speed;
+            speedMultiplier = speed;
         }
 
         public virtual void ResetControllerSpeedMultiplier()
         {
-            this.speedMultiplier = defaultSpeedMultiplier;
+            speedMultiplier = defaultSpeedMultiplier;
         }
 
         public virtual void SetControllerMoveSpeed(vMovementSpeed speed)
@@ -1170,10 +1133,8 @@ namespace Invector.vCharacterController
                 {
                     return false;
                 }
-                else
-                {
-                    return true;
-                }
+
+                return true;
             }
             return true;
         }
@@ -1364,7 +1325,7 @@ namespace Invector.vCharacterController
                         }
                     }
                 }
-                groundDistance = (float)System.Math.Round(dist, 2);
+                groundDistance = (float)Math.Round(dist, 2);
             }
         }
 
@@ -1640,79 +1601,7 @@ namespace Invector.vCharacterController
 
         #endregion
 
-        #region Debug
-
-        public delegate void GetDebugDelegate(ref System.Text.StringBuilder stringBuilder);
-
-        public event GetDebugDelegate OnDebug;
-        public virtual string DebugInfo(string additionalText = "")
-        {
-            string debugInfo = string.Empty;
-            if (debugWindow)
-            {
-                float delta = Time.smoothDeltaTime;
-                float fps = 1 / delta;
-
-                debugInfo =
-                    " \n" +
-                    "FPS " + fps.ToString("#,##0 fps") + "\n" +
-                    "Health = " + currentHealth.ToString() + "\n" +
-                    "Input Vertical = " + inputSmooth.z.ToString("0.0") + "\n" +
-                    "Input Horizontal = " + inputSmooth.x.ToString("0.0") + "\n" +
-                    "Input Magnitude = " + inputMagnitude.ToString("0.0") + "\n" +
-                    "Rotation Magnitude = " + rotationMagnitude.ToString("0.0") + "\n" +
-                    "Vertical Velocity = " + verticalVelocity.ToString("0.00") + "\n" +
-                    "Current MoveSpeed = " + moveSpeed.ToString("0.00") + "\n" +
-                    "Ground Distance = " + groundDistance.ToString("0.00") + "\n" +
-                    "Ground Angle = " + GroundAngleFromDirection().ToString("0.00") + "\n" +
-                    "Is Grounded = " + BoolToRichText(isGrounded) + "\n" +
-                    "Is Strafing = " + BoolToRichText(isStrafing) + "\n" +
-                    "Is Trigger = " + BoolToRichText(_capsuleCollider.isTrigger) + "\n" +
-                    "Use Gravity = " + BoolToRichText(_rigidbody.useGravity) + "\n" +
-                    "Is Kinematic = " + BoolToRichText(_rigidbody.isKinematic) + "\n" +
-                    "Lock Movement = " + BoolToRichText(lockMovement) + "\n" +
-                    "Lock AnimMov = " + BoolToRichText(lockAnimMovement) + "\n" +
-                    "Lock Rotation = " + BoolToRichText(lockRotation) + "\n" +
-                    "Lock AnimRot = " + BoolToRichText(lockAnimRotation) + "\n" +
-                    "--- Actions Bools ---" + "\n" +
-                    "Is Sliding = " + BoolToRichText(isSliding) + "\n" +
-                    "Is Sprinting = " + BoolToRichText(isSprinting) + "\n" +
-                    "Is Crouching = " + BoolToRichText(isCrouching) + "\n" +
-                    "Is Rolling = " + BoolToRichText(isRolling) + "\n" +
-                    "Is Jumping = " + BoolToRichText(isJumping) + "\n" +
-                    "Is Airborne = " + BoolToRichText(isInAirborne) + "\n" +
-                    "Is Ragdolled = " + BoolToRichText(ragdolled) + "\n" +
-                    "CustomAction = " + BoolToRichText(customAction) + "\n" + additionalText;
-            }
-            if (OnDebug != null)
-            {
-                System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-                OnDebug.Invoke(ref stringBuilder);
-                debugInfo += stringBuilder.ToString();
-            }
-            return debugInfo;
-        }
-
-        protected virtual string BoolToRichText(bool value)
-        {
-            return value ? "<color=yellow> True </color>" : "<color=red> False </color>";
-        }
-
-        protected virtual void OnDrawGizmos()
-        {
-            if (Application.isPlaying && debugWindow)
-            {
-                // debug auto crouch
-                Vector3 posHead = transform.position + Vector3.up * ((colliderHeight * 0.5f) - colliderRadius);
-                Ray ray1 = new Ray(posHead, Vector3.up);
-                Gizmos.DrawWireSphere(ray1.GetPoint((crouchHeadDetect - (colliderRadius * 0.1f))), colliderRadius * 0.9f);
-            }
-
-        }
-
-        #endregion
-
-        [System.Serializable]
+        [Serializable]
         public class vMovementSpeed
         {
             [vHelpBox("Higher means faster/responsive movement, lower means smooth movement")]
@@ -1728,10 +1617,10 @@ namespace Invector.vCharacterController
             [SerializeField] public float rotationSpeed = 20f;
             [Tooltip("Character will limit the movement to walk instead of running")]
             [FormerlySerializedAs("walkByDefault")]
-            [SerializeField] public bool walkByDefault = false;
+            [SerializeField] public bool walkByDefault;
             [Tooltip("Rotate with the Camera forward when standing idle")]
             [FormerlySerializedAs("rotateWithCamera")]
-            [SerializeField] public bool rotateWithCamera = false;
+            [SerializeField] public bool rotateWithCamera;
             [Tooltip("Speed to Walk using rigidbody or extra speed if you're using RootMotion")]
             [FormerlySerializedAs("walkSpeed")]
             [SerializeField] public float walkSpeed = 2f;

@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class vScoreDataDisplay : MonoBehaviour
 {
-    public UnityEngine.UI.Text index;
-    public UnityEngine.UI.Text score;
-    public UnityEngine.UI.Text[] hits;
+    public Text index;
+    public Text score;
+    public Text[] hits;
 
     public void Show(int index,float? score,List<float> hits)
     {

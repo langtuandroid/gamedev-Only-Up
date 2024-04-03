@@ -1,20 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Gameplay;
 using UnityEditor;
 using UnityEngine;
+
 namespace Invector.vCharacterController
 {
-    [CustomEditor(typeof(vThirdPersonController), true)]
+    [CustomEditor(typeof(OUThirdPersonController), true)]
     public class vThirdPersonControllerEditor : vEditorBase
     {
-        public vThirdPersonController tp;
+        public OUThirdPersonController tp;
         public CapsuleCollider _capsuleCollider;
         public GUIStyle fontLabelStyle = new GUIStyle();
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            tp = (vThirdPersonController)target;
+            tp = (OUThirdPersonController)target;
             _capsuleCollider = tp.GetComponent<CapsuleCollider>();
         }
 

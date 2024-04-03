@@ -1,16 +1,19 @@
-﻿namespace Invector
+﻿using System;
+using UnityEngine.Events;
+
+namespace Invector
 {
     [vClassHeader("Effect Receiver", "Use with the EffectSender component to trigger a Effect.")]
     public class vEffectReceiver : vMonoBehaviour
     {
-        [System.Serializable]
+        [Serializable]
         public class vEffectByName
         {
             public string effectName;
             public vEffectEvent onReceiveEffect;
         }
-        [System.Serializable]
-        public class vEffectEvent : UnityEngine.Events.UnityEvent<vIEffect> { }
+        [Serializable]
+        public class vEffectEvent : UnityEvent<vIEffect> { }
 
         public vEffectEvent onReceiveEffect;
 

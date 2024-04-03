@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace Invector
 {
     [vClassHeader("Damage Modifier Controller", openClose = false, useHelpBox = true, helpBoxText = "Needs a HealthController component")]
@@ -17,11 +18,11 @@ namespace Invector
         [SerializeField] protected GetHealthControllerMethod getHealthMethod = GetHealthControllerMethod.GetComponent;
         [Tooltip("Modifier List")]
         public List<vDamageModifier> modifiers;
-        public UnityEngine.Events.UnityEvent onAllModifiersIsBroken;
+        public UnityEvent onAllModifiersIsBroken;
 
       
 
-        protected vIHealthController healthController = null;
+        protected vIHealthController healthController;
 
         protected virtual void Awake()
         {
@@ -44,7 +45,7 @@ namespace Invector
             for (int i = 0; i < modifiers.Count; i++)
             {
                 modifiers[i].ResetModifier();
-                modifiers[i].onBroken.AddListener((vDamageModifier m) => { CheckBrokedModifiers(); });
+                modifiers[i].onBroken.AddListener(m => { CheckBrokedModifiers(); });
             }
         }
 

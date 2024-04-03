@@ -1,7 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Gameplay;
+using Invector.vCamera;
+using Invector.vCharacterController;
 using UnityEditor;
+using UnityEngine;
+
 namespace Invector
 {
     [InitializeOnLoad]
@@ -19,7 +22,7 @@ namespace Invector
             GameObject go = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
             if (go == null) return;
 
-            var tpCamera = go.GetComponent<vCamera.vThirdPersonCamera>();
+            var tpCamera = go.GetComponent<vThirdPersonCamera>();
             if (tpCamera != null) DrawIcon("tp_camera", selectionRect);
         }
 
@@ -28,7 +31,7 @@ namespace Invector
             GameObject go = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
             if (go == null) return;
 
-            var controller = go.GetComponent<Invector.vCharacterController.vThirdPersonController>();
+            var controller = go.GetComponent<OUThirdPersonController>();
             if (controller != null) DrawIcon("controllerIcon", selectionRect);
         }
 

@@ -1,7 +1,4 @@
-﻿using Invector;
-using Invector.vCharacterController;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Invector.vCharacterController;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,7 +17,7 @@ namespace Invector.Utils
         void Start()
         {
             gm = GetComponentInParent<vGameController>();
-            this.GetComponent<BoxCollider>().isTrigger = true;
+            GetComponent<BoxCollider>().isTrigger = true;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -28,9 +25,9 @@ namespace Invector.Utils
             if (other.gameObject.CompareTag("Player"))
             {
                 vHUDController.instance.ShowText("Checkpoint reached!");
-                gm.spawnPoint = this.gameObject.transform;
+                gm.spawnPoint = gameObject.transform;
                 onTriggerEnter.Invoke();
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }

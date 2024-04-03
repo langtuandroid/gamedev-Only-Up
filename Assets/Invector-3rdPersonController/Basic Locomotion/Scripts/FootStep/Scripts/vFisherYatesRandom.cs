@@ -1,11 +1,12 @@
 using UnityEngine;
+
 namespace Invector
 {
     // Fisher-Yates shuffle -- makes sure all items are selected with equal probability and that the same item is not selected twice in a row.
     public class vFisherYatesRandom
     {
-        private int[] randomIndices = null;
-        private int randomIndex = 0;
+        private int[] randomIndices;
+        private int randomIndex;
         private int prevValue = -1;
 
         public int Next(int len)

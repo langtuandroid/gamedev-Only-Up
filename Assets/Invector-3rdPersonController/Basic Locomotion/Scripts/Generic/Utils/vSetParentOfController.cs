@@ -1,5 +1,7 @@
-﻿using Invector.vCharacterController;
+﻿using Gameplay;
+using Invector.vCharacterController;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector.Utils
 {
@@ -7,13 +9,13 @@ namespace Invector.Utils
     {
         [vHelpBox("Set this GameObject as parent of the Controller")]
 
-        private vThirdPersonController cc;
+        private OUThirdPersonController cc;
 
-        public UnityEngine.Events.UnityEvent onStart;
+        public UnityEvent onStart;
 
         private void Start()
         {
-            cc = GetComponentInParent<vThirdPersonController>();
+            cc = GetComponentInParent<OUThirdPersonController>();
             transform.parent = cc.transform;
 
             onStart.Invoke();

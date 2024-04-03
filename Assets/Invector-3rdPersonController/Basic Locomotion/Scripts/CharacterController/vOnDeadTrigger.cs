@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.Events;
+
 namespace Invector.vCharacterController
 {
     public class vOnDeadTrigger : MonoBehaviour

@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
 namespace Invector.Utils
 {
-    [RequireComponent(typeof(UnityEngine.UI.Slider))]
+    [RequireComponent(typeof(Slider))]
     [RequireComponent(typeof(CanvasGroup))]
     [vClassHeader("ShowHideSlideControl",false)]
     public class ShowHideSlideControl : vMonoBehaviour
     {
-        public UnityEngine.UI.Slider slider;
-        public UnityEngine.CanvasGroup canvasGroup;
+        public Slider slider;
+        public CanvasGroup canvasGroup;
         public float fadeIn=1, fadeOut=1;
 
-        public UnityEngine.Events.UnityEvent onStartFadeIn,onStartFadeOut, onFinishFadeIn,onFinishFadeOut;
+        public UnityEvent onStartFadeIn,onStartFadeOut, onFinishFadeIn,onFinishFadeOut;
         Coroutine currentRoutine;
         // Start is called before the first frame update
 
 
-        float slideValue => (float) System.Math.Round(slider.value, 1);
+        float slideValue => (float) Math.Round(slider.value, 1);
         void Start()
         {
-            if(slider == null)slider = GetComponent<UnityEngine.UI.Slider>();
-            if (canvasGroup == null) canvasGroup = GetComponent<UnityEngine.CanvasGroup>();
+            if(slider == null)slider = GetComponent<Slider>();
+            if (canvasGroup == null) canvasGroup = GetComponent<CanvasGroup>();
             if (slider !=null)
             {
                 slider.onValueChanged.AddListener(OnChangeSlideValue);

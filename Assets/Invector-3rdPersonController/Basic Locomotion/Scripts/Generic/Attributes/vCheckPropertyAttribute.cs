@@ -1,11 +1,11 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// Check Property is used to validate field using other filds.
 /// </summary>
-[AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
+[AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
 public class vCheckPropertyAttribute : PropertyAttribute
 {
     [Serializable]

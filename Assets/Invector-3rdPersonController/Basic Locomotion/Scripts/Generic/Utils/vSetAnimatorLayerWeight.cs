@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
 namespace Invector.Utils
 {
     public class vSetAnimatorLayerWeight : MonoBehaviour
@@ -9,7 +8,7 @@ namespace Invector.Utils
         public int layer;
         public float weight;
         public float speed;
-        [Invector.vReadOnly]
+        [vReadOnly]
         protected float currentWeight;
         private void Update()
         {

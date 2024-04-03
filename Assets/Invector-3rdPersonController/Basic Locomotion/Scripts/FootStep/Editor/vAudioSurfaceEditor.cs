@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
+﻿using UnityEditor;
+using UnityEngine;
+
 namespace Invector
 {
     [CustomEditor(typeof(vAudioSurface), true)]
     public class AudioSurfaceEditor : Editor
     {
         GUISkin skin;
-        string[] ignoreProperties = new string[] { "TextureOrMaterialNames", "audioClips" };
+        string[] ignoreProperties = { "TextureOrMaterialNames", "audioClips" };
 
         public override void OnInspectorGUI()
         {

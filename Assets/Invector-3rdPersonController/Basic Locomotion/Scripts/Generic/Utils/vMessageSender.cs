@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace Invector
     [vClassHeader("Message Sender", "Requires a vMessageReceiver to receive messages.", openClose = false)]
     public class vMessageSender : vMonoBehaviour
     {
-        [System.Serializable]
+        [Serializable]
         public class vMessage
         {
             public string name;
@@ -16,7 +16,7 @@ namespace Invector
             public bool sendByTrigger;
             public List<vMessageReceiver> defaultReceivers;
         }
-        [System.Serializable]
+        [Serializable]
         public class vGlobalMessage
         {
             public string name;

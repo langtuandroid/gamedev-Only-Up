@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {
     [vClassHeader("OBJECT DAMAGE", iconName = "DamageIcon")]
     public class vObjectDamage : vMonoBehaviour
     {
-        [System.Serializable]
-        public class OnHitEvent : UnityEngine.Events.UnityEvent<Collider> { }
-        [System.Serializable]
-        public class OnSendEvent : UnityEngine.Events.UnityEvent<vDamage> { }
+        [Serializable]
+        public class OnHitEvent : UnityEvent<Collider> { }
+        [Serializable]
+        public class OnSendEvent : UnityEvent<vDamage> { }
         public vDamage damage;
         [Tooltip("Assign this to set other damage sender")]
         public Transform overrideDamageSender;
@@ -39,7 +41,7 @@ namespace Invector
         public CollisionMethod collisionMethod = CollisionMethod.OnTriggerEnter;
 
         public ParticleSystem part;
-        public bool limitParticleCollisionEvent = false;
+        public bool limitParticleCollisionEvent;
         public int maxParticleCollisionEvent = 1;
         public List<ParticleCollisionEvent> collisionEvents;
 
@@ -56,7 +58,7 @@ namespace Invector
 
         protected virtual void Update()
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             if (continuousDamage && targets != null && targets.Count > 0)
             {
                 if (currentTime > 0)
@@ -104,7 +106,7 @@ namespace Invector
 
         protected virtual void OnCollisionEnter(Collision hit)
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             if (collisionMethod != CollisionMethod.OnColliderEnter || continuousDamage) return;
 
             if (CanApplyDamage(hit.gameObject))
@@ -115,7 +117,7 @@ namespace Invector
 
         protected virtual void OnTriggerEnter(Collider hit)
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             if (collisionMethod != CollisionMethod.OnTriggerEnter) return;
             if (continuousDamage && CanApplyDamage(hit.gameObject) && !targets.Contains(hit))
             {
@@ -134,7 +136,7 @@ namespace Invector
 
         protected virtual void OnTriggerExit(Collider hit)
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             if (collisionMethod == CollisionMethod.OnColliderEnter && !continuousDamage) return;
 
             if (CanApplyDamage(hit.gameObject) && targets.Contains(hit))
@@ -145,7 +147,7 @@ namespace Invector
 
         protected virtual void OnParticleCollision(GameObject hit)
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             if (CanApplyDamage(hit))
             {
                 if (collisionMethod != CollisionMethod.OnParticleCollision) return;

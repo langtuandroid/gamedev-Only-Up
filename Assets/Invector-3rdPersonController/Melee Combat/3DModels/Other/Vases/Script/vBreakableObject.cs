@@ -1,5 +1,8 @@
 ﻿using System.Collections;
+using Gameplay;
+using Invector.vCharacterController;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {
@@ -14,7 +17,7 @@ namespace Invector
         [Tooltip("Rigidbody velocity to break OnCollision whit other object")]
         public float maxVelocityToBreak = 5f;
 
-        public UnityEngine.Events.UnityEvent OnBroken;
+        public UnityEvent OnBroken;
 
         [SerializeField] protected OnReceiveDamage _onStartReceiveDamage = new OnReceiveDamage();
         [SerializeField] protected OnReceiveDamage _onReceiveDamage = new OnReceiveDamage();
@@ -62,7 +65,7 @@ namespace Invector
         {
             if (breakOnPlayerRoll && other.gameObject.CompareTag("Player"))
             {
-                var thirdPerson = other.gameObject.GetComponent<Invector.vCharacterController.vThirdPersonController>();
+                var thirdPerson = other.gameObject.GetComponent<OUThirdPersonController>();
                 if (thirdPerson && thirdPerson.isRolling && !isBroken)
                 {
                     isBroken = true;

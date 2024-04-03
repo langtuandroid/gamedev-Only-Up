@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
+
 namespace Invector
 {
     [CustomPropertyDrawer(typeof(vReadOnlyAttribute))]

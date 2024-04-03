@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Gameplay;
 using UnityEngine;
+
 namespace Invector.vCharacterController
 {
     public class vJumpMultiplierTrigger : MonoBehaviour
@@ -11,7 +11,7 @@ namespace Invector.vCharacterController
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                var motor = other.GetComponent<vThirdPersonController>();
+                var motor = other.GetComponent<OUThirdPersonController>();
 
                 if (motor && (motor.isJumping || !motor.isGrounded) && motor._rigidbody.velocity.y <= 0)
                 {

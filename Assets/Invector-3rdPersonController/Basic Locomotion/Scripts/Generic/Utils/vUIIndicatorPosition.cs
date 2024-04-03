@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Invector;
 using UnityEngine;
-using Invector;
+
 public class vUIIndicatorPosition : MonoBehaviour
 {
     public Transform referencePosition;

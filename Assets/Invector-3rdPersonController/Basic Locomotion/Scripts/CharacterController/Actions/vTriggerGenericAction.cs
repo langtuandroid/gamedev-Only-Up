@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -21,7 +22,7 @@ namespace Invector.vCharacterController.vActions
             GetDoubleButton,
             GetButtonTimer,
             AutoAction
-        };
+        }
 
         [vHelpBox("Time you have to hold the button *Only for GetButtonTimer*")]
         public float buttonTimer = 3f;
@@ -40,7 +41,7 @@ namespace Invector.vCharacterController.vActions
         public string actionName = "Action";
         public string actionTag = "Action";
         [vHelpBox("Disable this trigger OnStart")]
-        public bool disableOnStart = false;
+        public bool disableOnStart;
         [vHelpBox("Disable the Player's Capsule Collider Collision, useful for animations with closer interactions")]
         public bool disableCollision;
         [vHelpBox("Disable the Player's Rigidbody Gravity, useful for on air animations")]
@@ -52,9 +53,9 @@ namespace Invector.vCharacterController.vActions
         [vHelpBox("Rotate Character to the Forward Rotation of this Trigger")]
         public bool useTriggerRotation;
         [vHelpBox("Destroy this Trigger after pressing the Input or AutoAction or finishing the Action")]
-        public bool destroyAfter = false;
+        public bool destroyAfter;
         [vHideInInspector("destroyAfter")]
-        public float destroyDelay = 0f;
+        public float destroyDelay;
         [vHelpBox("Change your CameraState to a Custom State while playing the animation")]
         public string customCameraState;
 
@@ -66,18 +67,18 @@ namespace Invector.vCharacterController.vActions
 
         public float crossFadeTransition = 0.25f;
 
-        public int animatorLayer = 0;
+        public int animatorLayer;
 
         [vHelpBox("Check the Exit Time of your animation (if it doesn't loop) and insert here. \n\n" +
             "For example if your Exit Time is 0.82 you need to insert 0.82" +
             "\n\nAlways check with the Debug of the GenericAction if your animation is finishing correctly, " +
             "otherwise the controller won't reset to the default physics and collision.", vHelpBoxAttribute.MessageType.Warning)]
         [Tooltip("You can use this to make a persistent action, and finish the action calling FinishAction method of the vGenericAction  component in your character")]
-        public bool endActionManualy = false;
+        public bool endActionManualy;
         [vHideInInspector("endActionManualy", invertValue = true)]
         public float endExitTimeAnimation = 0.8f;
         [vHelpBox("Use a ActionState value to apply special conditions for your AnimatorController transitions")]
-        public int animatorActionState = 0;
+        public int animatorActionState;
         [vHelpBox("Reset the ActionState parameter to 0 after playing the animation")]
         public bool resetAnimatorActionState = true;
         [vHelpBox("Use a empty transform as reference for the MatchTarget")]
@@ -85,7 +86,7 @@ namespace Invector.vCharacterController.vActions
         [vHelpBox("Select the bone you want to use as reference to the Match Target")]
         public AvatarTarget avatarTarget;
         [Header("Curve Match target system")]
-        public bool useLocalX = false;
+        public bool useLocalX;
         public bool useLocalZ = true;
         public AnimationCurve matchPositionXZCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(.5f, 1), new Keyframe(1, 1));
         public AnimationCurve matchPositionYCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(.5f, 1), new Keyframe(1, 1));
@@ -131,12 +132,12 @@ namespace Invector.vCharacterController.vActions
         }
         protected virtual void Start()
         {
-            this.gameObject.tag = actionTag;
-            this.gameObject.layer = LayerMask.NameToLayer("Triggers");
+            gameObject.tag = actionTag;
+            gameObject.layer = LayerMask.NameToLayer("Triggers");
             _collider = GetComponent<Collider>();
             _collider.isTrigger = true;
             if (disableOnStart)
-                this.enabled = false;
+                enabled = false;
         }
 
         public virtual IEnumerator OnPressActionDelay(GameObject obj)
@@ -156,14 +157,14 @@ namespace Invector.vCharacterController.vActions
             }
         }
 
-        [System.Serializable]
+        [Serializable]
         public class OnUpdateValue : UnityEvent<float>
         {
 
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class OnDoActionWithTarget : UnityEvent<GameObject>
     {
 

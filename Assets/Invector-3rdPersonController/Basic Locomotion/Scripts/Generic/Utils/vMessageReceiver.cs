@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace Invector
 {
@@ -8,10 +9,10 @@ namespace Invector
     {
         public static event OnReceiveMessage onReceiveGlobalMessage;
         public List<vMessageListener> messagesListeners;
-        [System.Serializable]
+        [Serializable]
         public delegate void OnReceiveMessage(string name, string message = null);
-        [System.Serializable]
-        public class OnReceiveMessageEvent : UnityEngine.Events.UnityEvent<string> { }
+        [Serializable]
+        public class OnReceiveMessageEvent : UnityEvent<string> { }
 
         public event OnReceiveMessage onReceiveMessage;
         private void Start()
@@ -31,7 +32,7 @@ namespace Invector
                 }
             }
         }
-        [System.Serializable]
+        [Serializable]
         public class vMessageListener
         {
             public string Name;
@@ -45,12 +46,12 @@ namespace Invector
             }
             public vMessageListener(string name)
             {
-                this.Name = name;
+                Name = name;
             }
-            public vMessageListener(string name, UnityEngine.Events.UnityAction<string> listener)
+            public vMessageListener(string name, UnityAction<string> listener)
             {
-                this.Name = name;
-                this.onReceiveMessage.AddListener(listener);
+                Name = name;
+                onReceiveMessage.AddListener(listener);
             }
         }
 
@@ -59,7 +60,7 @@ namespace Invector
         /// </summary>
         /// <param name="name">Message Name</param>
         /// <param name="listener">Action Listener</param>
-        public void AddListener(string name, UnityEngine.Events.UnityAction<string> listener)
+        public void AddListener(string name, UnityAction<string> listener)
         {
             if (messagesListeners.Exists(l => l.Name.Equals(name)))
             {
@@ -77,7 +78,7 @@ namespace Invector
         /// </summary>
         /// <param name="name">Message Name</param>
         /// <param name="listener">Action Listener</param>
-        public void RemoveListener(string name, UnityEngine.Events.UnityAction<string> listener)
+        public void RemoveListener(string name, UnityAction<string> listener)
         {
             if (messagesListeners.Exists(l => l.Name.Equals(name)))
             {
@@ -92,7 +93,7 @@ namespace Invector
         /// <param name="name">message name</param>
         public void Send(string name)
         {
-            if (this.enabled == false) return;
+            if (enabled == false) return;
             onReceiveMessage?.Invoke(name, string.Empty);
         }
 
@@ -103,7 +104,7 @@ namespace Invector
         /// <param name="message">message value</param>
         public void Send(string name, string message)
         {
-            if (this.enabled == false) return;
+            if (enabled == false) return;
             onReceiveMessage?.Invoke(name, message);
         }
 

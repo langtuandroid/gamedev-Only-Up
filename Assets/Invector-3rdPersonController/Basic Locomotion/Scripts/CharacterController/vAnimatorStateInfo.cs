@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Invector.vEventSystems
@@ -43,7 +43,7 @@ namespace Invector.vEventSystems
         }
 
     }
-    [System.Serializable]
+    [Serializable]
     public class vAnimatorStateInfos
     {
         public bool debug;
@@ -92,7 +92,7 @@ namespace Invector.vEventSystems
            
             if (debug)
             {
-                Debug.Log($"Listeners Registered", animator);
+                Debug.Log("Listeners Registered", animator);
             }
         }
 
@@ -107,13 +107,13 @@ namespace Invector.vEventSystems
                 }
                 if (debug)
                 {
-                    Debug.Log($"Listeners Removed", animator);
+                    Debug.Log("Listeners Removed", animator);
                 }
             }
         }
 
         public vStateInfo[] stateInfos = new vStateInfo[0];
-        [System.Serializable]
+        [Serializable]
         public class vStateInfo
         {
             public int layer;
@@ -240,7 +240,7 @@ namespace Invector.vEventSystems
         /// <returns>if tag exit return AnimatorStateInfo? else return null</returns>
         public vStateInfo GetStateInfoUsingTag(string tag)
         {
-            return System.Array.Find(stateInfos, info => info.tags.Contains(tag));
+            return Array.Find(stateInfos, info => info.tags.Contains(tag));
         }
 
         public float GetCurrentNormalizedTime(int layer)

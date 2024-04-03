@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Invector;
+using Invector.Utils;
+using Invector.vEventSystems;
 using UnityEditor;
 
-public partial class vMenuComponent
+public class vMenuComponent
 {
     public const string path = "Invector/Utils/";
 
@@ -12,7 +12,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.vSimpleTrigger>();
+            currentObject.AddComponent<vSimpleTrigger>();
     }
 
     [MenuItem(path + "AnimatorEventReceiver")]
@@ -20,7 +20,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)        
-            currentObject.AddComponent<Invector.vEventSystems.vAnimatorEventReceiver>();        
+            currentObject.AddComponent<vAnimatorEventReceiver>();        
     }
 
     [MenuItem(path + "MessageReceiver")]
@@ -28,7 +28,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)        
-            currentObject.AddComponent<Invector.vMessageReceiver>();        
+            currentObject.AddComponent<vMessageReceiver>();        
     }
 
     [MenuItem(path + "MessageSender")]
@@ -36,7 +36,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)        
-            currentObject.AddComponent<Invector.vMessageSender>();        
+            currentObject.AddComponent<vMessageSender>();        
     }
 
     [MenuItem(path + "EventWithDelay")]
@@ -44,7 +44,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)        
-            currentObject.AddComponent<Invector.Utils.vEventWithDelay>();        
+            currentObject.AddComponent<vEventWithDelay>();        
     }
 
     [MenuItem(path + "DestroyGameObject")]
@@ -52,7 +52,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)        
-            currentObject.AddComponent<Invector.vDestroyGameObject>();        
+            currentObject.AddComponent<vDestroyGameObject>();        
     }
 
     [MenuItem(path + "DestroyOnTrigger")]
@@ -60,7 +60,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.vDestroyOnTrigger>();
+            currentObject.AddComponent<vDestroyOnTrigger>();
     }
 
     [MenuItem(path + "PlayRandomClip")]
@@ -68,7 +68,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.vPlayRandomClip>();
+            currentObject.AddComponent<vPlayRandomClip>();
     }
 
     [MenuItem(path + "RotateObject")]
@@ -76,7 +76,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.vRotateObject>();
+            currentObject.AddComponent<vRotateObject>();
     }
 
     [MenuItem(path + "LookAtCamera")]
@@ -84,7 +84,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.vLookAtCamera>();
+            currentObject.AddComponent<vLookAtCamera>();
     }
 
     [MenuItem(path + "Instantiate")]
@@ -92,7 +92,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.Utils.vInstantiate>();
+            currentObject.AddComponent<vInstantiate>();
     }
 
     [MenuItem(path + "SetParent")]
@@ -100,7 +100,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.Utils.vSetParent>();
+            currentObject.AddComponent<vSetParent>();
     }
 
     [MenuItem(path + "ResetTransform")]
@@ -108,7 +108,7 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.Utils.vResetTransform>();
+            currentObject.AddComponent<vResetTransform>();
     }
 
     [MenuItem(path + "DestroyChildrens")]
@@ -116,6 +116,6 @@ public partial class vMenuComponent
     {
         var currentObject = Selection.activeGameObject;
         if (currentObject)
-            currentObject.AddComponent<Invector.Utils.vDestroyChildrens>();
+            currentObject.AddComponent<vDestroyChildrens>();
     }
 }

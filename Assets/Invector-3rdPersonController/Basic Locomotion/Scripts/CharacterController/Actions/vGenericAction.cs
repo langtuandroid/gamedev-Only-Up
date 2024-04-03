@@ -1,11 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Invector.vCharacterController.vActions
 {
-    using System.Collections.Generic;
-    using vCharacterController;
-
     [vClassHeader("GENERIC ACTION", "Use the vTriggerGenericAction to trigger a simple animation.\n<b><size=12>You can use <color=red>vGenericActionReceiver</color> component to filter events by action name</size></b>", iconName = "triggerIcon")]
     public class vGenericAction : vActionListener
     {
@@ -79,8 +77,8 @@ namespace Invector.vCharacterController.vActions
             internal ActionStorage(vTriggerGenericAction action)
             {
                 this.action = action;
-                action.OnValidate.AddListener((GameObject o) => { isValid = true; });
-                action.OnInvalidate.AddListener((GameObject o) => { isValid = false; });
+                action.OnValidate.AddListener(o => { isValid = true; });
+                action.OnInvalidate.AddListener(o => { isValid = false; });
             }
             public static implicit operator vTriggerGenericAction(ActionStorage storage)
             {
@@ -164,21 +162,13 @@ namespace Invector.vCharacterController.vActions
             }
         }
 
-        protected virtual bool inActionAnimation
-        {
-            get
-            {
-                return !string.IsNullOrEmpty(triggerAction.playAnimation)
-                    && tpInput.cc.animatorStateInfos.stateInfos[triggerAction.animatorLayer].shortPathHash.Equals(Animator.StringToHash(triggerAction.playAnimation));
-            }
-        }
+        protected virtual bool inActionAnimation =>
+            !string.IsNullOrEmpty(triggerAction.playAnimation)
+            && tpInput.cc.animatorStateInfos.stateInfos[triggerAction.animatorLayer].shortPathHash.Equals(Animator.StringToHash(triggerAction.playAnimation));
 
         protected virtual void CheckForTriggerAction()
         {
-            if (actions.Count == 0 && !triggerAction || isLockTriggerEvents)
-            {
-                return;
-            }
+            if (actions.Count == 0 && !triggerAction || isLockTriggerEvents) return;
 
             vTriggerGenericAction _triggerAction = GetNearAction();
             if (!doingAction && triggerAction != _triggerAction)
@@ -293,7 +283,7 @@ namespace Invector.vCharacterController.vActions
                 {
                     if (debugMode)
                     {
-                        Debug.Log($"<b>GenericAction: </b><color=blue>Match Target...</color> ");
+                        Debug.Log("<b>GenericAction: </b><color=blue>Match Target...</color> ");
                     }
 
                     EvaluateToTargetPosition();
@@ -303,7 +293,7 @@ namespace Invector.vCharacterController.vActions
                 {
                     if (debugMode)
                     {
-                        Debug.Log($"<b>GenericAction: </b><color=blue>Rotate to Target...</color> ");
+                        Debug.Log("<b>GenericAction: </b><color=blue>Rotate to Target...</color> ");
                     }
 
                     EvaluateToTargetRotation();
@@ -313,7 +303,7 @@ namespace Invector.vCharacterController.vActions
                 {
                     if (debugMode)
                     {
-                        Debug.Log($"<b>GenericAction: </b>Finish Animation ");
+                        Debug.Log("<b>GenericAction: </b>Finish Animation ");
                     }
                     // triggers the OnEndAnimation Event
                     EndAction();
@@ -329,7 +319,7 @@ namespace Invector.vCharacterController.vActions
 
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b>Force ResetTriggerSettings ");
+                    Debug.Log("<b>GenericAction: </b>Force ResetTriggerSettings ");
                 }
                 // triggers the OnEndAnimation Event
                 EndAction();
@@ -443,7 +433,7 @@ namespace Invector.vCharacterController.vActions
 
             if (debugMode)
             {
-                Debug.Log($"<b>GenericAction: </b>End Action ");
+                Debug.Log("<b>GenericAction: </b>End Action ");
             }
         }
 
@@ -582,7 +572,7 @@ namespace Invector.vCharacterController.vActions
                 }
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b>Cancel Action ");
+                    Debug.Log("<b>GenericAction: </b>Cancel Action ");
                 }
             }
         }
@@ -636,7 +626,7 @@ namespace Invector.vCharacterController.vActions
                         {
                             if (debugMode)
                             {
-                                Debug.Log($"<b>GenericAction: </b>Finish Action Input ");
+                                Debug.Log("<b>GenericAction: </b>Finish Action Input ");
                             }
 
                             triggerAction.UpdateButtonTimer(0);
@@ -652,7 +642,7 @@ namespace Invector.vCharacterController.vActions
                         {
                             if (debugMode)
                             {
-                                Debug.Log($"<b>GenericAction: </b><color=blue>Holding Input</color>  ");
+                                Debug.Log("<b>GenericAction: </b><color=blue>Holding Input</color>  ");
                             }
 
                             triggerAction.UpdateButtonTimer(t);
@@ -675,7 +665,7 @@ namespace Invector.vCharacterController.vActions
                         {
                             if (debugMode)
                             {
-                                Debug.Log($"<b>GenericAction: </b>Finish Action Input ");
+                                Debug.Log("<b>GenericAction: </b>Finish Action Input ");
                             }
 
                             triggerAction.UpdateButtonTimer(0);
@@ -689,7 +679,7 @@ namespace Invector.vCharacterController.vActions
                         {
                             if (debugMode)
                             {
-                                Debug.Log($"<b>GenericAction: </b><color=blue>Holding Input</color>");
+                                Debug.Log("<b>GenericAction: </b><color=blue>Holding Input</color>");
                             }
 
                             triggerAction.UpdateButtonTimer(t);
@@ -713,7 +703,7 @@ namespace Invector.vCharacterController.vActions
         {
             if (debugMode)
             {
-                Debug.Log($"<b>GenericAction: </b>Cancel Action ");
+                Debug.Log("<b>GenericAction: </b>Cancel Action ");
             }
 
             triggerAction.OnCancelActionInput.Invoke();
@@ -737,7 +727,7 @@ namespace Invector.vCharacterController.vActions
         {
             if (debugMode)
             {
-                Debug.Log($"<b>GenericAction: </b>TriggerAction Events ", gameObject);
+                Debug.Log("<b>GenericAction: </b>TriggerAction Events ", gameObject);
             }
 
             doingAction = true;
@@ -760,14 +750,14 @@ namespace Invector.vCharacterController.vActions
 
             if (debugMode)
             {
-                Debug.Log($"<b>GenericAction: </b>TriggerAnimation ", gameObject);
+                Debug.Log("<b>GenericAction: </b>TriggerAnimation ", gameObject);
             }
 
             if (triggerAction.animatorActionState != 0)
             {
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b>Applied ActionState: " + triggerAction.animatorActionState + " ", gameObject);
+                    Debug.Log("<b>GenericAction: </b>Applied ActionState: " + triggerAction.animatorActionState + " ", gameObject);
                 }
 
                 tpInput.cc.SetActionState(triggerAction.animatorActionState);
@@ -780,7 +770,7 @@ namespace Invector.vCharacterController.vActions
                 {
                     if (debugMode)
                     {
-                        Debug.Log($"<b>GenericAction: </b>PlayAnimation: " + triggerAction.playAnimation + " ", gameObject);
+                        Debug.Log("<b>GenericAction: </b>PlayAnimation: " + triggerAction.playAnimation + " ", gameObject);
                     }
 
                     actionStarted = true;
@@ -788,7 +778,7 @@ namespace Invector.vCharacterController.vActions
                     tpInput.cc.animator.CrossFadeInFixedTime(triggerAction.playAnimation, triggerAction.crossFadeTransition, triggerAction.animatorLayer);    // trigger the action animation clip
                     if (!string.IsNullOrEmpty(triggerAction.customCameraState))
                     {
-                        tpInput.ChangeCameraState(triggerAction.customCameraState, true);           // change current camera state to a custom
+                        tpInput.ChangeCameraState(triggerAction.customCameraState);           // change current camera state to a custom
                     }
                 }
                 animationBehaviourDelay = triggerAction.crossFadeTransition + 0.1f;
@@ -811,7 +801,7 @@ namespace Invector.vCharacterController.vActions
         {
             if (debugMode)
             {
-                Debug.Log($"<b>GenericAction: </b>Reset Trigger Settings ");
+                Debug.Log("<b>GenericAction: </b>Reset Trigger Settings ");
             }
 
             // reset player gravity and collision
@@ -839,7 +829,7 @@ namespace Invector.vCharacterController.vActions
             {
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b><color=red>Disable Player's Gravity</color> ");
+                    Debug.Log("<b>GenericAction: </b><color=red>Disable Player's Gravity</color> ");
                 }
 
                 tpInput.cc._rigidbody.useGravity = false;
@@ -851,7 +841,7 @@ namespace Invector.vCharacterController.vActions
             {
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b><color=red>Disable Player's Collision</color> ");
+                    Debug.Log("<b>GenericAction: </b><color=red>Disable Player's Collision</color> ");
                 }
 
                 tpInput.cc._capsuleCollider.isTrigger = true;
@@ -864,7 +854,7 @@ namespace Invector.vCharacterController.vActions
             {
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b><color=red>Enable Player's Gravity</color> ");
+                    Debug.Log("<b>GenericAction: </b><color=red>Enable Player's Gravity</color> ");
                 }
 
                 tpInput.cc._rigidbody.useGravity = true;
@@ -874,7 +864,7 @@ namespace Invector.vCharacterController.vActions
             {
                 if (debugMode)
                 {
-                    Debug.Log($"<b>GenericAction: </b><color=red>Enable Player's Collision</color> ");
+                    Debug.Log("<b>GenericAction: </b><color=red>Enable Player's Collision</color> ");
                 }
 
                 tpInput.cc._capsuleCollider.isTrigger = false;
@@ -893,7 +883,7 @@ namespace Invector.vCharacterController.vActions
 
             if (debugMode)
             {
-                Debug.Log($"<b>GenericAction: </b>Destroy Trigger ");
+                Debug.Log("<b>GenericAction: </b>Destroy Trigger ");
             }
         }
 

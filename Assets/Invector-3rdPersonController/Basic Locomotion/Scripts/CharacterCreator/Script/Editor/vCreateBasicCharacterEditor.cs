@@ -1,8 +1,7 @@
-﻿using Invector.vCamera;
+﻿using Gameplay;
+using Invector.vCamera;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Invector.vCharacterController
 {
@@ -55,8 +54,8 @@ namespace Invector.vCharacterController
 
             GUI.skin = skin;
 
-            this.minSize = rect;
-            this.titleContent = new GUIContent("Character", null, "Third Person Character Creator");
+            minSize = rect;
+            titleContent = new GUIContent("Character", null, "Third Person Character Creator");
             GUILayout.BeginVertical("Character Creator Window", "window");
             GUILayout.Label(m_Logo, GUILayout.MaxHeight(25));
             GUILayout.Space(5);
@@ -88,12 +87,12 @@ namespace Invector.vCharacterController
 
             useGameController = EditorGUILayout.Toggle("Add GameController", useGameController);
 
-            if (GUI.changed && charObj != null && charObj.GetComponent<vThirdPersonController>() == null)
+            if (GUI.changed && charObj != null && charObj.GetComponent<OUThirdPersonController>() == null)
             {
                 humanoidpreview = Editor.CreateEditor(charObj);
             }
 
-            if (charObj != null && charObj.GetComponent<vThirdPersonController>() != null)
+            if (charObj != null && charObj.GetComponent<OUThirdPersonController>() != null)
             {
                 EditorGUILayout.HelpBox("This gameObject already contains the component vThirdPersonController", MessageType.Warning);
             }
@@ -137,7 +136,7 @@ namespace Invector.vCharacterController
 
         public virtual bool CanCreate()
         {
-            return isValidAvatar && isHuman && charObj != null && charObj.GetComponent<vThirdPersonController>() == null;
+            return isValidAvatar && isHuman && charObj != null && charObj.GetComponent<OUThirdPersonController>() == null;
         }
 
         /// <summary>
@@ -243,8 +242,8 @@ namespace Invector.vCharacterController
                 }
             }
 
-            UnityEditor.SceneView.lastActiveSceneView.FrameSelected();
-            this.Close();
+            SceneView.lastActiveSceneView.FrameSelected();
+            Close();
         }
     }
 }

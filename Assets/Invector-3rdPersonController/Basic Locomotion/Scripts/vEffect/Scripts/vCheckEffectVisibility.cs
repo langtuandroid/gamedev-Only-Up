@@ -76,11 +76,9 @@ namespace Invector
                     if (debugMode) Debug.Log("Object is in view!");
                     return true;
                 }
-                else
-                {
-                    if (debugMode) Debug.Log("Object is in view!");
-                    return true;
-                }
+
+                if (debugMode) Debug.Log("Object is in view!");
+                return true;
             }
 
             return false;

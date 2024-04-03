@@ -20,7 +20,7 @@ namespace Invector
         public bool SpawnParticle { get { return _spawnParticle; } set { _spawnParticle = value; } }
         public bool SpawnStepMark { get { return _spawnStepMark; } set { _spawnStepMark = value; } }
 
-        protected int surfaceIndex = 0;
+        protected int surfaceIndex;
         protected Terrain terrain;
         protected TerrainCollider terrainCollider;
         protected TerrainData terrainData;
@@ -48,23 +48,21 @@ namespace Invector
                     Debug.Log("Missing FootStep Sphere Trigger, please unfold the FootStep Component to create the triggers.");
                     return;
                 }
-                else
-                {
-                    leftFootTrigger.trigger.isTrigger = true;
-                    rightFootTrigger.trigger.isTrigger = true;
-                    Physics.IgnoreCollision(leftFootTrigger.trigger, rightFootTrigger.trigger);
-                    for (int i = 0; i < colls.Length; i++)
-                    {
-                        var coll = colls[i];
-                        if (coll.enabled && coll.gameObject != leftFootTrigger.gameObject)
-                        {
-                            Physics.IgnoreCollision(leftFootTrigger.trigger, coll);
-                        }
 
-                        if (coll.enabled && coll.gameObject != rightFootTrigger.gameObject)
-                        {
-                            Physics.IgnoreCollision(rightFootTrigger.trigger, coll);
-                        }
+                leftFootTrigger.trigger.isTrigger = true;
+                rightFootTrigger.trigger.isTrigger = true;
+                Physics.IgnoreCollision(leftFootTrigger.trigger, rightFootTrigger.trigger);
+                for (int i = 0; i < colls.Length; i++)
+                {
+                    var coll = colls[i];
+                    if (coll.enabled && coll.gameObject != leftFootTrigger.gameObject)
+                    {
+                        Physics.IgnoreCollision(leftFootTrigger.trigger, coll);
+                    }
+
+                    if (coll.enabled && coll.gameObject != rightFootTrigger.gameObject)
+                    {
+                        Physics.IgnoreCollision(rightFootTrigger.trigger, coll);
                     }
                 }
             }

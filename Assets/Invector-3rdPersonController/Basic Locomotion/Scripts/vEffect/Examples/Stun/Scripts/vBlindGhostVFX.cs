@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Invector
@@ -9,7 +10,7 @@ namespace Invector
         [SerializeField]
         private RawImage imageToDisplay;
 
-        public UnityEngine.Events.UnityEvent onStartGhostFX, onFinishGhostFX;
+        public UnityEvent onStartGhostFX, onFinishGhostFX;
 
         public void TriggerGoBlind(vIEffect effect)
         {

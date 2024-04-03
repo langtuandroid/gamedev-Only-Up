@@ -1,4 +1,8 @@
-﻿namespace Invector
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+namespace Invector
 {
     public class vAnimatorSetFloat : vAnimatorSetValue<float>
     {        
@@ -11,24 +15,24 @@
         public float maxExitValue;
         [vHelpBox("Use this in <b>Random mode</b> to generat a rounded value")]
         public bool roundValue;
-        [UnityEngine.Tooltip("Digits after the comma")]
+        [Tooltip("Digits after the comma")]
         [vHideInInspector("roundValue")]
         public int roundDigits =1;
-        [UnityEngine.Tooltip("Invert number randomly")]
+        [Tooltip("Invert number randomly")]
         public bool randomInvert;
         protected override float GetEnterValue()
         {
             var val = 0f;
             if(randomEnter)
             {
-                val = UnityEngine.Random.Range(base.GetEnterValue(), maxEnterValue);
-                if (roundValue) val =(float) System.Math.Round(val, roundDigits);
+                val = Random.Range(base.GetEnterValue(), maxEnterValue);
+                if (roundValue) val =(float) Math.Round(val, roundDigits);
                 
             }
             else val = base.GetEnterValue();
             if (randomInvert)
             {
-                if (UnityEngine.Random.Range(0, 100) > 50) val *= -1;
+                if (Random.Range(0, 100) > 50) val *= -1;
             }
             return val;
         }
@@ -37,13 +41,13 @@
             var val = 0f;
             if (randomEnter)
             {
-                val = UnityEngine.Random.Range(base.GetExitValue(), maxEnterValue);
-                if (roundValue) val = (float)System.Math.Round(val, roundDigits);
+                val = Random.Range(base.GetExitValue(), maxEnterValue);
+                if (roundValue) val = (float)Math.Round(val, roundDigits);
             }
             else val = base.GetExitValue();
             if (randomInvert)
             {
-                if (UnityEngine.Random.Range(0, 100) > 50) val *= -1;
+                if (Random.Range(0, 100) > 50) val *= -1;
             }
             return val;
         }

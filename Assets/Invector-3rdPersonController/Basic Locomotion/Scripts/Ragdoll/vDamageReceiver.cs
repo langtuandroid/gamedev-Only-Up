@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector.vCharacterController
 {
     [vClassHeader("DAMAGE RECEIVER", "You can add damage multiplier for example causing twice damage on Headshots", openClose = false)]
-    public partial class vDamageReceiver : vMonoBehaviour, vIDamageReceiver
+    public class vDamageReceiver : vMonoBehaviour, vIDamageReceiver
     {
 
         [vEditorToolbar("Default")]
@@ -25,7 +26,7 @@ namespace Invector.vCharacterController
         public int minReactionID, maxReactionID;
         [vHideInInspector("useRandomValues;fixedValues"), Tooltip("Change Between 0 and 100")]
         public float changeToMaxValue;
-        public UnityEngine.Events.UnityEvent OnGetMaxValue;
+        public UnityEvent OnGetMaxValue;
         
         [vEditorToolbar("Events")]
         [SerializeField] protected OnReceiveDamage _onStartReceiveDamage = new OnReceiveDamage();
@@ -45,7 +46,7 @@ namespace Invector.vCharacterController
             {
                 if (ragdoll && ragdoll.isActive)
                 {
-                    ragdoll.OnRagdollCollisionEnter(new vRagdollCollision(this.gameObject, collision));
+                    ragdoll.OnRagdollCollisionEnter(new vRagdollCollision(gameObject, collision));
                 }
             }
         }

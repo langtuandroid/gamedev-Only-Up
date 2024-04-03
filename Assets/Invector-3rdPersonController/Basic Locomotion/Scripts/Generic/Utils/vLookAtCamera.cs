@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 namespace Invector
 {
     public class vLookAtCamera : MonoBehaviour
     {
         [Tooltip("Align position to stay always on top of parent")]
-        public bool alignUp = false;
+        public bool alignUp;
         [Tooltip("Height of alignment on top of parent \n!!(Check alignUp to work)!!")]
         public float height = 1;
         [Tooltip("Detach of the parent on start \n!!(if alignUp not is checked, the object not follow the parent)!!")]

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(vTagMask), true)]
 public class vTagMaskDrawer : PropertyDrawer
@@ -22,16 +23,16 @@ public class vTagMaskDrawer : PropertyDrawer
             }
             GenericMenu menu = new GenericMenu();
             menu.AddItem(new GUIContent("Nothing"), tags.Count == 0, () => { prop.ClearArray(); prop.serializedObject.ApplyModifiedProperties(); });
-            menu.AddItem(new GUIContent("Everything"), tags.Count == UnityEditorInternal.InternalEditorUtility.tags.Length, () => {
+            menu.AddItem(new GUIContent("Everything"), tags.Count == InternalEditorUtility.tags.Length, () => {
                 prop.ClearArray();
-                foreach (var t in UnityEditorInternal.InternalEditorUtility.tags)
+                foreach (var t in InternalEditorUtility.tags)
                 {
                     prop.arraySize++;
                     prop.GetArrayElementAtIndex(prop.arraySize - 1).stringValue = t;
                 }
                 prop.serializedObject.ApplyModifiedProperties();
             });
-            foreach (var t in UnityEditorInternal.InternalEditorUtility.tags)
+            foreach (var t in InternalEditorUtility.tags)
                 menu.AddItem(new GUIContent(t), tags.Contains(t), () => { CheckValue(prop, tags, t); });
             menu.DropDown(position);
 

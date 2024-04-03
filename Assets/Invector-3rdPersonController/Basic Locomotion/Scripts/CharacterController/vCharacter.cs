@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Invector.vCharacterController
 {
-    [System.Serializable]
+    [Serializable]
     public class OnActionHandle : UnityEvent<Collider> { }
-    [System.Serializable]
+    [Serializable]
 
     [vClassHeader("vCharacter")]
     public class vCharacter : vHealthController, vICharacter
@@ -28,7 +29,7 @@ namespace Invector.vCharacterController
         [HideInInspector]
         public bool debugActionListener;
         public Animator animator { get; protected set; }
-        public bool _ragdolled = false;
+        public bool _ragdolled;
         public virtual bool ragdolled { get { return _ragdolled; } set { _ragdolled = value; } }
 
         [vEditorToolbar("Events")]

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,7 +17,7 @@ namespace Invector
         IEnumerator Start()
         {
             yield return new WaitForEndOfFrame();
-            if (TryGetComponent<vIHealthController>(out vIHealthController healthController))
+            if (TryGetComponent(out vIHealthController healthController))
             {
                 healthController.onReceiveDamage.AddListener(OnReceiveDamage);
             }
@@ -92,14 +93,14 @@ namespace Invector
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class vDamageEffect
     {
         public string damageType = "";
         public List<GameObject> customDamageEffect;
         public bool rotateToHitDirection = true;
         [Tooltip("Attach prefab in Damage Receiver transform")]
-        public bool attachInReceiver = false;
+        public bool attachInReceiver;
         public UnityEvent onTriggerEffect;
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+
 namespace Invector.Utils
 {
     [vClassHeader("Entity Preview")]

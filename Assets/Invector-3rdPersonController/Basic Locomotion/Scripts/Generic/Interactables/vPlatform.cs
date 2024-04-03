@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Invector.vCharacterController;
+using UnityEngine;
 
 namespace Invector
 {
@@ -20,7 +22,7 @@ namespace Invector
         public bool canMove;
 
         Vector3 oldEuler;
-        int index = 0;
+        int index;
         bool invert;
         float currentTime;
         float currentSpeed;
@@ -98,7 +100,7 @@ namespace Invector
 
             if (currentTime <= 0)
             {
-                var distFactor = (float)Mathf.Clamp((100f - ((float)(100f * currentDist) / dist)) * 0.01f, 0, 1f);
+                var distFactor = Mathf.Clamp((100f - (100f * currentDist / dist)) * 0.01f, 0, 1f);
                 //distFactor = (float)System.Math.Round(distFactor, 6);
 
                 transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, currentSpeed * Time.deltaTime);
@@ -132,7 +134,7 @@ namespace Invector
 
         void OnTriggerStay(Collider other)
         {
-            if (other.transform.parent != transform && other.transform.CompareTag("Player") && other.GetComponent<Invector.vCharacterController.vCharacter>() != null)
+            if (other.transform.parent != transform && other.transform.CompareTag("Player") && other.GetComponent<vCharacter>() != null)
             {
                 other.transform.parent = transform;
             }
@@ -147,7 +149,7 @@ namespace Invector
             }
         }
 
-        [System.Serializable]
+        [Serializable]
         public class vPlatformPoint
         {
             public Transform transform;

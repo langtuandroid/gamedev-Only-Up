@@ -32,7 +32,7 @@ namespace Invector.vCharacterController
             if (healthControl == null)
             {
                 Debug.LogWarning("The character must have a ICharacter Interface");
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             healthControl.onReceiveDamage.AddListener(Damage);
             _healthSlider.maxValue = healthControl.maxHealth;

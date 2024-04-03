@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace Invector.vCharacterController
         [Header("--- Animator of cursorObject Character ---")]
         public Animator animator;
         [Header("---Generic Character template---")]
-        public vRagdollGenericTemplate genericTemplate = null;
+        public vRagdollGenericTemplate genericTemplate;
         [Header("--- Bones ---")]
         public Transform root;
 
@@ -42,7 +41,7 @@ namespace Invector.vCharacterController
         public bool proportionalMass = true;
         [Header("Total Mass will be ignored and set to 1 if Proportional Mass is true")]
         public float totalMass = 20;
-        public float strength = 0.0F;
+        public float strength;
 
         Vector3 right = Vector3.right;
         Vector3 up = Vector3.up;
@@ -52,7 +51,7 @@ namespace Invector.vCharacterController
         Vector3 worldUp = Vector3.up;
         Vector3 worldForward = Vector3.forward;
 
-        public bool flipForward = false;
+        public bool flipForward;
         class BoneInfo
         {
             public string name;
@@ -110,7 +109,7 @@ namespace Invector.vCharacterController
         [MenuItem("Invector/Basic Locomotion/Components/Ragdoll")]
         static void CreateWizard()
         {
-            ScriptableWizard.DisplayWizard("Create Ragdoll", typeof(vRagdollBuilder));
+            DisplayWizard("Create Ragdoll", typeof(vRagdollBuilder));
 
             //ScriptableWizard.DisplayWizard("Create Ragdoll", typeof (RagdollBuilder),"Create","Load Bones");
         }
@@ -597,14 +596,13 @@ namespace Invector.vCharacterController
             {
                 return 2;
             }
-            else if (smallest == 0 && largest == 2)
+
+            if (smallest == 0 && largest == 2)
             {
                 return 1;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
 
         Bounds Clip(Bounds bounds, Transform relativeTo, Transform clipTransform, bool below)

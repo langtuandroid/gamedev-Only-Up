@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Invector.vCharacterController;
+using UnityEngine;
+
 namespace Invector.Utils
 {   [vClassHeader("Load Level",openClose =false)]
     public class vLoadLevel : vMonoBehaviour
@@ -12,7 +14,7 @@ namespace Invector.Utils
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                var thirdPerson = other.transform.gameObject.GetComponent<vCharacterController.vThirdPersonInput>();
+                var thirdPerson = other.transform.gameObject.GetComponent<vThirdPersonInput>();
                 LoadLevelHelper.LoadScene(levelToLoad, spawnPointName, thirdPerson);
             }
         }

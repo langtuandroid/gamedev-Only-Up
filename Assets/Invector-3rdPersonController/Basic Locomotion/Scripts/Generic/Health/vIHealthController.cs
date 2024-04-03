@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector
 {
-    [System.Serializable]
-    public class OnDead : UnityEngine.Events.UnityEvent<GameObject> { }
+    [Serializable]
+    public class OnDead : UnityEvent<GameObject> { }
     public interface vIHealthController : vIDamageReceiver
     {      
         /// <summary>

@@ -1,15 +1,16 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class vShooterTrainingController : MonoBehaviour
 {
     public vShooterScore shooterScore;
     public float timeToStartTraining= 3f;
     public float timeToFinishTraining=60f;
-    public UnityEngine.UI.Text timeDisplay;
+    public Text timeDisplay;
    
-    public UnityEngine.Events.UnityEvent onInit,onStartCounter, onFinishCounter,onCancelTraining;
+    public UnityEvent onInit,onStartCounter, onFinishCounter,onCancelTraining;
   
     Coroutine currentRoutine;
     float currentTime;

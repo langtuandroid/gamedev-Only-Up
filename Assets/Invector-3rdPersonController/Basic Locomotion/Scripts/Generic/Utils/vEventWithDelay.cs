@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Invector.Utils
 {
@@ -16,7 +18,7 @@ namespace Invector.Utils
 
         private void OnEnable()
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
 
             if (triggerOnEnable)
             {
@@ -41,21 +43,21 @@ namespace Invector.Utils
         [SerializeField] private vEventWithDelayObject[] events = new vEventWithDelayObject[0];
         public virtual void DoEvents()
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             for (int i = 0; i < events.Length; i++)
                 StartCoroutine(DoEventWithDelay(events[i]));
         }
 
         public virtual void DoEvent(int index)
         {
-            if (!this.enabled) return;
+            if (!enabled) return;
             if (index < events.Length && events.Length > 0) StartCoroutine(DoEventWithDelay(events[index]));
         }
 
         public virtual void DoEvent(string name)
         {
-            if (!this.enabled) return;
-            vEventWithDelayObject _e = System.Array.Find(events, e => e.name.Equals(name));
+            if (!enabled) return;
+            vEventWithDelayObject _e = Array.Find(events, e => e.name.Equals(name));
             if (_e != null) StartCoroutine(DoEventWithDelay(_e));
         }
 
@@ -65,12 +67,12 @@ namespace Invector.Utils
             _event.onDoEvent.Invoke();
         }
 
-        [System.Serializable]
+        [Serializable]
         public class vEventWithDelayObject
         {
             public string name = "EventName";
             public float delay;
-            public UnityEngine.Events.UnityEvent onDoEvent;
+            public UnityEvent onDoEvent;
         }
     }
 }

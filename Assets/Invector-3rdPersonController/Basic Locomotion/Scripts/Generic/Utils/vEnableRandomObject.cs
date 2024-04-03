@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Random = System.Random;
 
 public class vEnableRandomObject : MonoBehaviour
 {
     public GameObject[] objects;
     public bool enableOnStart;
 
-    System.Random random;
+    Random random;
     // Start is called before the first frame update
     protected void Awake()
     {
-        random = new System.Random(this.GetInstanceID());
+        random = new Random(GetInstanceID());
         if (enableOnStart)
             EnableObject();
     }

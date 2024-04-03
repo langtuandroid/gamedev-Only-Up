@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using UnityEngine;
+
 namespace Invector
 {
-     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
+     [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class vButtonAttribute : PropertyAttribute
     {
         public readonly string label;

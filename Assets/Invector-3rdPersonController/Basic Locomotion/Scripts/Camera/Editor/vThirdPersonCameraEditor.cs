@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
 namespace Invector.vCamera
 {
     [CustomEditor(typeof(vThirdPersonCamera),true)]
@@ -320,7 +321,7 @@ namespace Invector.vCamera
 
         #region Camera State Drawers with undo
 
-        protected virtual void DrawEnumField<T>(string name,ref T value)where T :System.Enum
+        protected virtual void DrawEnumField<T>(string name,ref T value)where T :Enum
         {          
             T _value = value;
             EditorGUI.BeginChangeCheck();

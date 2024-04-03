@@ -1,6 +1,4 @@
 ﻿using Invector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class vSnapToBody : MonoBehaviour

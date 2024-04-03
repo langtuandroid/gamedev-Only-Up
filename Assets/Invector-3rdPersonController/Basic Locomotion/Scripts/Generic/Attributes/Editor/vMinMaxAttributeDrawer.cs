@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
-using System.Reflection;
 
 [CustomPropertyDrawer(typeof(vMinMaxAttribute))]
 public class vMinMaxAttributeDrawer : PropertyDrawer
@@ -50,7 +47,8 @@ public class vMinMaxAttributeDrawer : PropertyDrawer
            
             return EditorGUIUtility.singleLineHeight * (needLine ? 2:1f);
         }
-        else return base.GetPropertyHeight(property, label) ;
+
+        return base.GetPropertyHeight(property, label) ;
 
     }
     bool needLine;

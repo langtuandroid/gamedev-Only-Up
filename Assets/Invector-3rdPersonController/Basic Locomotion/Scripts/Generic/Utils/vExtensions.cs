@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Invector
 {
@@ -118,7 +119,7 @@ namespace Invector
 
 
 
-        public static float GetLenght(this UnityEngine.AI.NavMeshPath path)
+        public static float GetLenght(this NavMeshPath path)
         {
             float lenght = 0;
             if (path != null && path.corners.Length > 1)
@@ -225,10 +226,8 @@ namespace Invector
             {
                 return false;
             }
-            else
-            {
-                return obj.Equals(target);
-            }
+
+            return obj.Equals(target);
         }
 
         static Transform FindChildByNameRecursive(this Transform me, string name)
@@ -311,7 +310,7 @@ namespace Invector
         public static string ToStringColor(this bool value)
         {
             if (value) return "<color=green>YES</color>";
-            else return "<color=red>NO</color>";
+            return "<color=red>NO</color>";
         }
 
         public static float ClampAngle(float angle, float min, float max)
@@ -512,7 +511,7 @@ namespace Invector
 
         public static float GetNormalizedTime(this Animator animator, int layer, int round = 2)
         {
-            return (float)System.Math.Round(((animator.IsInTransition(layer) ? animator.GetNextAnimatorStateInfo(layer).normalizedTime : animator.GetCurrentAnimatorStateInfo(layer).normalizedTime)%1), round);
+            return (float)Math.Round(((animator.IsInTransition(layer) ? animator.GetNextAnimatorStateInfo(layer).normalizedTime : animator.GetCurrentAnimatorStateInfo(layer).normalizedTime)%1), round);
         }
     }
 }

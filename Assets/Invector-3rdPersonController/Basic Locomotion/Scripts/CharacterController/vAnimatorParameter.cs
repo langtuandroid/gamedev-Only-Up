@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+
 namespace Invector
 {
     /// <summary>
@@ -11,8 +13,7 @@ namespace Invector
         public static implicit operator int(vAnimatorParameter a)
         {
             if (a.isValid) return a._parameter.nameHash;
-            else
-                return -1;
+            return -1;
         }
 
         public readonly bool isValid;
@@ -22,10 +23,10 @@ namespace Invector
             if (animator && animator.ContainsParameter(parameter))
             {
                 _parameter = animator.GetValidParameter(parameter);
-                this.isValid = true;
+                isValid = true;
             }
 
-            else this.isValid = false;
+            else isValid = false;
         }
        
     }
@@ -48,7 +49,7 @@ namespace Invector
             {
                 return null;
             }
-            return System.Array.Find(animator.parameters, p => p.name.Equals(paramenterName));
+            return Array.Find(animator.parameters, p => p.name.Equals(paramenterName));
         }
         public static bool GetValidParameter(this Animator animator,string paramenterName, out AnimatorControllerParameter parameter)
         {
@@ -68,7 +69,7 @@ namespace Invector
             {
                 return false;
             }
-            return System.Array.Exists(animator.parameters,p=>p.name.Equals(paramenterName));
+            return Array.Exists(animator.parameters,p=>p.name.Equals(paramenterName));
         }
         /// <summary>
         /// Check if Animator has specific paramenter
@@ -83,7 +84,7 @@ namespace Invector
             {
                 return false;
             }
-            return System.Array.Exists(animator.parameters, p => p.name.Equals(parameterName) && p.type.Equals(parameterType)); ;
+            return Array.Exists(animator.parameters, p => p.name.Equals(parameterName) && p.type.Equals(parameterType)); ;
         }
     }
 }

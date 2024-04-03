@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Invector.vEventSystems
@@ -8,7 +9,7 @@ namespace Invector.vEventSystems
     {
         public GUISkin skin;
         Rect buttonRect;
-        protected virtual string[] propertiesExcluded => new string[] { "tags", "stateInfos" };
+        protected virtual string[] propertiesExcluded => new[] { "tags", "stateInfos" };
 
         public override void OnInspectorGUI()
         {
@@ -19,7 +20,7 @@ namespace Invector.vEventSystems
             var tags = serializedObject.FindProperty("tags");
             if (GUILayout.Button("Add New Tag", EditorStyles.miniButton, GUILayout.ExpandWidth(true)))
             {
-                PopupWindow.Show(buttonRect, new TagListPopup((string value) => { Undo.RecordObject(serializedObject.targetObject, "Add Tag"); AddTag(tags, value); serializedObject.ApplyModifiedProperties(); }));
+                PopupWindow.Show(buttonRect, new TagListPopup(value => { Undo.RecordObject(serializedObject.targetObject, "Add Tag"); AddTag(tags, value); serializedObject.ApplyModifiedProperties(); }));
             }
             if (Event.current.type == EventType.Repaint) buttonRect = GUILayoutUtility.GetLastRect();
 
@@ -73,9 +74,9 @@ namespace Invector.vEventSystems
         public class TagListPopup : PopupWindowContent
         {
             Vector2 scrollview;
-            System.Action<string> onSelect;
+            Action<string> onSelect;
             GUIStyle style;
-            public TagListPopup(System.Action<string> onSelect)
+            public TagListPopup(Action<string> onSelect)
             {
                 this.onSelect = onSelect;
                 style = new GUIStyle(GUI.skin.box);

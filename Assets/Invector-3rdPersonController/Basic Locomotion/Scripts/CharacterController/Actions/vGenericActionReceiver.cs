@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Invector;
+﻿using System.Collections.Generic;
+using UnityEngine.Events;
+
 namespace Invector.vCharacterController.vActions
 {
     /// <summary>
@@ -12,12 +11,12 @@ namespace Invector.vCharacterController.vActions
     [vClassHeader("Action Receiver")]
     public class vGenericActionReceiver : vMonoBehaviour
     {
-        public List<string> supportedActionNames = new List<string>() { "Action" };
-        public UnityEngine.Events.UnityEvent onEnterTriggerAction;
-        public UnityEngine.Events.UnityEvent onExitTriggerAction;
-        public UnityEngine.Events.UnityEvent onStartAction;
-        public UnityEngine.Events.UnityEvent onCancelAction;
-        public UnityEngine.Events.UnityEvent onEndAction; 
+        public List<string> supportedActionNames = new List<string> { "Action" };
+        public UnityEvent onEnterTriggerAction;
+        public UnityEvent onExitTriggerAction;
+        public UnityEvent onStartAction;
+        public UnityEvent onCancelAction;
+        public UnityEvent onEndAction; 
         
         private void Start()
         {
@@ -46,7 +45,7 @@ namespace Invector.vCharacterController.vActions
 
         protected virtual bool IsValidAction(vTriggerGenericAction actionInfo)
         {
-            bool isValid = this.enabled && this.gameObject.activeInHierarchy && actionInfo != null && supportedActionNames.Contains(actionInfo.actionName);           
+            bool isValid = enabled && gameObject.activeInHierarchy && actionInfo != null && supportedActionNames.Contains(actionInfo.actionName);           
             return isValid;
         }
 

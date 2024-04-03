@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Invector.IK
 {
-    [System.Serializable]
+    [Serializable]
     public class vIKSolver
     {
         public Transform rootTransform;
@@ -40,7 +41,7 @@ namespace Invector.IK
         public vIKSolver(Animator animator, AvatarIKGoal ikGoal)
         {
             if (animator == null) { return; }
-            this.rootTransform = animator.transform;
+            rootTransform = animator.transform;
             if (animator.isHuman)
             {
                 switch (ikGoal)
@@ -196,7 +197,7 @@ namespace Invector.IK
 
             // Rotate the bone transformations to align correctly
             Quaternion upperarmRotation = Quaternion.FromToRotation(middleBone.position - rootBone.position, middleBonePos - rootBone.position) * rootBone.rotation;
-            if (!(System.Single.IsNaN(upperarmRotation.x) || System.Single.IsNaN(upperarmRotation.y) || System.Single.IsNaN(upperarmRotation.z)))
+            if (!(Single.IsNaN(upperarmRotation.x) || Single.IsNaN(upperarmRotation.y) || Single.IsNaN(upperarmRotation.z)))
             {
                 //Rotate with transition
                 rootBone.rotation = Quaternion.Slerp(rootBone.rotation, upperarmRotation, ikWeight);

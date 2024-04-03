@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ using UnityEngine;
 /// TagMask allow you to display the Tags popup menu in the inspector.
 /// Will Create a list of tags like a LayerMask inspector.
 /// </summary>
-[System.Serializable]
+[Serializable]
 public class vTagMask:IList<string>
 {   
     [SerializeField]
@@ -24,7 +25,7 @@ public class vTagMask:IList<string>
 
     public vTagMask(params string[] arg)
     {
-        this.tags = new List<string>(arg);
+        tags = new List<string>(arg);
     }    
 
     public bool Contains(string tag)

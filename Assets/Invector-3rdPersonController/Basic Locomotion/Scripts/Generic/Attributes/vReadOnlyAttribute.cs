@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
+
 namespace Invector
 {
-    [System.AttributeUsage(System.AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
     public class vReadOnlyAttribute : PropertyAttribute
     {
         public readonly bool justInPlayMode;

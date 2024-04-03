@@ -5,8 +5,8 @@ using UnityEngine;
 public class vBarDisplayAttributeDrawer : PropertyDrawer
 {
     Gradient g = new Gradient();
-    GradientColorKey[] gck = new GradientColorKey[] { new GradientColorKey(Color.red, 0), new GradientColorKey(Color.yellow, 0.75f), new GradientColorKey(Color.green, 1) };
-    GradientAlphaKey[] gak = new GradientAlphaKey[] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) };
+    GradientColorKey[] gck = { new GradientColorKey(Color.red, 0), new GradientColorKey(Color.yellow, 0.75f), new GradientColorKey(Color.green, 1) };
+    GradientAlphaKey[] gak = { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) };
     Rect rectA;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -75,6 +75,6 @@ public class vBarDisplayAttributeDrawer : PropertyDrawer
         var atrbt = attribute as vBarDisplayAttribute;
         if (atrbt.showJuntInPlayMode && !Application.isPlaying)
             return base.GetPropertyHeight(property, label);
-        else return (base.GetPropertyHeight(property, label) * 2f) + 5;
+        return (base.GetPropertyHeight(property, label) * 2f) + 5;
     }
 }

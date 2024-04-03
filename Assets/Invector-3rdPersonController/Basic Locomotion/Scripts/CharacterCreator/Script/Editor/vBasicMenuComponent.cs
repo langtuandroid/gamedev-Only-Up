@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using UnityEditor;
-using Invector.Utils;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Invector.vCharacterController.vActions
 {
     // BASIC FEATURES
-    public partial class vMenuComponent
+    public class vMenuComponent
     {
         [MenuItem("GameObject/Invector/Utils/Create SimpleTrigger", false)]
         static void AddSimpleTrigger()

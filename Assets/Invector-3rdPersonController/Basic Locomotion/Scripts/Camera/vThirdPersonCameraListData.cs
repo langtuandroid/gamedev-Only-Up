@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+
 namespace Invector
 {
-    [System.Serializable]
+    [Serializable]
     public class vThirdPersonCameraListData : ScriptableObject
     {
         [SerializeField] public string Name;

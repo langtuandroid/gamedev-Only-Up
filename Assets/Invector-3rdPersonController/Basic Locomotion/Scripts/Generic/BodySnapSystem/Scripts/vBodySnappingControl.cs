@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using UnityEngine;
 
 namespace Invector
 {
@@ -31,7 +33,7 @@ namespace Invector
             AssetDatabase.SaveAssets();
             SerializedObject serializedObj = new SerializedObject(this);
 
-            this.bodyStruct = newBodyStruct;
+            bodyStruct = newBodyStruct;
             serializedObj.ApplyModifiedProperties();
         }
 #endif
@@ -150,14 +152,14 @@ namespace Invector
             return contains;
         }
 
-        [System.Serializable]
+        [Serializable]
         public class vBoneTransformSnapping
         {
             public string name;
             public Transform bone;
             public Transform target;
             public Orientation orientation;
-            public UnityEngine.Events.UnityEvent onSnap;
+            public UnityEvent onSnap;
 #if UNITY_EDITOR
             [SerializeField]
             private bool showProperties;

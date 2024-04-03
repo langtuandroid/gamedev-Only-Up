@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,8 +13,8 @@ namespace Invector
 
         [vEditorToolbar("Health", order = 0)]
         [SerializeField][vReadOnly] protected bool _isDead;
-        [vBarDisplay("_maxHealth", false)][SerializeField] protected float _currentHealth;
-        public bool isImmortal = false;
+        [vBarDisplay("_maxHealth")][SerializeField] protected float _currentHealth;
+        public bool isImmortal;
         [vHelpBox("If you want to start with different value, uncheck this and make sure that the current health has a value greater zero")]
         public bool fillHealthOnStart = true;
         [SerializeField] protected int _maxHealth = 100;
@@ -74,9 +75,9 @@ namespace Invector
             }
         }
 
-        [SerializeField] protected float _healthRecovery = 0;
+        [SerializeField] protected float _healthRecovery;
         public virtual float healthRecovery { get { return _healthRecovery; } set { _healthRecovery = value; } }
-        [SerializeField] protected float _healthRecoveryDelay = 0f;
+        [SerializeField] protected float _healthRecoveryDelay;
         public virtual float healthRecoveryDelay { get { return _healthRecoveryDelay; } set { _healthRecoveryDelay = value; } }
         protected float _currentHealthRecoveryDelay;
         public virtual float currentHealthRecoveryDelay { get { return _currentHealthRecoveryDelay; } set { _currentHealthRecoveryDelay = value; } }
@@ -228,11 +229,11 @@ namespace Invector
             {
                 events[i].OnCheckHealth.Invoke();
             }
-            if (currentHealth < maxHealth && this.gameObject.activeInHierarchy && !inHealthRecovery)
+            if (currentHealth < maxHealth && gameObject.activeInHierarchy && !inHealthRecovery)
                 StartCoroutine(RecoverHealth());
         }
 
-        [System.Serializable]
+        [Serializable]
         public class CheckHealthEvent
         {
             public int healthToCheck;
@@ -247,10 +248,10 @@ namespace Invector
 
             public HealthCompare healthCompare = HealthCompare.Equals;
 
-            public UnityEngine.Events.UnityEvent OnCheckHealth;
+            public UnityEvent OnCheckHealth;
         }
 
-        [System.Serializable]
+        [Serializable]
         public class ValueChangedEvent : UnityEvent<float>
         {
 

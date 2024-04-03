@@ -1,4 +1,6 @@
-﻿namespace Invector
+﻿using UnityEngine;
+
+namespace Invector
 {
     public class vAnimatorSetBool : vAnimatorSetValue<bool>
     {      
@@ -8,11 +10,11 @@
 
         protected override bool GetEnterValue()
         {
-            return randomEnter ? UnityEngine.Random.Range(0,100)>50 : base.GetEnterValue();
+            return randomEnter ? Random.Range(0,100)>50 : base.GetEnterValue();
         }
         protected override bool GetExitValue()
         {
-            return randomExit ? UnityEngine.Random.Range(0, 100)>50 : base.GetExitValue();
+            return randomExit ? Random.Range(0, 100)>50 : base.GetExitValue();
         }
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

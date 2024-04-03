@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ public class vDebugUtils : MonoBehaviour
             this.startTime = startTime;
             this.messageType = messageType;
             this.duration = duration;
-            timeString = System.DateTime.Now.ToString(@"HH\:mm\:ss");
+            timeString = DateTime.Now.ToString(@"HH\:mm\:ss");
         }
         public bool isAlive => startTime+duration > Time.time;
     }

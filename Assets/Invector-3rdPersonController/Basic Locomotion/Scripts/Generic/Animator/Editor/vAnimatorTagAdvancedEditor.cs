@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using UnityEditor;
+using UnityEngine;
 
 namespace Invector.vEventSystems
 {
@@ -33,8 +32,8 @@ namespace Invector.vEventSystems
                     GUILayout.EndHorizontal();
                     if(GUI.changed)
                     {
-                        minMax.x =(float) System.Math.Round(minMax.x, 2);
-                        minMax.y = (float)System.Math.Round(minMax.y, 2);
+                        minMax.x =(float) Math.Round(minMax.x, 2);
+                        minMax.y = (float)Math.Round(minMax.y, 2);
                         normalizedTime.vector2Value = minMax;
                     }
                     break;
@@ -46,7 +45,7 @@ namespace Invector.vEventSystems
                     if (GUI.changed)
                     {
                         minMax.x = 0;
-                        minMax.y = (float)System.Math.Round(minMax.y, 2);
+                        minMax.y = (float)Math.Round(minMax.y, 2);
                         normalizedTime.vector2Value = minMax;
                     }
                     break;
@@ -56,7 +55,7 @@ namespace Invector.vEventSystems
                     minMax.x = EditorGUILayout.Slider(minMax.x, 0, 1f);
                     if (GUI.changed)
                     {
-                        minMax.x = (float)System.Math.Round(minMax.x, 2);
+                        minMax.x = (float)Math.Round(minMax.x, 2);
                         minMax.y = 0;
                         normalizedTime.vector2Value = minMax;
                     }

@@ -1,20 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-[RequireComponent(typeof(UnityEngine.UI.Text))]
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(Text))]
 public class vScorePointDisplay : MonoBehaviour
 {
-    [SerializeField] protected UnityEngine.UI.Text _display;
+    [SerializeField] protected Text _display;
     public string stringFormat;
-    public UnityEngine.UI.InputField.OnChangeEvent onChangeDisplayText;
+    public InputField.OnChangeEvent onChangeDisplayText;
 
     bool withOutDisplay;
-    public UnityEngine.UI.Text display
+    public Text display
     {
         get
         {
             if (withOutDisplay) return null;
-            if (_display == null && !withOutDisplay) _display = GetComponent<UnityEngine.UI.Text>();
+            if (_display == null && !withOutDisplay) _display = GetComponent<Text>();
 
             if (_display == null) withOutDisplay = true;
             return _display;

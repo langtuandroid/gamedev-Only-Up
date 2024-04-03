@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
 namespace Invector.Utils
 {
     public class vTimerCounter : MonoBehaviour
@@ -7,11 +10,11 @@ namespace Invector.Utils
         public float targetTime;
         public bool normalizeResult;
         [SerializeField, vReadOnly]
-        protected float timerResult = 0;
-        public bool startTimerOnStart = false;
+        protected float timerResult;
+        public bool startTimerOnStart;
 
-        public UnityEngine.Events.UnityEvent onStart, onPause, onStop, onFinish;
-        public UnityEngine.UI.Slider.SliderEvent onTimerUpdated;
+        public UnityEvent onStart, onPause, onStop, onFinish;
+        public Slider.SliderEvent onTimerUpdated;
 
         protected float currentTime;
         protected Coroutine timerRoutine;

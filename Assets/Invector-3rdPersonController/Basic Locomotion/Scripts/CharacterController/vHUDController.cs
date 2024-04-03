@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gameplay;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Invector.vCharacterController
@@ -55,7 +56,7 @@ namespace Invector.vCharacterController
             {
                 if (_instance == null)
                 {
-                    _instance = GameObject.FindObjectOfType<vHUDController>();
+                    _instance = FindObjectOfType<vHUDController>();
                     //Tell unity not to destroy this object when loading a new scene
                     //DontDestroyOnLoad(_instance.gameObject);
                 }
@@ -70,7 +71,7 @@ namespace Invector.vCharacterController
                 debugText = debugPanel.GetComponentInChildren<Text>();
         }
 
-        public void Init(vThirdPersonController cc)
+        public void Init(OUThirdPersonController cc)
         {
             cc.onDead.AddListener(OnDead);
             cc.onReceiveDamage.AddListener(EnableDamageSprite);
@@ -100,9 +101,9 @@ namespace Invector.vCharacterController
             ShowText("You are Dead!");
         }
 
-        public virtual void UpdateHUD(vThirdPersonController cc)
+        public virtual void UpdateHUD(OUThirdPersonController cc)
         {
-            UpdateDebugWindow(cc);
+            // UpdateDebugWindow(cc);
             UpdateSliders(cc);
             ChangeInputDisplay();
             ShowDamageSprite();
@@ -151,7 +152,7 @@ namespace Invector.vCharacterController
             }
         }
 
-        void UpdateSliders(vThirdPersonController cc)
+        void UpdateSliders(OUThirdPersonController cc)
         {
             if (healthSlider != null)
             {
@@ -192,21 +193,21 @@ namespace Invector.vCharacterController
             damaged = true;
         }
 
-        void UpdateDebugWindow(vThirdPersonController cc)
-        {
-            if (cc.debugWindow)
-            {
-                if (debugPanel != null && !debugPanel.activeSelf)
-                    debugPanel.SetActive(true);
-                if (debugText)
-                    debugText.text = cc.DebugInfo();
-            }
-            else
-            {
-                if (debugPanel != null && debugPanel.activeSelf)
-                    debugPanel.SetActive(false);
-            }
-        }
+        // void UpdateDebugWindow(vThirdPersonController cc)
+        // {
+        //     if (cc.debugWindow)
+        //     {
+        //         if (debugPanel != null && !debugPanel.activeSelf)
+        //             debugPanel.SetActive(true);
+        //         if (debugText)
+        //             debugText.text = cc.DebugInfo();
+        //     }
+        //     else
+        //     {
+        //         if (debugPanel != null && debugPanel.activeSelf)
+        //             debugPanel.SetActive(false);
+        //     }
+        // }
 
         void ChangeInputDisplay()
         {

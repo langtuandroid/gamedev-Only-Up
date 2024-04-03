@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 #if MOBILE_INPUT
 using UnityStandardAssets.CrossPlatformInput;
 #endif
@@ -77,10 +76,8 @@ namespace Invector.vCharacterController
                                                     return Input.GetTouch(0).deltaPosition;
 #endif
                         }
-                        else
-                        {
-                            return joystickMousePos;
-                        }
+
+                        return joystickMousePos;
 
                     default: return Input.mousePosition;
                 }
@@ -97,29 +94,23 @@ namespace Invector.vCharacterController
                     collider = null;
                     return Vector3.zero;
                 }
-                else
-                {
-                    mainCamera = Camera.main;
-                    collider = null;
-                    return Vector3.zero;
-                }
-            }
-            else
-            {
-                Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-                RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, mainCamera.farClipPlane, castLayer))
-                {
-                    collider = hit.collider;
-                    return hit.point;
-                }
-                else
-                {
-                    collider = null;
-                    return ray.GetPoint(mainCamera.farClipPlane);
-                }
+                mainCamera = Camera.main;
+                collider = null;
+                return Vector3.zero;
             }
+
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, mainCamera.farClipPlane, castLayer))
+            {
+                collider = hit.collider;
+                return hit.point;
+            }
+
+            collider = null;
+            return ray.GetPoint(mainCamera.farClipPlane);
         }
 
         public virtual bool CastWorldMousePosition(LayerMask castLayer,out RaycastHit hit,float distance =0)
@@ -132,28 +123,22 @@ namespace Invector.vCharacterController
                     hit = default;
                     return false;
                 }
-                else
-                {
-                    mainCamera = Camera.main;
-                    hit = default;
-                    return false;
-                }
+
+                mainCamera = Camera.main;
+                hit = default;
+                return false;
             }
-            else
-            {
-                Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
                
 
-                if (Physics.Raycast(ray, out hit,distance==0? mainCamera.farClipPlane:distance, castLayer))
-                {
-                    return true;
-                }
-                else
-                {
-                    hit = default;
-                    return false;
-                }
+            if (Physics.Raycast(ray, out hit,distance==0? mainCamera.farClipPlane:distance, castLayer))
+            {
+                return true;
             }
+
+            hit = default;
+            return false;
         }
 
         public virtual bool CastWorldMousePosition(LayerMask castLayer, out RaycastHit hit, float distance = 0,float radius =0f)
@@ -166,31 +151,25 @@ namespace Invector.vCharacterController
                     hit = default;
                     return false;
                 }
-                else
-                {
-                    mainCamera = Camera.main;
-                    hit = default;
-                    return false;
-                }
-            }
-            else
-            {
-                if(radius==0)
-                {
-                    return CastWorldMousePosition(castLayer, out hit, distance);
-                }
-                Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 
-                if (Physics.SphereCast(ray,radius, out hit, distance == 0 ? mainCamera.farClipPlane : distance, castLayer))
-                {
-                    return true;
-                }
-                else
-                {
-                    hit = default;
-                    return false;
-                }
+                mainCamera = Camera.main;
+                hit = default;
+                return false;
             }
+
+            if(radius==0)
+            {
+                return CastWorldMousePosition(castLayer, out hit, distance);
+            }
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+
+            if (Physics.SphereCast(ray,radius, out hit, distance == 0 ? mainCamera.farClipPlane : distance, castLayer))
+            {
+                return true;
+            }
+
+            hit = default;
+            return false;
         }
 
         public virtual Vector3 WorldMousePosition(LayerMask castLayer)
@@ -202,26 +181,20 @@ namespace Invector.vCharacterController
                     Debug.LogWarning("Trying to get the world mouse position but a MainCamera is missing from the scene");
                     return Vector3.zero;
                 }
-                else
-                {
-                    mainCamera = Camera.main;
-                    return Vector3.zero;
-                }
-            }
-            else
-            {
-                Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-                RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, mainCamera.farClipPlane, castLayer))
-                {
-                    return hit.point;
-                }
-                else
-                {
-                    return ray.GetPoint(mainCamera.farClipPlane);
-                }
+                mainCamera = Camera.main;
+                return Vector3.zero;
             }
+
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, mainCamera.farClipPlane, castLayer))
+            {
+                return hit.point;
+            }
+
+            return ray.GetPoint(mainCamera.farClipPlane);
         }
     }
 }

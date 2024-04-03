@@ -1,9 +1,11 @@
 ﻿
+using System;
+using Invector.vEventSystems;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Invector.vCharacterController
 {
-    using vEventSystems;
     public class vThirdPersonAnimator : vThirdPersonMotor
     {
         #region Variables       
@@ -147,7 +149,7 @@ namespace Invector.vCharacterController
                 }
                 else if (useTurnOnSpotAnim && inputMagnitude < 0.1f)
                 {
-                    animator.SetFloat(vAnimatorParameters.RotationMagnitude, (float)System.Math.Round(rotationMagnitude, 2), turnOnSpotSmooth, Time.fixedDeltaTime);
+                    animator.SetFloat(vAnimatorParameters.RotationMagnitude, (float)Math.Round(rotationMagnitude, 2), turnOnSpotSmooth, Time.fixedDeltaTime);
                 }
             }
         }

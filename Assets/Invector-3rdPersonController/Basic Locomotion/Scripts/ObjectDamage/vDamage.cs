@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+
 namespace Invector
 {
-    [System.Serializable]
+    [Serializable]
     public class vDamage
     {
         [Tooltip("Apply damage to the Character Health")]
@@ -24,52 +26,52 @@ namespace Invector
         public Vector3 hitPosition;
         public bool hitReaction = true;
         [HideInInspector]
-        public int recoil_id = 0;
+        public int recoil_id;
         [HideInInspector]
-        public int reaction_id = 0;
+        public int reaction_id;
         public string damageType;
         [HideInInspector] public Vector3 force;
 
         public vDamage()
         {
-            this.damageValue = 15;
-            this.staminaBlockCost = 5;
-            this.staminaRecoveryDelay = 1;
-            this.hitReaction = true;
+            damageValue = 15;
+            staminaBlockCost = 5;
+            staminaRecoveryDelay = 1;
+            hitReaction = true;
         }
 
         public vDamage(int value)
         {
-            this.damageValue = value;
-            this.hitReaction = true;
+            damageValue = value;
+            hitReaction = true;
         }
 
         public vDamage(int value, bool ignoreReaction)
         {
-            this.damageValue = value;
-            this.hitReaction = !ignoreReaction;
+            damageValue = value;
+            hitReaction = !ignoreReaction;
             if (ignoreReaction)
             {
-                this.recoil_id = -1;
-                this.reaction_id = -1;
+                recoil_id = -1;
+                reaction_id = -1;
             }                
         }
 
         public vDamage(vDamage damage)
         {
-            this.damageValue = damage.damageValue;
-            this.staminaBlockCost = damage.staminaBlockCost;
-            this.staminaRecoveryDelay = damage.staminaRecoveryDelay;
-            this.ignoreDefense = damage.ignoreDefense;
-            this.activeRagdoll = damage.activeRagdoll;
-            this.sender = damage.sender;
-            this.receiver = damage.receiver;
-            this.recoil_id = damage.recoil_id;
-            this.reaction_id = damage.reaction_id;
-            this.damageType = damage.damageType;
-            this.hitPosition = damage.hitPosition;
-            this.senselessTime = damage.senselessTime;
-            this.force = damage.force;
+            damageValue = damage.damageValue;
+            staminaBlockCost = damage.staminaBlockCost;
+            staminaRecoveryDelay = damage.staminaRecoveryDelay;
+            ignoreDefense = damage.ignoreDefense;
+            activeRagdoll = damage.activeRagdoll;
+            sender = damage.sender;
+            receiver = damage.receiver;
+            recoil_id = damage.recoil_id;
+            reaction_id = damage.reaction_id;
+            damageType = damage.damageType;
+            hitPosition = damage.hitPosition;
+            senselessTime = damage.senselessTime;
+            force = damage.force;
         }
 
         /// <summary>
@@ -78,8 +80,8 @@ namespace Invector
         /// <param name="damageReduction"></param>
         public void ReduceDamage(float damageReduction)
         {
-            int result = (int)(this.damageValue - ((this.damageValue * damageReduction) / 100));
-            this.damageValue = result;
+            int result = (int)(damageValue - ((damageValue * damageReduction) / 100));
+            damageValue = result;
         }
     }
 }

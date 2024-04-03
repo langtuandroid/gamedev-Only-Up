@@ -1,7 +1,8 @@
-﻿using Invector.vCharacterController;
-using System.Collections;
+﻿using System.Collections;
+using Invector.vCharacterController;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 namespace Invector.Utils
 {
 
@@ -76,8 +77,6 @@ namespace Invector.Utils
             //Set character position to target spawnPoint
             if (spawnPoint && targetCharacter)
             {
-               targetCharacter.lockCameraInput = true;
-
                 if (targetCharacter.tpCamera)
                 {
                     targetCharacter.tpCamera.FreezeCamera();
@@ -90,8 +89,6 @@ namespace Invector.Utils
                     targetCharacter.tpCamera.transform.parent = null;                 
                     targetCharacter.tpCamera.UnFreezeCamera();
                 }
-                targetCharacter.lockCameraInput = false;
-               
             }           
             
         }

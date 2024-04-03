@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace Invector.vCharacterController
 {
     [vClassHeader("Trigger Change Camera State", openClose = false)]
@@ -15,7 +16,7 @@ namespace Invector.vCharacterController
         public string customCameraPoint;
 
         public Color gizmoColor = Color.green;
-        private Component comp = null;
+        private Component comp;
 
         public vThirdPersonInput tpInput;
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace Invector
 {
     public static partial class vAnimatorTags

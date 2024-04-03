@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using System;
+using UnityEngine;
 #if MOBILE_INPUT
 using UnityStandardAssets.CrossPlatformInput;
 #endif
@@ -17,7 +17,7 @@ namespace Invector.vCharacterController
             {
                 if (_instance == null)
                 {
-                    _instance = GameObject.FindObjectOfType<vInput>();
+                    _instance = FindObjectOfType<vInput>();
                     if (_instance == null)
                     {
                         _instance = new GameObject("vInputType").AddComponent<vInput>();
@@ -50,13 +50,13 @@ namespace Invector.vCharacterController
 
         void OnGUI()
         {
-            inputDevice = InputDevice.MouseKeyboard;
-            if (hud != null)
-            {
-                hud.controllerInput = false;
-                hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f, 0.5f);
-            }
-            return;
+            // inputDevice = InputDevice.MouseKeyboard;
+            // // if (hud != null)
+            // // {
+            // //     hud.controllerInput = false;
+            // //     hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f);
+            // // }
+            // return;
             switch (inputDevice)
             {
                 case InputDevice.MouseKeyboard:
@@ -67,7 +67,7 @@ namespace Invector.vCharacterController
                         if (hud != null)
                         {
                             hud.controllerInput = true;
-                            hud.ShowText("Control scheme changed to Controller", 2f, 0.5f);
+                            hud.ShowText("Control scheme changed to Controller", 2f);
                         }
                     }
                     else if (isMobileInput())
@@ -76,7 +76,7 @@ namespace Invector.vCharacterController
                         if (hud != null)
                         {
                             hud.controllerInput = true;
-                            hud.ShowText("Control scheme changed to Mobile", 2f, 0.5f);
+                            hud.ShowText("Control scheme changed to Mobile", 2f);
                         }
                     }
                     break;
@@ -87,7 +87,7 @@ namespace Invector.vCharacterController
                         if (hud != null)
                         {
                             hud.controllerInput = false;
-                            hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f, 0.5f);
+                            hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f);
                         }
                     }
                     else if (isMobileInput())
@@ -96,7 +96,7 @@ namespace Invector.vCharacterController
                         if (hud != null)
                         {
                             hud.controllerInput = true;
-                            hud.ShowText("Control scheme changed to Mobile", 2f, 0.5f);
+                            hud.ShowText("Control scheme changed to Mobile", 2f);
                         }
                     }
                     break;
@@ -107,7 +107,7 @@ namespace Invector.vCharacterController
                         if (hud != null)
                         {
                             hud.controllerInput = false;
-                            hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f, 0.5f);
+                            hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f);
                         }
                     }
                     else if (isJoystickInput())
@@ -116,7 +116,7 @@ namespace Invector.vCharacterController
                         if (hud != null)
                         {
                             hud.controllerInput = true;
-                            hud.ShowText("Control scheme changed to Controller", 2f, 0.5f);
+                            hud.ShowText("Control scheme changed to Controller", 2f);
                         }
                     }
                     break;
@@ -214,9 +214,9 @@ namespace Invector.vCharacterController
         MouseKeyboard,
         Joystick,
         Mobile
-    };
+    }
 
-    [System.Serializable]
+    [Serializable]
     public class GenericInput
     {
         protected InputDevice inputDevice { get { return vInput.instance.inputDevice; } }
@@ -292,26 +292,14 @@ namespace Invector.vCharacterController
                 return value;
             }
         }
-
-        /// <summary>
-        /// Initialise a new GenericInput
-        /// </summary>
-        /// <param name="keyboard"></param>
-        /// <param name="joystick"></param>
-        /// <param name="mobile"></param>
+        
         public GenericInput(string keyboard, string joystick, string mobile)
         {
             this.keyboard = keyboard;
             this.joystick = joystick;
             this.mobile = mobile;
         }
-
-        /// <summary>
-        /// Initialise a new GenericInput
-        /// </summary>
-        /// <param name="keyboard"></param>
-        /// <param name="joystick"></param>
-        /// <param name="mobile"></param>
+        
         public GenericInput(string keyboard, bool keyboardAxis, string joystick, bool joystickAxis, string mobile, bool mobileAxis)
         {
             this.keyboard = keyboard;
@@ -321,77 +309,59 @@ namespace Invector.vCharacterController
             this.mobile = mobile;
             this.mobileAxis = mobileAxis;
         }
-
-        /// <summary>
-        /// Initialise a new GenericInput
-        /// </summary>
-        /// <param name="keyboard"></param>
-        /// <param name="joystick"></param>
-        /// <param name="mobile"></param>
+        
         public GenericInput(string keyboard, bool keyboardAxis, bool keyboardInvert, string joystick, bool joystickAxis, bool joystickInvert, string mobile, bool mobileAxis, bool mobileInvert)
         {
             this.keyboard = keyboard;
             this.keyboardAxis = keyboardAxis;
-            this.keyboardAxisInvert = keyboardInvert;
+            keyboardAxisInvert = keyboardInvert;
             this.joystick = joystick;
             this.joystickAxis = joystickAxis;
-            this.joystickAxisInvert = joystickInvert;
+            joystickAxisInvert = joystickInvert;
             this.mobile = mobile;
             this.mobileAxis = mobileAxis;
-            this.mobileAxisInvert = mobileInvert;
+            mobileAxisInvert = mobileInvert;
         }
-        /// <summary>
-        /// Button Name
-        /// </summary>
+        
         public string buttonName
         {
             get
             {
                 if (vInput.instance != null)
                 {
-                    if (vInput.instance.inputDevice == InputDevice.MouseKeyboard) return keyboard.ToString();
-                    else if (vInput.instance.inputDevice == InputDevice.Joystick) return joystick;
-                    else return mobile;
+                    if (vInput.instance.inputDevice == InputDevice.MouseKeyboard) return keyboard;
+                    if (vInput.instance.inputDevice == InputDevice.Joystick) return joystick;
+                    return mobile;
                 }
                 return string.Empty;
             }
         }
-
-        /// <summary>
-        /// Check if button is a Key
-        /// </summary>
+        
         public bool isKey
         {
             get
             {
                 if (vInput.instance != null && !isUnityInput)
                 {
-                    if (System.Enum.IsDefined(typeof(KeyCode), buttonName))
+                    if (Enum.IsDefined(typeof(KeyCode), buttonName))
                         return true;
                     //isUnityInput = true;
                 }
                 return false;
             }
         }
-
-        /// <summary>
-        /// Get <see cref="KeyCode"/> value
-        /// </summary>
+        
         public KeyCode key
         {
             get
             {
-                return (KeyCode)System.Enum.Parse(typeof(KeyCode), buttonName);
+                return (KeyCode)Enum.Parse(typeof(KeyCode), buttonName);
             }
         }
-
-        /// <summary>
-        /// Get Button
-        /// </summary>
-        /// <returns></returns>
+        
         public bool GetButton()
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (isAxis) return GetAxisButton();
 
             // mobile
@@ -403,7 +373,8 @@ namespace Invector.vCharacterController
                     return true;
             }
             // keyboard/mouse
-            else if (inputDevice == InputDevice.MouseKeyboard)
+
+            if (inputDevice == InputDevice.MouseKeyboard)
             {
                 if (isKey)
                 {
@@ -412,14 +383,14 @@ namespace Invector.vCharacterController
                 }
                 else
                 {
-                    if (Input.GetButton(this.buttonName))
+                    if (Input.GetButton(buttonName))
                         return true;
                 }
             }
             // joystick
             else if (inputDevice == InputDevice.Joystick)
             {
-                if (Input.GetButton(this.buttonName))
+                if (Input.GetButton(buttonName))
                     return true;
             }
             return false;
@@ -431,7 +402,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetButtonDown()
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (isAxis) return GetAxisButtonDown();
             // mobile
             if (inputDevice == InputDevice.Mobile)
@@ -442,7 +413,8 @@ namespace Invector.vCharacterController
                     return true;
             }
             // keyboard/mouse
-            else if (inputDevice == InputDevice.MouseKeyboard)
+
+            if (inputDevice == InputDevice.MouseKeyboard)
             {
                 if (isKey)
                 {
@@ -451,14 +423,14 @@ namespace Invector.vCharacterController
                 }
                 else
                 {
-                    if (Input.GetButtonDown(this.buttonName))
+                    if (Input.GetButtonDown(buttonName))
                         return true;
                 }
             }
             // joystick
             else if (inputDevice == InputDevice.Joystick)
             {
-                if (Input.GetButtonDown(this.buttonName))
+                if (Input.GetButtonDown(buttonName))
                     return true;
             }
             return false;
@@ -470,7 +442,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetButtonUp()
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (isAxis) return GetAxisButtonUp();
 
             // mobile
@@ -482,7 +454,8 @@ namespace Invector.vCharacterController
                     return true;
             }
             // keyboard/mouse
-            else if (inputDevice == InputDevice.MouseKeyboard)
+
+            if (inputDevice == InputDevice.MouseKeyboard)
             {
                 if (isKey)
                 {
@@ -491,14 +464,14 @@ namespace Invector.vCharacterController
                 }
                 else
                 {
-                    if (Input.GetButtonUp(this.buttonName))
+                    if (Input.GetButtonUp(buttonName))
                         return true;
                 }
             }
             // joystick
             else if (inputDevice == InputDevice.Joystick)
             {
-                if (Input.GetButtonUp(this.buttonName))
+                if (Input.GetButtonUp(buttonName))
                     return true;
             }
             return false;
@@ -510,7 +483,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public float GetAxis()
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName) || isKey) return 0;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName) || isKey) return 0;
 
             // mobile
             if (inputDevice == InputDevice.Mobile)
@@ -522,12 +495,12 @@ namespace Invector.vCharacterController
             // keyboard/mouse
             else if (inputDevice == InputDevice.MouseKeyboard)
             {
-                return Input.GetAxis(this.buttonName);
+                return Input.GetAxis(buttonName);
             }
             // joystick
             else if (inputDevice == InputDevice.Joystick)
             {
-                return Input.GetAxis(this.buttonName);
+                return Input.GetAxis(buttonName);
             }
             return 0;
         }
@@ -538,7 +511,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public float GetAxisRaw()
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName) || isKey) return 0;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName) || isKey) return 0;
 
             // mobile
             if (inputDevice == InputDevice.Mobile)
@@ -550,12 +523,12 @@ namespace Invector.vCharacterController
             // keyboard/mouse
             else if (inputDevice == InputDevice.MouseKeyboard)
             {
-                return Input.GetAxisRaw(this.buttonName);
+                return Input.GetAxisRaw(buttonName);
             }
             // joystick
             else if (inputDevice == InputDevice.Joystick)
             {
-                return Input.GetAxisRaw(this.buttonName);
+                return Input.GetAxisRaw(buttonName);
             }
             return 0;
         }
@@ -567,7 +540,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetDoubleButtonDown(float inputTime = 1)
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
 
 
             if (multTapCounter == 0 && GetButtonDown())
@@ -576,7 +549,8 @@ namespace Invector.vCharacterController
                 multTapCounter = 1;
                 return false;
             }
-            else if (multTapCounter == 1 && GetButtonDown())
+
+            if (multTapCounter == 1 && GetButtonDown())
             {
                 var time = multTapTimer + inputTime;
                 var valid = (Time.time < time);
@@ -584,7 +558,8 @@ namespace Invector.vCharacterController
                 multTapCounter = 0;
                 return valid;
             }
-            else if (multTapCounter == 1 && multTapTimer + inputTime < Time.time)
+
+            if (multTapCounter == 1 && multTapTimer + inputTime < Time.time)
             {
                 multTapTimer = 0;
                 multTapCounter = 0;
@@ -599,7 +574,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetButtonTimer(float inputTime = 2)
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (GetButtonDown() && !inButtomTimer)
             {
                 lastTimeTheButtonWasPressed = Time.time + 0.1f;
@@ -616,10 +591,8 @@ namespace Invector.vCharacterController
                     inButtomTimer = false;
                     return false;
                 }
-                else
-                {
-                    lastTimeTheButtonWasPressed = Time.time + 0.1f;
-                }
+
+                lastTimeTheButtonWasPressed = Time.time + 0.1f;
                 if (valid)
                 {
                     inButtomTimer = false;
@@ -636,7 +609,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetButtonTimer(ref float currentTimer, float inputTime = 2)
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (GetButtonDown() && !inButtomTimer)
             {
                 lastTimeTheButtonWasPressed = Time.time + 0.1f;
@@ -654,10 +627,8 @@ namespace Invector.vCharacterController
                     inButtomTimer = false;
                     return false;
                 }
-                else
-                {
-                    lastTimeTheButtonWasPressed = Time.time + 0.1f;
-                }
+
+                lastTimeTheButtonWasPressed = Time.time + 0.1f;
                 if (valid)
                 {
                     inButtomTimer = false;
@@ -674,7 +645,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetButtonTimer(ref float currentTimer, ref bool upAfterPressed, float inputTime = 2)
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (GetButtonDown())
             {
                 lastTimeTheButtonWasPressed = Time.time + 0.1f;
@@ -693,11 +664,9 @@ namespace Invector.vCharacterController
                     upAfterPressed = true;
                     return false;
                 }
-                else
-                {
-                    upAfterPressed = false;
-                    lastTimeTheButtonWasPressed = Time.time + 0.1f;
-                }
+
+                upAfterPressed = false;
+                lastTimeTheButtonWasPressed = Time.time + 0.1f;
                 if (valid)
                 {
                     inButtomTimer = false;
@@ -714,13 +683,14 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetAxisButton(float value = 0.5f)
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (isAxisInvert) value *= -1f;
             if (value > 0)
             {
                 return GetAxisRaw() >= value;
             }
-            else if (value < 0)
+
+            if (value < 0)
             {
                 return GetAxisRaw() <= value;
             }
@@ -734,7 +704,7 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetAxisButtonDown(float value = 0.5f)
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (isAxisInvert) value *= -1f;
             if (value > 0)
             {
@@ -743,7 +713,8 @@ namespace Invector.vCharacterController
                     isAxisInUse = true;
                     return true;
                 }
-                else if (isAxisInUse && GetAxisRaw() == 0)
+
+                if (isAxisInUse && GetAxisRaw() == 0)
                 {
                     isAxisInUse = false;
                 }
@@ -755,7 +726,8 @@ namespace Invector.vCharacterController
                     isAxisInUse = true;
                     return true;
                 }
-                else if (isAxisInUse && GetAxisRaw() == 0)
+
+                if (isAxisInUse && GetAxisRaw() == 0)
                 {
                     isAxisInUse = false;
                 }
@@ -769,13 +741,14 @@ namespace Invector.vCharacterController
         /// <returns></returns>
         public bool GetAxisButtonUp()
         {
-            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(this.buttonName)) return false;
+            if (string.IsNullOrEmpty(buttonName) || !IsButtonAvailable(buttonName)) return false;
             if (isAxisInUse && GetAxisRaw() == 0)
             {
                 isAxisInUse = false;
                 return true;
             }
-            else if (!isAxisInUse && GetAxisRaw() != 0)
+
+            if (!isAxisInUse && GetAxisRaw() != 0)
             {
                 isAxisInUse = true;
             }
@@ -791,7 +764,7 @@ namespace Invector.vCharacterController
                 Input.GetButton(buttonName);
                 return true;
             }
-            catch (System.Exception exc)
+            catch (Exception exc)
             {
                 Debug.LogWarning(" Failure to try access button :" + buttonName + "\n" + exc.Message);
                 return false;

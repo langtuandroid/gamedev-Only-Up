@@ -1,16 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Gameplay;
+using Invector.vCharacterController;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Invector
 {
-    using UnityEngine.Events;
-    using vCharacterController;
     [vClassHeader("Simple GameController Example", openClose = false)]
     public class vGameController : vMonoBehaviour
     {
-        [System.Serializable]
-        public class OnRealoadGame : UnityEngine.Events.UnityEvent { }
+        [Serializable]
+        public class OnRealoadGame : UnityEvent { }
         [vHelpBox("Assign your Character Prefab to be instantiate at the SpawnPoint, leave it unassigned to Restart the Scene instead")]
         public GameObject playerPrefab;
         [vHelpBox("Assign a empty transform to spawn the Player to a specific location")]
@@ -26,7 +28,7 @@ namespace Invector
         public OnRealoadGame OnReloadGame = new OnRealoadGame();
         [HideInInspector]
         public GameObject currentPlayer;
-        private vThirdPersonController currentController;
+        private OUThirdPersonController currentController;
         public static vGameController instance;
         private GameObject oldPlayer;
 
@@ -40,14 +42,14 @@ namespace Invector
                 instance = this;
                 if (dontDestroyOnLoad)
                 {
-                    DontDestroyOnLoad(this.gameObject);
+                    DontDestroyOnLoad(gameObject);
                 }
 
-                this.gameObject.name = gameObject.name + " Instance";
+                gameObject.name = gameObject.name + " Instance";
             }
             else
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
                 return;
             }
 
@@ -132,7 +134,7 @@ namespace Invector
                 yield return new WaitForEndOfFrame();
 
                 currentPlayer = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-                currentController = currentPlayer.GetComponent<vThirdPersonController>();
+                currentController = currentPlayer.GetComponent<OUThirdPersonController>();
                 currentController.onDead.AddListener(OnCharacterDead);
 
                 if (displayInfoInFadeText && vHUDController.instance)
@@ -172,7 +174,7 @@ namespace Invector
 
         protected virtual void FindPlayer()
         {
-            var player = GameObject.FindObjectOfType<vThirdPersonController>();
+            var player = FindObjectOfType<OUThirdPersonController>();
 
             if (player)
             {
@@ -268,7 +270,7 @@ namespace Invector
                 }
 
                 currentPlayer = Instantiate(playerPrefab, targetPoint.position, targetPoint.rotation);
-                currentController = currentPlayer.GetComponent<vThirdPersonController>();
+                currentController = currentPlayer.GetComponent<OUThirdPersonController>();
                 currentController.onDead.AddListener(OnCharacterDead);
                 OnReloadGame.Invoke();
 
@@ -309,7 +311,7 @@ namespace Invector
                 }
 
                 currentPlayer = Instantiate(prefab, targetPoint.position, targetPoint.rotation);
-                currentController = currentPlayer.GetComponent<vThirdPersonController>();
+                currentController = currentPlayer.GetComponent<OUThirdPersonController>();
                 currentController.onDead.AddListener(OnCharacterDead);
                 OnReloadGame.Invoke();
 

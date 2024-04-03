@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Invector.IK
 {
-    using Invector;
     /// <summary>
     /// Class that  helps to Align arm to a position using a <seealso cref="aimReference"/> 
     /// </summary>
@@ -97,7 +97,7 @@ namespace Invector.IK
         /// <summary>
         /// Check if the Arm is valid (all necessary transforms is assigned)
         /// </summary>
-        public bool IsValid => this.upperArm && this.foreArm && this.hand && this.aimReference;
+        public bool IsValid => upperArm && foreArm && hand && aimReference;
 
         /// <summary>
         /// Update Arm to use default animation alignment
@@ -194,7 +194,7 @@ namespace Invector.IK
         /// <param name="weight">alignment weight (0~1)</param>
         protected virtual void AlignArmBone(Transform bone, Transform boneHelper, ref Quaternion smoothRotation, Vector3 targetPosition, float weight)
         {
-            if (!smoothIKAlignmentPoint && System.Math.Round(weight, 1) == 0)
+            if (!smoothIKAlignmentPoint && Math.Round(weight, 1) == 0)
             {
                 smoothRotation = Quaternion.identity;
                 return;

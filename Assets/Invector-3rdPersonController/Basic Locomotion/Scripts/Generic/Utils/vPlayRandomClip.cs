@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
 namespace Invector
 {
     [RequireComponent(typeof(AudioSource))]
@@ -15,7 +17,7 @@ namespace Invector
         void Start()
         {
             if (!audioSource) audioSource = GetComponent<AudioSource>();
-            Random.InitState(Random.Range(0, System.DateTime.Now.Millisecond));
+            Random.InitState(Random.Range(0, DateTime.Now.Millisecond));
             if (playOnStart)
             {
                 Play();

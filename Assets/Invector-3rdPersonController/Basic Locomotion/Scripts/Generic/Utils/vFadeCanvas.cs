@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Invector.Utils
 {
@@ -9,8 +11,8 @@ namespace Invector.Utils
         public CanvasGroup group;
 
         public float fadeSpeed = 2f;
-        public UnityEngine.Events.UnityEvent onStartFadeIn, onFinishFadeIn, onStartFadeOut, onFinishFadeOut;
-        public UnityEngine.UI.Slider.SliderEvent OnChangeValue;
+        public UnityEvent onStartFadeIn, onFinishFadeIn, onStartFadeOut, onFinishFadeOut;
+        public Slider.SliderEvent OnChangeValue;
         public bool autoControlCanvasGroup;
         public bool fadeInStart;
         public bool fadeOutStart;
