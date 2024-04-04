@@ -1,3 +1,5 @@
+using System.Collections;
+using Invector.vCharacterController;
 using Managers;
 using UI;
 using UnityEngine;
@@ -41,13 +43,31 @@ namespace Gameplay
                 OUGameManager.IsPlayerDead = true;
             }
         }
+
+        private bool _isRespawning;
         
         public void OnCheckpointRespawnClick()
         {
+            if (_isRespawning) return;
              Time.timeScale = 1;
+             _thirdPersonController.isDead = false;
              OUGameManager.IsPlayerDead = false;
              transform.position = _lastCheckpointPosition;
-             OUGameUIController.Instance.DisableRespawnPanel();
+             StartCoroutine(MoveTopCheckpointPos());
+        }
+
+        private IEnumerator MoveTopCheckpointPos()
+        {
+            _isRespawning = true;
+            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForFixedUpdate();
+            yield return new WaitForEndOfFrame();
+            _thirdPersonController.GetComponent<vThirdPersonInput>().SetLockAllInput(false);
+            StartCoroutine(_thirdPersonController.GetComponent<vThirdPersonInput>().CharacterInit());
+            _thirdPersonController.Init();
+            yield return new WaitForSeconds(0.5f);
+            OUGameUIController.Instance.DisableRespawnPanel();
+            _isRespawning = false;
         }
     }
 }

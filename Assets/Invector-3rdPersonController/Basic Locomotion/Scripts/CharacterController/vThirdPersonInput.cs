@@ -108,7 +108,7 @@ namespace Invector.vCharacterController
             EnableOnAnimatorMove();
         }
 
-        protected virtual IEnumerator CharacterInit()
+        public virtual IEnumerator CharacterInit()
         {
             FindCamera();
             yield return new WaitForEndOfFrame();

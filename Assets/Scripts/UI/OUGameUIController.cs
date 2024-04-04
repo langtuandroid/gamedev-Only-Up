@@ -32,7 +32,7 @@ namespace UI
         private void Awake()
         {
             Instance = this;
-            _energyAmount = PlayerPrefs.GetInt("Energy", 0);
+            EnergyAmount = PlayerPrefs.GetInt("Energy", 0);
             _respawnPanel.SetActive(false);
             _pausePanel.SetActive(false);
             OUAudioManager.Instance.BackgroundMusicSource.Play();
