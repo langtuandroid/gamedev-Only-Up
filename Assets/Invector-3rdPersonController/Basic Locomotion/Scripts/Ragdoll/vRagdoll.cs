@@ -98,7 +98,7 @@ namespace Invector.vCharacterController
                         }
 
                         //Remember some key positions
-                        ragdolledFeetPosition = 0.5f * (animator.GetBoneTransform(HumanBodyBones.LeftToes).position + animator.GetBoneTransform(HumanBodyBones.RightToes).position);
+                        ragdolledFeetPosition = Vector3.zero;//0.5f * (animator.GetBoneTransform(HumanBodyBones.LeftToes).position + animator.GetBoneTransform(HumanBodyBones.RightToes).position);
                         ragdolledHeadPosition = animator.GetBoneTransform(HumanBodyBones.Head).position;
                         ragdolledHipPosition = animator.GetBoneTransform(HumanBodyBones.Hips).position;
                         float lastlocalY = characterHips.TransformDirection(localY).y;
@@ -475,6 +475,7 @@ namespace Invector.vCharacterController
             yield return new WaitForSeconds(delay);
             while (rdStabilize > (iChar != null && iChar.isDead ? 0.0001f : 0.1f))
             {
+                break;
                 if (animator != null && !animator.isActiveAndEnabled)
                 {
                     rdStabilize = characterChest.GetComponent<Rigidbody>().velocity.magnitude;

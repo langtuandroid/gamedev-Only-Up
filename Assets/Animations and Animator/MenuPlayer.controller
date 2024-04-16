@@ -17,7 +17,7 @@ AnimatorStateMachine:
     m_Position: {x: 198.42967, y: 271.1667, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2105084206159494268}
-    m_Position: {x: 304.67126, y: 353.55814, z: 0}
+    m_Position: {x: 300, y: 350, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -35,7 +35,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mixamo_com
+  m_Name: IdleStart
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -110,7 +110,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mixamo_com
+  m_Name: Angry
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

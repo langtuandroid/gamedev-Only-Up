@@ -1,4 +1,3 @@
-using System.Collections;
 using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,85 +7,54 @@ namespace UI
 {
     public class OUMenuUIController : MonoBehaviour
     {
-        [SerializeField] private OUMenuUITweeningController _tweeningController;
-    
-        [SerializeField] private GameObject _playerModelReference;
-        [SerializeField] private Image _lowQualityButton;
-        [SerializeField] private Image _highQualityButton;
-        [SerializeField] private Text _energyText;
-        [SerializeField] private Color _activeButtonColor;
-        [SerializeField] private Color _disabledButtonColor;
-    
-        private int _currentGraphicsQuality;
-        private int _energyAmount;
+        [SerializeField] private GameObject _menuPanel;
+        [SerializeField] private GameObject _settingsPanel;
+        [SerializeField] private GameObject _shopPanel;
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _openMenuButton;
+        [SerializeField] private Button _openSettingsButton;
+        [SerializeField] private Button _openShopButton;
 
-        private void Awake()
-        {
-            _currentGraphicsQuality = PlayerPrefs.GetInt("DefaultGraphics", 1);
-
-            if(_currentGraphicsQuality == 1)
-            {
-                _highQualityButton.color = _activeButtonColor;
-                _lowQualityButton.color = _disabledButtonColor;
-                QualitySettings.SetQualityLevel(1);
-            }
-            else
-            {
-                _lowQualityButton.color = _activeButtonColor;
-                _highQualityButton.color = _disabledButtonColor;
-                QualitySettings.SetQualityLevel(0);
-            }
-        }
         private void Start()
         {
-            _energyAmount = PlayerPrefs.GetInt("Energy", 0);
-            _energyText.text = _energyAmount.ToString();
-        }
-    
-        public void OnPlayButtonClick()
-        {
-            StartCoroutine(OnPlayGame());
+            _menuPanel.SetActive(true);
+            _settingsPanel.SetActive(false);
+            _shopPanel.SetActive(false);
+            
+            _playButton.onClick.AddListener(OnPlayButtonClick);
+            _openMenuButton.onClick.AddListener(OnMenuButtonClick);
+            _openSettingsButton.onClick.AddListener(OnSettingButtonClick);
+            _openShopButton.onClick.AddListener(OnShopButtonClick);
         }
 
-        private IEnumerator OnPlayGame()
+        private void OnPlayButtonClick()
         {
-            OUAudioManager.Instance.PlayButtonSource.Play();
-            _tweeningController.FadeImageAnimation(false);
-            _playerModelReference.SetActive(false);
-            yield return new WaitForSeconds(1);
+            OUAudioManager.Instance.PlaySound();
             SceneManager.LoadScene(1);
         }
 
-        public void OnSettingButtonClick()
+        private void OnMenuButtonClick()
         {
-            OUAudioManager.Instance.ButtonClickSource.Play();
-            _tweeningController.OpenSettingPanel();
+            OUAudioManager.Instance.ClickSound();
+            _menuPanel.SetActive(true);
+            _settingsPanel.SetActive(false);
+            _shopPanel.SetActive(false);
         }
 
-        public void OnLowGraphicsButtonClick()
+        private void OnSettingButtonClick()
         {
-            OUAudioManager.Instance.ButtonClickSource.Play();
-            _lowQualityButton.color = _activeButtonColor;
-            _highQualityButton.color = _disabledButtonColor;
-            QualitySettings.SetQualityLevel(0);
-            PlayerPrefs.SetInt("DefaultGraphics", 0);
-            _playerModelReference.SetActive(true);
+            OUAudioManager.Instance.ClickSound();
+            _menuPanel.SetActive(false);
+            _settingsPanel.SetActive(true);
+            _shopPanel.SetActive(false);
         }
 
-        public void OnHighGraphicsButtonClick()
+        private void OnShopButtonClick()
         {
-            OUAudioManager.Instance.ButtonClickSource.Play();
-            _highQualityButton.color = _activeButtonColor;
-            _lowQualityButton.color = _disabledButtonColor;
-            QualitySettings.SetQualityLevel(1);
-            PlayerPrefs.SetInt("DefaultGraphics", 1);
-            _playerModelReference.SetActive(true);
-        }
-
-        public void OnCloseSettingButtonClick()
-        {
-            OUAudioManager.Instance.ButtonClickSource.Play();
-            _tweeningController.CloseSettingsPanel();
+            OUAudioManager.Instance.ClickSound();
+            _menuPanel.SetActive(false);
+            _settingsPanel.SetActive(false);
+            _shopPanel.SetActive(true);
         }
     }
 }

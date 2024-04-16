@@ -35,7 +35,6 @@ namespace UI
             EnergyAmount = PlayerPrefs.GetInt("Energy", 0);
             _respawnPanel.SetActive(false);
             _pausePanel.SetActive(false);
-            OUAudioManager.Instance.BackgroundMusicSource.Play();
         }
 
         public void OnGameOver() => StartCoroutine(GameOverCoroutine());
@@ -49,7 +48,7 @@ namespace UI
 
         public void OnCloseButtonClick()
         {
-            OUAudioManager.Instance.ButtonClickSource.Play();
+            OUAudioManager.Instance.ClickSound();
             Time.timeScale = 1;
             OUGameManager.IsPlayerDead = false;
             _respawnPanel.SetActive(false);
@@ -58,31 +57,28 @@ namespace UI
 
         public void OnPauseButtonClick()
         {
-            OUAudioManager.Instance.BackgroundMusicSource.Pause();
-            OUAudioManager.Instance.ButtonClickSource.Play();
+            OUAudioManager.Instance.ClickSound();
             _pausePanel.SetActive(true);
             Time.timeScale = 0;
         }
 
         public void OnResumeButtonClick()
         {
-            OUAudioManager.Instance.BackgroundMusicSource.Play();
-            OUAudioManager.Instance.ButtonClickSource.Play();
+            OUAudioManager.Instance.ClickSound();
             _pausePanel.SetActive(false);
             Time.timeScale = 1;
         }
 
         public void OnRestartButtonClick()
         {
-            OUAudioManager.Instance.BackgroundMusicSource.Stop();
-            OUAudioManager.Instance.ButtonClickSource.Play();
+            OUAudioManager.Instance.ClickSound();
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void OnHomeButtonClick()
         {
-            OUAudioManager.Instance.ButtonClickSource.Play();
+            OUAudioManager.Instance.ClickSound();
             Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }

@@ -29,7 +29,7 @@ namespace Gameplay
 
             if (other.CompareTag("Coin"))
             {
-                OUAudioManager.Instance.EnergyCollectSoundSource.Play();
+                OUAudioManager.Instance.EnergyCollectSound();
                 Destroy(other.gameObject);
                 OUGameUIController.Instance.EnergyAmount++;
             }

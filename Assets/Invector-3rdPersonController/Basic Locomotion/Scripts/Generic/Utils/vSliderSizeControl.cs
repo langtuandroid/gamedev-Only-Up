@@ -26,9 +26,6 @@ namespace Invector
             {
                 if (slider.maxValue != oldMaxValue)
                 {
-                    var sizeDelta = rectTransform.sizeDelta;
-                    sizeDelta.x = slider.maxValue * multipScale;
-                    rectTransform.sizeDelta = sizeDelta;
                     oldMaxValue = slider.maxValue;
                 }
             }
