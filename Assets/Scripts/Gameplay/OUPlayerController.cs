@@ -10,8 +10,19 @@ namespace Gameplay
     {
         private OUThirdPersonController _thirdPersonController;
         private Vector3 _lastCheckpointPosition;
+
+        private bool _isDeathProceeded;
         
-        private void Start() => _thirdPersonController = GetComponent<OUThirdPersonController>();
+        private void Start()
+        {
+            _thirdPersonController = GetComponent<OUThirdPersonController>();
+            if (OUGameManager.IsPlayerDead || _thirdPersonController.isDead)
+            {
+                _thirdPersonController.isDead = false;
+                OUGameManager.IsPlayerDead = false;
+            }
+            _isDeathProceeded = true;
+        }
 
         private void Update()
         {
@@ -31,14 +42,15 @@ namespace Gameplay
             {
                 OUAudioManager.Instance.EnergyCollectSound();
                 Destroy(other.gameObject);
-                OUGameUIController.Instance.EnergyAmount++;
+                OUGameUIController.Instance.EnergyAmount += 2;
             }
         }
         
         private void OnPlayerDeath()
         {
-            if (!OUGameManager.IsPlayerDead)
+            if (!OUGameManager.IsPlayerDead && _isDeathProceeded)
             {
+                _isDeathProceeded = false;
                 OUGameUIController.Instance.OnGameOver();
                 OUGameManager.IsPlayerDead = true;
             }
@@ -48,6 +60,7 @@ namespace Gameplay
         
         public void OnCheckpointRespawnClick()
         {
+            _isDeathProceeded = true;
             if (_isRespawning) return;
              Time.timeScale = 1;
              _thirdPersonController.isDead = false;

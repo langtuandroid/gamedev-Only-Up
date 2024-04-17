@@ -51,13 +51,13 @@ namespace Invector.vCharacterController
 
         void OnGUI()
         {
-            inputDevice = InputDevice.MouseKeyboard;
-            // if (hud != null)
-            // {
-            //     hud.controllerInput = false;
-            //     hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f);
-            // }
-            return;
+            //inputDevice = InputDevice.MouseKeyboard;
+            //// if (hud != null)
+            //// {
+            ////     hud.controllerInput = false;
+            ////     hud.ShowText("Control scheme changed to Keyboard/Mouse", 2f);
+            //// }
+            //return;
             switch (inputDevice)
             {
                 case InputDevice.MouseKeyboard:

@@ -71,6 +71,7 @@ namespace UI
 
         public void OnRestartButtonClick()
         {
+            OUGameManager.IsPlayerDead = false;
             OUAudioManager.Instance.ClickSound();
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -4606,6 +4606,7 @@ GameObject:
   - component: {fileID: 1552467603}
   - component: {fileID: 1552467605}
   - component: {fileID: 1552467604}
+  - component: {fileID: 1552467606}
   m_Layer: 5
   m_Name: ArrowIconRight
   m_TagString: Untagged
@@ -4670,6 +4671,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552467602}
   m_CullTransparentMesh: 1
+--- !u!114 &1552467606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552467602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584e57c856624f64b8b1d3ed662a42b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 1964185134}
+  _scrollSpeed: 0.03
 --- !u!1 &1616259841
 GameObject:
   m_ObjectHideFlags: 0
@@ -6323,6 +6338,7 @@ GameObject:
   - component: {fileID: 2098402943}
   - component: {fileID: 2098402945}
   - component: {fileID: 2098402944}
+  - component: {fileID: 2098402946}
   m_Layer: 5
   m_Name: ArrowIconLeft
   m_TagString: Untagged
@@ -6387,6 +6403,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098402942}
   m_CullTransparentMesh: 1
+--- !u!114 &2098402946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098402942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584e57c856624f64b8b1d3ed662a42b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scrollRect: {fileID: 1964185134}
+  _scrollSpeed: -0.03
 --- !u!1 &2145683712
 GameObject:
   m_ObjectHideFlags: 0
