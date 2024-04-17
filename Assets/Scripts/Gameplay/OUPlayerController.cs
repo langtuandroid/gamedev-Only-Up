@@ -62,6 +62,7 @@ namespace Gameplay
         {
             _isDeathProceeded = true;
             if (_isRespawning) return;
+            _thirdPersonController.GetComponent<Rigidbody>().velocity = Vector3.zero;
              Time.timeScale = 1;
              _thirdPersonController.isDead = false;
              OUGameManager.IsPlayerDead = false;

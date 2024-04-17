@@ -1,126 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c8beffe-bd03-451a-8d3a-c5a741ff0bac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OUScrollButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OUScrollButton.cs.meta" afterDir="false" />
+    <list default="true" id="4c8beffe-bd03-451a-8d3a-c5a741ff0bac" name="Changes" comment="decreased build size, few fixes">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OURespawnButtonController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OURespawnButtonController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/New/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/New/icon.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.gamedev-Only-Up/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.gamedev-Only-Up/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Invector-3rdPersonController/Basic Locomotion/Scripts/CharacterController/vInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Invector-3rdPersonController/Basic Locomotion/Scripts/CharacterController/vInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/Body_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/coat_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/eye_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/hat_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shirt_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shirt_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shirt_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shirt_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shirt_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shirt_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/shoes_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/trousers_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/trousers_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/trousers_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/trousers_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/trousers_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/CityMan/Textures/trousers_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Body_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Bots_belt_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Clothes_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Eye_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet1_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet1_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet1_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet1_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet1_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet1_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Firefighter/Textures/Helmet_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Body_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Boots_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Eye_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Eye_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Eye_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Eye_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Eye_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Eye_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Hair_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Fitnesswoman/Textures/Suit_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Body_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe1_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Clothe2_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Eye_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Glasses_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Hair_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Hair_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Hair_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Hair_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Hair_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/SportWoman/Textures/Hair_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Body_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes1_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes2_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Clothes3_occlusion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_diffuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_diffuse.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_metallic.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_metallic.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_normalmap.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_normalmap.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_occlusion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Skins/Stewardess/Textures/Hair_occlusion.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OUPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/OUPlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/OUGameUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OUGameUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=arrow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=arrow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=menu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=menu.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=pause.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=pause.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=play.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=play.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=restart.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=restart.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=settings.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=settings.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=shop.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=shop.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=sound.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/New/Property 1=sound.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +30,7 @@
     <setting file="file://$PROJECT_DIR$/../gamedev-Dead-Zone-Rampage/Assets/Scripts/Gameplay/Managers/BPAudioManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../gamedev-Dead-Zone-Rampage/Assets/Scripts/UI/Menu/BPAudioButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://G:/RiderProjects/gamedev-Only-Up/Assets/Models/Skins/CityMan/Textures/Body_diffuse.png.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://G:/RiderProjects/gamedev-Only-Up/Assets/Scenes/GameScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Collectables/OUCoin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/OUSkinManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/OUScrollButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -206,7 +103,7 @@
       <workItem from="1713173570846" duration="2157000" />
       <workItem from="1713261633295" duration="15931000" />
       <workItem from="1713343281525" duration="1078000" />
-      <workItem from="1713351849229" duration="3201000" />
+      <workItem from="1713351849229" duration="5542000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit, removed ads">
       <created>1711988818869</created>
@@ -236,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713304645501</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="decreased build size, few fixes">
+      <created>1713357024570</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713357024570</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +166,8 @@
     <MESSAGE value="refactor, deleted most unused scripts, bug fixes" />
     <MESSAGE value="few bug fixes" />
     <MESSAGE value="added new UI, added skin change" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new UI, added skin change" />
+    <MESSAGE value="decreased build size, few fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="decreased build size, few fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
